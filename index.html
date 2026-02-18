@@ -1,285 +1,281 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>abzalt1.dev | Business-Oriented Developer</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ["Inter Tight", "Helvetica", "Arial", "sans-serif"],
-                    },
-                    colors: {
-                        black: "#111111",
-                    }
-                },
-            },
-        }
-    </script>
-    <style>
-        /* FIX: предотвращаем горизонтальный скролл на мобиле */
-        html {
-            overflow-x: hidden;
-        }
-        /* FIX: outline не добавляет ширину в отличие от border */
-        body {
-            overflow-x: hidden;
-            outline: 12px solid #111111;
-            outline-offset: -12px;
-        }
-
-        .grid-border { border: 2px solid #111111; }
-        .border-r-grid { border-right: 2px solid #111111; }
-        .border-b-grid { border-bottom: 2px solid #111111; }
-        .border-t-grid { border-top: 2px solid #111111; }
-        
-        .arrow-link:hover .arrow-icon {
-            transform: translate(2px, -2px);
-        }
-
-        /* FIX: заголовок масштабируется под ширину экрана */
-        .hero-title {
-            font-size: clamp(1.8rem, 8.5vw, 3.75rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 2rem;
-        }
-    </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
 </head>
-
-<body class="bg-white text-black font-sans min-h-screen p-4 md:p-8">
-
-    <header class="mb-8 border-b-[4px] border-black pb-4">
-        <div class="flex justify-between items-end">
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none">
-                abzalt1.dev
-            </h1>
-            <div class="flex gap-8 text-sm md:text-lg font-semibold uppercase tracking-widest">
-                <span>Almaty, KZ</span>
-                <span id="date-tag" class="text-black font-bold">Загрузка...</span>
-            </div>
-        </div>
-    </header>
-
-    <main class="mb-12">
-        
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8">
-            <section class="md:col-span-8 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
-                <div>
-                    <!-- FIX: non-breaking hyphen &#8209; не даёт слову разрываться -->
-                    <h2 class="hero-title">
-                        Бизнес&#8209;ориентированный разработчик.
-                    </h2>
-                    <div class="space-y-6 text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
-                        <p>
-                            Мне 32 года. До перехода в разработку я много лет работал в ритейле и управлении сетями оптик. Я знаю, как устроен реальный бизнес изнутри, какие у него боли и KPI.
-                        </p>
-                        <p>
-                            Поэтому я не просто «верстаю макеты». Я создаю инструменты продаж. Мои сайты удобны для клиентов и решают конкретные бизнес-задачи.
-                        </p>
-                    </div>
-                </div>
-                <div class="mt-12 pt-6 border-t-grid">
-                        <p class="text-base font-bold uppercase tracking-wider mb-2">Визуальный подход</p>
-                        <p class="text-lg leading-snug">
-                        Большая насмотренность в брендинге. Понимаю бренд-код, делаю визуально чисто, строго и правильно.
-                    </p>
-                </div>
-            </section>
-
-            <section class="md:col-span-4 flex flex-col">
-                <div class="p-8 border-b-grid flex justify-center items-center bg-gray-50">
-                    <div class="w-48 h-48 md:w-64 md:h-64 overflow-hidden grid-border relative bg-white shadow-xl">
-                        <img src="./me.jpg" alt="Abzal Photo" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                
-                <div class="flex-grow flex flex-col">
-                    <a href="https://t.me/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white transition-colors group">
-                        <span>Telegram</span>
-                        <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
-                    </a>
-                    <a href="https://wa.me/77081901222" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white transition-colors group">
-                        <span>WhatsApp</span>
-                        <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
-                    </a>
-                        <a href="https://instagram.com/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase hover:bg-black hover:text-white transition-colors group">
-                        <span>Instagram</span>
-                        <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
-                    </a>
-                </div>
-            </section>
-        </div>
-
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left">
-            
-            <div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white transition-colors group cursor-default">
-                <i class="ri-layout-masonry-fill text-4xl mb-4 block"></i>
-                <h3 class="text-xl font-bold uppercase mb-2">Tilda / Webflow</h3>
-                <p class="text-sm opacity-80 leading-relaxed font-medium">
-                    Быстрый запуск красивых сайтов на конструкторах. Идеально для лендингов, MVP и промо-страниц.
-                </p>
-            </div>
-
-            <div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white transition-colors group cursor-default">
-                <i class="ri-code-s-slash-line text-4xl mb-4 block"></i>
-                <h3 class="text-xl font-bold uppercase mb-2">Custom Frontend</h3>
-                <p class="text-sm opacity-80 leading-relaxed font-medium">
-                    Разработка на чистом HTML/CSS/JS без ограничений конструкторов. Максимальная скорость, SEO и ноль ежемесячных платежей.
-                </p>
-            </div>
-
-            <div class="p-8 md:p-12 hover:bg-black hover:text-white transition-colors group cursor-default">
-                <i class="ri-cpu-line text-4xl mb-4 block"></i>
-                <h3 class="text-xl font-bold uppercase mb-2">Сложная логика</h3>
-                <p class="text-sm opacity-80 leading-relaxed font-medium">
-                    Калькуляторы, API интеграции, личные кабинеты, работа с базами данных. То, где стандартные решения не справляются.
-                </p>
-            </div>
-        </section>
-
-        <section class="grid grid-cols-1 gap-8 mb-8">
-            
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white">
-                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid bg-black text-white flex flex-col justify-between">
-                    <div>
-                        <span class="block text-sm font-bold uppercase tracking-widest mb-4">01. Избранный проект</span>
-                        <h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight">
-                            MY-COOK<br>DELIVERY
-                        </h3>
-                    </div>
-                    <p class="mt-8 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline">E-commerce / Food Tech</p>
-                </div>
-                <div class="md:col-span-8 p-0 flex flex-col">
-                    <div class="aspect-video border-b-grid overflow-hidden relative">
-                        <img src="./mycook.jpg" alt="My-Cook Website" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <div class="p-6 md:p-10 flex flex-col md:flex-row gap-6 justify-between items-start">
-                        <div class="max-w-md">
-                            <h4 class="text-lg font-bold uppercase mb-3">Задача</h4>
-                            <p class="text-base leading-relaxed font-medium mb-4 text-gray-600">
-                                Запустить интернет-магазин доставки без покупки дорогих CRM. Реализован расчёт зон доставки по координатам (API).
-                            </p>
-                            <a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors">
-                                Сайт <i class="ri-arrow-right-up-line"></i>
-                            </a>
-                        </div>
-                        <div class="w-full md:w-auto">
-                            <h4 class="text-xs font-semibold uppercase mb-3 tracking-widest opacity-50">Стек проекта</h4>
-                            <ul class="space-y-3 text-base font-bold uppercase">
-                                <li class="flex items-center gap-3">
-                                    <i class="ri-layout-masonry-fill text-xl"></i> Tilda Pro
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <i class="ri-javascript-fill text-xl"></i> Custom JS
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <i class="ri-server-fill text-xl"></i> DaData API
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 opacity-60 hover:opacity-100 transition-opacity duration-500">
-                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
-                    <div>
-                        <span class="block text-sm font-bold uppercase tracking-widest mb-4">02. In Progress</span>
-                        <h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight text-gray-400">
-                            MODEL<br>PORTFOLIO
-                        </h3>
-                    </div>
-                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
-                </div>
-                <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white min-h-[300px]">
-                    <i class="ri-image-edit-line text-6xl text-gray-300 mb-4"></i>
-                    <p class="text-lg font-bold uppercase text-gray-400 text-center max-w-xs">
-                        Разработка визуального портфолио для fashion-модели.
-                        <br><span class="text-sm font-normal normal-case mt-2 block">Акцент на Webflow анимации и эстетику.</span>
-                    </p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 opacity-60 hover:opacity-100 transition-opacity duration-500">
-                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
-                    <div>
-                        <span class="block text-sm font-bold uppercase tracking-widest mb-4">03. In Progress</span>
-                        <h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight text-gray-400">
-                            B2B FASHION<br>WHOLESALE
-                        </h3>
-                    </div>
-                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
-                </div>
-                <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white min-h-[300px]">
-                    <i class="ri-store-3-line text-6xl text-gray-300 mb-4"></i>
-                    <p class="text-lg font-bold uppercase text-gray-400 text-center max-w-xs">
-                        Оптовый магазин одежды.
-                        <br><span class="text-sm font-normal normal-case mt-2 block">Лидогенерация и оптовые каталоги.</span>
-                    </p>
-                </div>
-            </div>
-
-        </section>
-
-        <section class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white">
-             <div class="col-span-1 md:col-span-12 p-6 md:p-12">
-                <h2 class="text-2xl font-bold uppercase mb-12 tracking-tighter">Технологический стек (Core Expertise)</h2>
-                
-                <div class="grid grid-cols-2 md:grid-cols-6 gap-8 text-center">
-                    <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-html5-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="text-xs font-bold uppercase tracking-widest">HTML5</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-javascript-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="text-xs font-bold uppercase tracking-widest">JS (ES6+)</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-window-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="text-xs font-bold uppercase tracking-widest">Webflow</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-layout-masonry-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="text-xs font-bold uppercase tracking-widest">Tilda Pro</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-server-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="text-xs font-bold uppercase tracking-widest">REST API</span>
-                    </div>
-                    <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-git-merge-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="text-xs font-bold uppercase tracking-widest">Git</span>
-                    </div>
-                </div>
-             </div>
-        </section>
-
-    </main>
-
-    <footer class="flex justify-between items-center text-xs font-bold uppercase tracking-wider opacity-60">
-        <p>© 2026 abzalt1.dev</p>
-        <span>Architectural Web Design</span>
-    </footer>
-
-    <script>
-        const dateTag = document.getElementById('date-tag');
-        const now = new Date();
-        const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
-        dateTag.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-    </script>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ru"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="utf-8"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta content="width=device-width, initial-scale=1.0" name="viewport"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;abzalt1.dev | Business-Oriented Developer&lt;/title&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..800;1,400..800&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>tailwind.config = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>theme: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>extend: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>fontFamily: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>// Основной шрифт - Inter Tight</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>sans: ["Inter Tight", "Helvetica", "Arial", "sans-serif"],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>colors: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>black: "#111111",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.grid-border { border: 2px solid #111111; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.border-r-grid { border-right: 2px solid #111111; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.border-b-grid { border-bottom: 2px solid #111111; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.border-t-grid { border-top: 2px solid #111111; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Стили для ссылок-стрелок */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.arrow-link:hover .arrow-icon {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translate(2px, -2px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body class="bg-white text-black font-sans min-h-screen p-4 md:p-8 border-[12px] border-black"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="mb-8 border-b-[4px] border-black pb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex justify-between items-end"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>abzalt1.dev</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex gap-8 text-sm md:text-lg font-semibold uppercase tracking-widest"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;Almaty, KZ&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="date-tag" class="text-black font-bold"&gt;Загрузка...&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="mb-12"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;section class="md:col-span-8 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-4xl md:text-6xl font-bold uppercase mb-8 leading-tight tracking-tight"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Бизнес-&lt;br&gt;ориентированный&lt;br&gt;разработчик.</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="space-y-6 text-lg md:text-xl leading-relaxed font-medium max-w-2xl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Мне 32 года. До перехода в разработку я много лет работал в ритейле и управлении сетями оптик. Я знаю, как устроен реальный бизнес изнутри, какие у него боли и KPI.</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Поэтому я не просто «верстаю макеты». Я создаю инструменты продаж. Мои сайты удобны для клиентов и решают конкретные бизнес-задачи.</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mt-12 pt-6 border-t-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-base font-bold uppercase tracking-wider mb-2"&gt;Визуальный подход&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-lg leading-snug"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Большая насмотренность в брендинге. Понимаю бренд-код, делаю визуально чисто, строго и правильно.</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;section class="md:col-span-4 flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="p-8 border-b-grid flex justify-center items-center bg-gray-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-48 h-48 md:w-64 md:h-64 overflow-hidden grid-border relative bg-white shadow-xl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="./me.jpg" alt="Abzal Photo" class="w-full h-full object-cover"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex-grow flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="https://t.me/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white transition-colors group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;Telegram&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="ri-arrow-right-up-line arrow-icon transition-transform"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="https://wa.me/77081901222" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white transition-colors group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;WhatsApp&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="ri-arrow-right-up-line arrow-icon transition-transform"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://instagram.com/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase hover:bg-black hover:text-white transition-colors group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;Instagram&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="ri-arrow-right-up-line arrow-icon transition-transform"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white transition-colors group cursor-default"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;i class="ri-layout-masonry-fill text-4xl mb-4 block"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-bold uppercase mb-2"&gt;Tilda / Webflow&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-sm opacity-80 leading-relaxed font-medium"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Быстрый запуск красивых сайтов на конструкторах. Идеально для лендингов, MVP и промо-страниц.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white transition-colors group cursor-default"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;i class="ri-code-s-slash-line text-4xl mb-4 block"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-bold uppercase mb-2"&gt;Custom Frontend&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-sm opacity-80 leading-relaxed font-medium"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Разработка на чистом HTML/CSS/JS без ограничений конструкторов. Максимальная скорость, SEO и ноль ежемесячных платежей.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-8 md:p-12 hover:bg-black hover:text-white transition-colors group cursor-default"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;i class="ri-cpu-line text-4xl mb-4 block"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-bold uppercase mb-2"&gt;Сложная логика&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-sm opacity-80 leading-relaxed font-medium"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Калькуляторы, API интеграции, личные кабинеты, работа с базами данных. То, где стандартные решения не справляются.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="grid grid-cols-1 gap-8 mb-8"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid bg-black text-white flex flex-col justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="block text-sm font-bold uppercase tracking-widest mb-4"&gt;01. Избранный проект&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>MY-COOK&lt;br&gt;DELIVERY</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="mt-8 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline"&gt;E-commerce / Food Tech&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="md:col-span-8 p-0 flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="aspect-video border-b-grid overflow-hidden relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="./mycook.jpg" alt="My-Cook Website" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="p-6 md:p-10 flex flex-col md:flex-row gap-6 justify-between items-start"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="max-w-md"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="text-lg font-bold uppercase mb-3"&gt;Задача&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-base leading-relaxed font-medium mb-4 text-gray-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>Запустить интернет-магазин доставки без покупки дорогих CRM. Реализован расчёт зон доставки по координатам (API).</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>Сайт &lt;i class="ri-arrow-right-up-line"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="w-full md:w-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="text-xs font-semibold uppercase mb-3 tracking-widest opacity-50"&gt;Стек проекта&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;ul class="space-y-3 text-base font-bold uppercase"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li class="flex items-center gap-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;i class="ri-layout-masonry-fill text-xl"&gt;&lt;/i&gt; Tilda Pro</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li class="flex items-center gap-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;i class="ri-javascript-fill text-xl"&gt;&lt;/i&gt; Custom JS</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li class="flex items-center gap-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;i class="ri-server-fill text-xl"&gt;&lt;/i&gt; DaData API</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 opacity-60 hover:opacity-100 transition-opacity duration-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="block text-sm font-bold uppercase tracking-widest mb-4"&gt;02. In Progress&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight text-gray-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>MODEL&lt;br&gt;PORTFOLIO</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit"&gt;Скоро релиз&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white min-h-[300px]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="ri-image-edit-line text-6xl text-gray-300 mb-4"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-lg font-bold uppercase text-gray-400 text-center max-w-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Разработка визуального портфолио для fashion-модели.</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;br&gt;&lt;span class="text-sm font-normal normal-case mt-2 block"&gt;Акцент на Webflow анимации и эстетику.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 opacity-60 hover:opacity-100 transition-opacity duration-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="block text-sm font-bold uppercase tracking-widest mb-4"&gt;03. In Progress&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight text-gray-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>B2B FASHION&lt;br&gt;WHOLESALE</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit"&gt;Скоро релиз&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white min-h-[300px]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="ri-store-3-line text-6xl text-gray-300 mb-4"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-lg font-bold uppercase text-gray-400 text-center max-w-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Оптовый магазин одежды.</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;br&gt;&lt;span class="text-sm font-normal normal-case mt-2 block"&gt;Лидогенерация и оптовые каталоги.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div class="col-span-1 md:col-span-12 p-6 md:p-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-2xl font-bold uppercase mb-12 tracking-tighter"&gt;Технологический стек (Core Expertise)&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-2 md:grid-cols-6 gap-8 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col items-center gap-4 group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="ri-html5-fill text-6xl group-hover:scale-110 transition-transform duration-300"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs font-bold uppercase tracking-widest"&gt;HTML5&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col items-center gap-4 group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="ri-javascript-fill text-6xl group-hover:scale-110 transition-transform duration-300"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs font-bold uppercase tracking-widest"&gt;JS (ES6+)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col items-center gap-4 group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="ri-window-fill text-6xl group-hover:scale-110 transition-transform duration-300"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs font-bold uppercase tracking-widest"&gt;Webflow&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col items-center gap-4 group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="ri-layout-masonry-fill text-6xl group-hover:scale-110 transition-transform duration-300"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs font-bold uppercase tracking-widest"&gt;Tilda Pro&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col items-center gap-4 group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="ri-server-fill text-6xl group-hover:scale-110 transition-transform duration-300"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs font-bold uppercase tracking-widest"&gt;REST API&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex flex-col items-center gap-4 group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="ri-git-merge-fill text-6xl group-hover:scale-110 transition-transform duration-300"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-xs font-bold uppercase tracking-widest"&gt;Git&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer class="flex justify-between items-center text-xs font-bold uppercase tracking-wider opacity-60"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;© 2026 abzalt1.dev&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;Architectural Web Design&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const dateTag = document.getElementById('date-tag');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const now = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>dateTag.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
 </body>
 </html>
