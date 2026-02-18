@@ -5,778 +5,272 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>abzalt1.dev | Business-Oriented Developer</title>
     
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
     
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Inter Tight", "Helvetica", "Arial", "sans-serif"],
+                    },
+                    colors: {
+                        black: "#111111",
+                    }
+                },
+            },
+        }
+    </script>
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --black: #111111;
-            --white: #ffffff;
-            --gray-light: #f5f5f5;
-            --gray-mid: #cccccc;
-            --border: 2px solid #111111;
-            --page-border: 8px;
-        }
-
-        html, body {
+        /* FIX: предотвращаем горизонтальный скролл на мобиле */
+        html {
             overflow-x: hidden;
-            width: 100%;
         }
-
+        /* FIX: outline не добавляет ширину в отличие от border */
         body {
-            font-family: "Inter Tight", Helvetica, Arial, sans-serif;
-            background: var(--white);
-            color: var(--black);
-            min-height: 100vh;
-            /* Используем outline вместо border — он не влияет на размер блока */
-            outline: var(--page-border) solid var(--black);
-            outline-offset: calc(var(--page-border) * -1);
-            padding: calc(var(--page-border) + 4px);
+            overflow-x: hidden;
+            outline: 12px solid #111111;
+            outline-offset: -12px;
         }
 
-        /* ─── HEADER ─────────────────────────────── */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 12px;
-            border-bottom: 4px solid var(--black);
-            padding-bottom: 12px;
-            margin-bottom: 16px;
+        .grid-border { border: 2px solid #111111; }
+        .border-r-grid { border-right: 2px solid #111111; }
+        .border-b-grid { border-bottom: 2px solid #111111; }
+        .border-t-grid { border-top: 2px solid #111111; }
+        
+        .arrow-link:hover .arrow-icon {
+            transform: translate(2px, -2px);
         }
 
-        .logo {
-            font-size: clamp(1.6rem, 7vw, 3.2rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1;
-            text-transform: lowercase;
-            white-space: nowrap;
-        }
-
-        .header-meta {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 2px;
-            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            line-height: 1.3;
-        }
-
-        /* ─── GRID UTILITIES ─────────────────────── */
-        .grid-box {
-            border: var(--border);
-        }
-
-        .border-b { border-bottom: var(--border); }
-        .border-r { border-right: var(--border); }
-        .border-t { border-top: var(--border); }
-
-        /* ─── HERO SECTION ───────────────────────── */
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            border: var(--border);
-            margin-bottom: 16px;
-        }
-
-        .hero-main {
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
+        /* FIX: заголовок масштабируется под ширину экрана */
         .hero-title {
-            font-size: clamp(1.5rem, 6.5vw, 4rem);
+            font-size: clamp(1.8rem, 8.5vw, 3.75rem);
             font-weight: 800;
             text-transform: uppercase;
-            line-height: 1.05;
+            line-height: 1.1;
             letter-spacing: -0.02em;
-            word-break: normal;
-            overflow-wrap: break-word;
-            hyphens: none;
-        }
-
-        .hero-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            font-weight: 500;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .hero-visual {
-            border-top: var(--border);
-            padding: 20px 24px;
-        }
-
-        .hero-visual-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 6px;
-        }
-
-        .hero-visual-text {
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* ─── PHOTO + SOCIALS ────────────────────── */
-        .sidebar {
-            border-top: var(--border);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .photo-wrap {
-            padding: 20px;
-            background: var(--gray-light);
-            border-bottom: var(--border);
-            display: flex;
-            justify-content: center;
-        }
-
-        .photo-box {
-            width: 140px;
-            height: 140px;
-            border: var(--border);
-            overflow: hidden;
-            background: var(--white);
-        }
-
-        .photo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .social-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 16px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--black);
-            border-right: var(--border);
-            transition: background 0.15s, color 0.15s;
-        }
-
-        .social-link:last-child {
-            border-right: none;
-        }
-
-        .social-link:hover {
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .social-link i {
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        /* ─── SKILLS ROW ─────────────────────────── */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            border: var(--border);
-            margin-bottom: 16px;
-        }
-
-        .skill-card {
-            padding: 20px 24px;
-            border-bottom: var(--border);
-            transition: background 0.15s, color 0.15s;
-            cursor: default;
-        }
-
-        .skill-card:last-child {
-            border-bottom: none;
-        }
-
-        .skill-card:hover {
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .skill-card i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .skill-card h3 {
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            letter-spacing: 0.05em;
-        }
-
-        .skill-card p {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            font-weight: 500;
-            opacity: 0.8;
-        }
-
-        /* ─── PROJECTS ───────────────────────────── */
-        .projects-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .project-card {
-            border: var(--border);
-            background: var(--white);
-        }
-
-        .project-card.dimmed {
-            opacity: 0.6;
-        }
-
-        .project-card.dimmed:hover {
-            opacity: 1;
-        }
-
-        .project-label-block {
-            padding: 20px 24px;
-            background: var(--black);
-            color: var(--white);
-            border-bottom: var(--border);
-        }
-
-        .project-card.light .project-label-block {
-            background: var(--white);
-            color: var(--black);
-        }
-
-        .project-num {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 10px;
-            opacity: 0.7;
-        }
-
-        .project-title {
-            font-size: clamp(1.6rem, 7vw, 2.8rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            line-height: 1.0;
-            letter-spacing: -0.02em;
-        }
-
-        .project-title.muted {
-            color: #aaa;
-        }
-
-        .project-tag {
-            margin-top: 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            text-decoration: underline;
-            opacity: 0.8;
-        }
-
-        .project-image-wrap {
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            border-bottom: var(--border);
-        }
-
-        .project-image-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 0.7s;
-        }
-
-        .project-image-wrap:hover img {
-            transform: scale(1.04);
-        }
-
-        .project-body {
-            padding: 20px 24px;
-        }
-
-        .project-body h4 {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
-        }
-
-        .project-body p {
-            font-size: 0.9rem;
-            line-height: 1.55;
-            font-weight: 500;
-            color: #555;
-            margin-bottom: 16px;
-        }
-
-        .project-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            background: var(--black);
-            color: var(--white);
-            padding: 10px 20px;
-            transition: background 0.15s;
-            margin-bottom: 20px;
-        }
-
-        .project-cta:hover {
-            background: #333;
-        }
-
-        .stack-label {
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            opacity: 0.5;
-            margin-bottom: 10px;
-        }
-
-        .stack-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .stack-list li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .stack-list i {
-            font-size: 1.1rem;
-        }
-
-        .project-placeholder {
-            padding: 40px 24px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: var(--white);
-            border-top: var(--border);
-            min-height: 180px;
-        }
-
-        .project-placeholder i {
-            font-size: 3rem;
-            color: var(--gray-mid);
-            margin-bottom: 12px;
-        }
-
-        .project-placeholder p {
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #aaa;
-            line-height: 1.4;
-        }
-
-        .project-placeholder span {
-            font-size: 0.8rem;
-            font-weight: 400;
-            text-transform: none;
-            display: block;
-            margin-top: 6px;
-        }
-
-        .coming-badge {
-            display: inline-block;
-            margin-top: 14px;
-            padding: 6px 14px;
-            background: var(--black);
-            color: var(--white);
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-
-        /* ─── TECH STACK ─────────────────────────── */
-        .tech-section {
-            border: var(--border);
-            padding: 24px;
-            margin-bottom: 16px;
-        }
-
-        .tech-section h2 {
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 24px;
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            text-align: center;
-        }
-
-        .tech-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tech-item i {
-            font-size: 2.5rem;
-            transition: transform 0.25s;
-        }
-
-        .tech-item:hover i {
-            transform: scale(1.12);
-        }
-
-        .tech-item span {
-            font-size: 0.6rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* ─── FOOTER ─────────────────────────────── */
-        footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.6;
-            padding-top: 4px;
-        }
-
-        /* ─── DESKTOP OVERRIDES ──────────────────── */
-        @media (min-width: 768px) {
-            :root { --page-border: 12px; }
-
-            body {
-                padding: calc(var(--page-border) + 4px);
-            }
-
-            header {
-                padding-bottom: 16px;
-                margin-bottom: 24px;
-            }
-
-            .header-meta {
-                flex-direction: row;
-                gap: 32px;
-                align-items: flex-end;
-            }
-
-            /* Hero grid */
-            .hero-grid {
-                grid-template-columns: 1fr 1fr;
-                margin-bottom: 24px;
-            }
-
-            .hero-main {
-                padding: 40px 48px;
-                border-right: var(--border);
-            }
-
-            .hero-visual {
-                border-top: var(--border);
-                padding: 24px 48px;
-            }
-
-            .sidebar {
-                border-top: none;
-                border-left: none;
-            }
-
-            .photo-box {
-                width: 200px;
-                height: 200px;
-            }
-
-            .social-links {
-                grid-template-columns: 1fr;
-            }
-
-            .social-link {
-                border-right: none;
-                border-bottom: var(--border);
-                padding: 18px 24px;
-                font-size: 1rem;
-            }
-
-            .social-link:last-child {
-                border-bottom: none;
-            }
-
-            /* Skills */
-            .skills-grid {
-                grid-template-columns: repeat(3, 1fr);
-                margin-bottom: 24px;
-            }
-
-            .skill-card {
-                border-bottom: none;
-                border-right: var(--border);
-                padding: 32px 36px;
-            }
-
-            .skill-card:last-child {
-                border-right: none;
-            }
-
-            /* Projects */
-            .projects-list {
-                gap: 24px;
-                margin-bottom: 24px;
-            }
-
-            .project-label-block {
-                padding: 40px 48px;
-                border-bottom: none;
-                border-right: var(--border);
-            }
-
-            .project-card-inner {
-                display: grid;
-                grid-template-columns: 1fr 2fr;
-            }
-
-            .project-content-col {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .project-body {
-                display: flex;
-                gap: 40px;
-                align-items: flex-start;
-            }
-
-            .project-placeholder {
-                border-top: none;
-                border-left: var(--border);
-            }
-
-            /* Tech */
-            .tech-section {
-                padding: 48px;
-                margin-bottom: 24px;
-            }
-
-            .tech-grid {
-                grid-template-columns: repeat(6, 1fr);
-            }
-
-            .tech-item i {
-                font-size: 3.5rem;
-            }
+            margin-bottom: 2rem;
         }
     </style>
 </head>
 
-<body>
+<body class="bg-white text-black font-sans min-h-screen p-4 md:p-8">
 
-    <header>
-        <h1 class="logo">abzalt1.dev</h1>
-        <div class="header-meta">
-            <span>Almaty, KZ</span>
-            <span id="date-tag">...</span>
+    <header class="mb-8 border-b-[4px] border-black pb-4">
+        <div class="flex justify-between items-end">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none">
+                abzalt1.dev
+            </h1>
+            <div class="flex gap-8 text-sm md:text-lg font-semibold uppercase tracking-widest">
+                <span>Almaty, KZ</span>
+                <span id="date-tag" class="text-black font-bold">Загрузка...</span>
+            </div>
         </div>
     </header>
 
-    <main>
-
-        <!-- ── HERO ── -->
-        <div class="hero-grid grid-box">
-            <section class="hero-main">
-                <h2 class="hero-title">
-                    Бизнес&#x2011;ориентированный разработчик.
-                </h2>
-                <div class="hero-text">
-                    <p>Мне 32 года. До перехода в разработку я много лет работал в ритейле и управлении сетями оптик. Я знаю, как устроен реальный бизнес изнутри, какие у него боли и KPI.</p>
-                    <p>Поэтому я не просто «верстаю макеты». Я создаю инструменты продаж. Мои сайты удобны для клиентов и решают конкретные бизнес-задачи.</p>
+    <main class="mb-12">
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8">
+            <section class="md:col-span-8 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
+                <div>
+                    <!-- FIX: non-breaking hyphen &#8209; не даёт слову разрываться -->
+                    <h2 class="hero-title">
+                        Бизнес&#8209;ориентированный разработчик.
+                    </h2>
+                    <div class="space-y-6 text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
+                        <p>
+                            Мне 32 года. До перехода в разработку я много лет работал в ритейле и управлении сетями оптик. Я знаю, как устроен реальный бизнес изнутри, какие у него боли и KPI.
+                        </p>
+                        <p>
+                            Поэтому я не просто «верстаю макеты». Я создаю инструменты продаж. Мои сайты удобны для клиентов и решают конкретные бизнес-задачи.
+                        </p>
+                    </div>
                 </div>
-                <div class="hero-visual">
-                    <p class="hero-visual-label">Визуальный подход</p>
-                    <p class="hero-visual-text">Большая насмотренность в брендинге. Понимаю бренд-код, делаю визуально чисто, строго и правильно.</p>
+                <div class="mt-12 pt-6 border-t-grid">
+                        <p class="text-base font-bold uppercase tracking-wider mb-2">Визуальный подход</p>
+                        <p class="text-lg leading-snug">
+                        Большая насмотренность в брендинге. Понимаю бренд-код, делаю визуально чисто, строго и правильно.
+                    </p>
                 </div>
             </section>
 
-            <section class="sidebar">
-                <div class="photo-wrap">
-                    <div class="photo-box">
-                        <img src="./me.jpg" alt="Abzal Photo">
+            <section class="md:col-span-4 flex flex-col">
+                <div class="p-8 border-b-grid flex justify-center items-center bg-gray-50">
+                    <div class="w-48 h-48 md:w-64 md:h-64 overflow-hidden grid-border relative bg-white shadow-xl">
+                        <img src="./me.jpg" alt="Abzal Photo" class="w-full h-full object-cover">
                     </div>
                 </div>
-                <div class="social-links border-t">
-                    <a href="https://t.me/abzalt1" target="_blank" class="social-link">
+                
+                <div class="flex-grow flex flex-col">
+                    <a href="https://t.me/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white transition-colors group">
                         <span>Telegram</span>
-                        <i class="ri-arrow-right-up-line"></i>
+                        <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
                     </a>
-                    <a href="https://wa.me/77081901222" target="_blank" class="social-link">
+                    <a href="https://wa.me/77081901222" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white transition-colors group">
                         <span>WhatsApp</span>
-                        <i class="ri-arrow-right-up-line"></i>
+                        <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
                     </a>
-                    <a href="https://instagram.com/abzalt1" target="_blank" class="social-link">
+                        <a href="https://instagram.com/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase hover:bg-black hover:text-white transition-colors group">
                         <span>Instagram</span>
-                        <i class="ri-arrow-right-up-line"></i>
+                        <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
                     </a>
                 </div>
             </section>
         </div>
 
-        <!-- ── SKILLS ── -->
-        <section class="skills-grid">
-            <div class="skill-card">
-                <i class="ri-layout-masonry-fill"></i>
-                <h3>Tilda / Webflow</h3>
-                <p>Быстрый запуск красивых сайтов на конструкторах. Идеально для лендингов, MVP и промо-страниц.</p>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left">
+            
+            <div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white transition-colors group cursor-default">
+                <i class="ri-layout-masonry-fill text-4xl mb-4 block"></i>
+                <h3 class="text-xl font-bold uppercase mb-2">Tilda / Webflow</h3>
+                <p class="text-sm opacity-80 leading-relaxed font-medium">
+                    Быстрый запуск красивых сайтов на конструкторах. Идеально для лендингов, MVP и промо-страниц.
+                </p>
             </div>
-            <div class="skill-card">
-                <i class="ri-code-s-slash-line"></i>
-                <h3>Custom Frontend</h3>
-                <p>Разработка на чистом HTML/CSS/JS без ограничений конструкторов. Максимальная скорость, SEO и ноль ежемесячных платежей.</p>
+
+            <div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white transition-colors group cursor-default">
+                <i class="ri-code-s-slash-line text-4xl mb-4 block"></i>
+                <h3 class="text-xl font-bold uppercase mb-2">Custom Frontend</h3>
+                <p class="text-sm opacity-80 leading-relaxed font-medium">
+                    Разработка на чистом HTML/CSS/JS без ограничений конструкторов. Максимальная скорость, SEO и ноль ежемесячных платежей.
+                </p>
             </div>
-            <div class="skill-card">
-                <i class="ri-cpu-line"></i>
-                <h3>Сложная логика</h3>
-                <p>Калькуляторы, API интеграции, личные кабинеты, работа с базами данных. То, где стандартные решения не справляются.</p>
+
+            <div class="p-8 md:p-12 hover:bg-black hover:text-white transition-colors group cursor-default">
+                <i class="ri-cpu-line text-4xl mb-4 block"></i>
+                <h3 class="text-xl font-bold uppercase mb-2">Сложная логика</h3>
+                <p class="text-sm opacity-80 leading-relaxed font-medium">
+                    Калькуляторы, API интеграции, личные кабинеты, работа с базами данных. То, где стандартные решения не справляются.
+                </p>
             </div>
         </section>
 
-        <!-- ── PROJECTS ── -->
-        <div class="projects-list">
-
-            <!-- Project 01 -->
-            <div class="project-card grid-box">
-                <div class="project-card-inner">
-                    <div class="project-label-block">
-                        <p class="project-num">01. Избранный проект</p>
-                        <h3 class="project-title">MY-COOK<br>DELIVERY</h3>
-                        <p class="project-tag">E-commerce / Food Tech</p>
+        <section class="grid grid-cols-1 gap-8 mb-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white">
+                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid bg-black text-white flex flex-col justify-between">
+                    <div>
+                        <span class="block text-sm font-bold uppercase tracking-widest mb-4">01. Избранный проект</span>
+                        <h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight">
+                            MY-COOK<br>DELIVERY
+                        </h3>
                     </div>
-                    <div class="project-content-col">
-                        <div class="project-image-wrap">
-                            <img src="./mycook.jpg" alt="My-Cook Website">
+                    <p class="mt-8 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline">E-commerce / Food Tech</p>
+                </div>
+                <div class="md:col-span-8 p-0 flex flex-col">
+                    <div class="aspect-video border-b-grid overflow-hidden relative">
+                        <img src="./mycook.jpg" alt="My-Cook Website" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 md:p-10 flex flex-col md:flex-row gap-6 justify-between items-start">
+                        <div class="max-w-md">
+                            <h4 class="text-lg font-bold uppercase mb-3">Задача</h4>
+                            <p class="text-base leading-relaxed font-medium mb-4 text-gray-600">
+                                Запустить интернет-магазин доставки без покупки дорогих CRM. Реализован расчёт зон доставки по координатам (API).
+                            </p>
+                            <a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors">
+                                Сайт <i class="ri-arrow-right-up-line"></i>
+                            </a>
                         </div>
-                        <div class="project-body">
-                            <div>
-                                <h4>Задача</h4>
-                                <p>Запустить интернет-магазин доставки без покупки дорогих CRM. Реализован расчёт зон доставки по координатам (API).</p>
-                                <a href="https://my-cook.kz" target="_blank" class="project-cta">
-                                    Сайт <i class="ri-arrow-right-up-line"></i>
-                                </a>
-                            </div>
-                            <div>
-                                <p class="stack-label">Стек проекта</p>
-                                <ul class="stack-list">
-                                    <li><i class="ri-layout-masonry-fill"></i> Tilda Pro</li>
-                                    <li><i class="ri-javascript-fill"></i> Custom JS</li>
-                                    <li><i class="ri-server-fill"></i> DaData API</li>
-                                </ul>
-                            </div>
+                        <div class="w-full md:w-auto">
+                            <h4 class="text-xs font-semibold uppercase mb-3 tracking-widest opacity-50">Стек проекта</h4>
+                            <ul class="space-y-3 text-base font-bold uppercase">
+                                <li class="flex items-center gap-3">
+                                    <i class="ri-layout-masonry-fill text-xl"></i> Tilda Pro
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="ri-javascript-fill text-xl"></i> Custom JS
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="ri-server-fill text-xl"></i> DaData API
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 02 -->
-            <div class="project-card light dimmed grid-box">
-                <div class="project-card-inner">
-                    <div class="project-label-block">
-                        <p class="project-num">02. In Progress</p>
-                        <h3 class="project-title muted">MODEL<br>PORTFOLIO</h3>
-                        <span class="coming-badge">Скоро релиз</span>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 opacity-60 hover:opacity-100 transition-opacity duration-500">
+                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
+                    <div>
+                        <span class="block text-sm font-bold uppercase tracking-widest mb-4">02. In Progress</span>
+                        <h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight text-gray-400">
+                            MODEL<br>PORTFOLIO
+                        </h3>
                     </div>
-                    <div class="project-placeholder">
-                        <i class="ri-image-edit-line"></i>
-                        <p>Разработка визуального портфолио для fashion-модели.<span>Акцент на Webflow анимации и эстетику.</span></p>
-                    </div>
+                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
+                </div>
+                <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white min-h-[300px]">
+                    <i class="ri-image-edit-line text-6xl text-gray-300 mb-4"></i>
+                    <p class="text-lg font-bold uppercase text-gray-400 text-center max-w-xs">
+                        Разработка визуального портфолио для fashion-модели.
+                        <br><span class="text-sm font-normal normal-case mt-2 block">Акцент на Webflow анимации и эстетику.</span>
+                    </p>
                 </div>
             </div>
 
-            <!-- Project 03 -->
-            <div class="project-card light dimmed grid-box">
-                <div class="project-card-inner">
-                    <div class="project-label-block">
-                        <p class="project-num">03. In Progress</p>
-                        <h3 class="project-title muted">B2B FASHION<br>WHOLESALE</h3>
-                        <span class="coming-badge">Скоро релиз</span>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 opacity-60 hover:opacity-100 transition-opacity duration-500">
+                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
+                    <div>
+                        <span class="block text-sm font-bold uppercase tracking-widest mb-4">03. In Progress</span>
+                        <h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight text-gray-400">
+                            B2B FASHION<br>WHOLESALE
+                        </h3>
                     </div>
-                    <div class="project-placeholder">
-                        <i class="ri-store-3-line"></i>
-                        <p>Оптовый магазин одежды.<span>Лидогенерация и оптовые каталоги.</span></p>
-                    </div>
+                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
+                </div>
+                <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white min-h-[300px]">
+                    <i class="ri-store-3-line text-6xl text-gray-300 mb-4"></i>
+                    <p class="text-lg font-bold uppercase text-gray-400 text-center max-w-xs">
+                        Оптовый магазин одежды.
+                        <br><span class="text-sm font-normal normal-case mt-2 block">Лидогенерация и оптовые каталоги.</span>
+                    </p>
                 </div>
             </div>
 
-        </div>
+        </section>
 
-        <!-- ── TECH STACK ── -->
-        <section class="tech-section grid-box">
-            <h2>Технологический стек (Core Expertise)</h2>
-            <div class="tech-grid">
-                <div class="tech-item"><i class="ri-html5-fill"></i><span>HTML5</span></div>
-                <div class="tech-item"><i class="ri-javascript-fill"></i><span>JS (ES6+)</span></div>
-                <div class="tech-item"><i class="ri-window-fill"></i><span>Webflow</span></div>
-                <div class="tech-item"><i class="ri-layout-masonry-fill"></i><span>Tilda Pro</span></div>
-                <div class="tech-item"><i class="ri-server-fill"></i><span>REST API</span></div>
-                <div class="tech-item"><i class="ri-git-merge-fill"></i><span>Git</span></div>
-            </div>
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white">
+             <div class="col-span-1 md:col-span-12 p-6 md:p-12">
+                <h2 class="text-2xl font-bold uppercase mb-12 tracking-tighter">Технологический стек (Core Expertise)</h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-6 gap-8 text-center">
+                    <div class="flex flex-col items-center gap-4 group">
+                        <i class="ri-html5-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">HTML5</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 group">
+                        <i class="ri-javascript-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">JS (ES6+)</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 group">
+                        <i class="ri-window-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">Webflow</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 group">
+                        <i class="ri-layout-masonry-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">Tilda Pro</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 group">
+                        <i class="ri-server-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">REST API</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-4 group">
+                        <i class="ri-git-merge-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">Git</span>
+                    </div>
+                </div>
+             </div>
         </section>
 
     </main>
 
-    <footer>
+    <footer class="flex justify-between items-center text-xs font-bold uppercase tracking-wider opacity-60">
         <p>© 2026 abzalt1.dev</p>
         <span>Architectural Web Design</span>
     </footer>
@@ -784,9 +278,8 @@
     <script>
         const dateTag = document.getElementById('date-tag');
         const now = new Date();
-        const formatted = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
-        dateTag.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
+        const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
+        dateTag.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
     </script>
-
 </body>
 </html>
