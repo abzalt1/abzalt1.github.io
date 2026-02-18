@@ -26,8 +26,9 @@
             --page-border: 8px;
         }
 
-        html {
+        html, body {
             overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -35,9 +36,10 @@
             background: var(--white);
             color: var(--black);
             min-height: 100vh;
-            padding: var(--page-border);
-            border: var(--page-border) solid var(--black);
-            overflow-x: hidden;
+            /* Используем outline вместо border — он не влияет на размер блока */
+            outline: var(--page-border) solid var(--black);
+            outline-offset: calc(var(--page-border) * -1);
+            padding: calc(var(--page-border) + 4px);
         }
 
         /* ─── HEADER ─────────────────────────────── */
@@ -97,12 +99,14 @@
         }
 
         .hero-title {
-            font-size: clamp(1.8rem, 8vw, 4rem);
+            font-size: clamp(1.5rem, 6.5vw, 4rem);
             font-weight: 800;
             text-transform: uppercase;
             line-height: 1.05;
             letter-spacing: -0.02em;
-            word-break: break-word;
+            word-break: normal;
+            overflow-wrap: break-word;
+            hyphens: none;
         }
 
         .hero-text {
@@ -498,8 +502,7 @@
             :root { --page-border: 12px; }
 
             body {
-                padding: var(--page-border);
-                border-width: var(--page-border);
+                padding: calc(var(--page-border) + 4px);
             }
 
             header {
@@ -636,7 +639,7 @@
         <div class="hero-grid grid-box">
             <section class="hero-main">
                 <h2 class="hero-title">
-                    Бизнес-<br>ориентированный<br>разработчик.
+                    Бизнес&#x2011;ориентированный разработчик.
                 </h2>
                 <div class="hero-text">
                     <p>Мне 32 года. До перехода в разработку я много лет работал в ритейле и управлении сетями оптик. Я знаю, как устроен реальный бизнес изнутри, какие у него боли и KPI.</p>
