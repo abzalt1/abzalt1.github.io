@@ -37,6 +37,22 @@
             transform: translate(2px, -2px);
         }
 
+        /* Курсор печатной машинки */
+        .cursor-blink {
+            display: inline-block;
+            width: 3px; /* Толщина курсора */
+            background-color: #111111;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 4px;
+            height: 1em; 
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         /* Mobile-only fixes */
         @media (max-width: 767px) {
             body {
@@ -56,10 +72,12 @@
                 text-align: right;
             }
 
-            /* Hero heading — smaller so it doesn't overflow */
+            /* Hero heading — fix for jumpy layout */
             section h2.text-4xl {
                 font-size: 2rem !important;
                 line-height: 1.1;
+                word-break: keep-all; /* Запрещает разрыв слов посередине */
+                overflow-wrap: normal;
             }
         }
     </style>
@@ -84,8 +102,10 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8">
             <section class="md:col-span-8 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
-                    <h2 class="text-4xl md:text-6xl font-bold uppercase mb-8 leading-tight tracking-tight">
-                        Бизнес-<br>ориентированный<br>разработчик.
+                    <h2 class="text-4xl md:text-6xl font-bold uppercase mb-8 leading-tight tracking-tight min-h-[110px] md:min-h-[220px] flex flex-col justify-start">
+                        <span class="block">
+                            <span id="typewriter-text"></span><span class="cursor-blink"></span>
+                        </span>
                     </h2>
                     <div class="space-y-6 text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
                         <p>
@@ -277,10 +297,74 @@
     </footer>
 
     <script>
+        // ДАТА
         const dateTag = document.getElementById('date-tag');
         const now = new Date();
         const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
         dateTag.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+
+        // АНИМАЦИЯ ПЕЧАТНОЙ МАШИНКИ
+        const textElement = document.getElementById('typewriter-text');
+        const phrases = [
+            "Бизнес-<br>ориентированный<br>разработчик.",
+            "Frontend Developer<br>& Low-code Expert"
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isWaiting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            // Скорость: печать 50мс, удаление 30мс
+            let typeSpeed = 50;
+            if (isDeleting) typeSpeed = 30;
+
+            if (!isWaiting) {
+                if (!isDeleting) {
+                    // ПЕЧАТЬ
+                    if (currentPhrase.substring(charIndex).startsWith('<br>')) {
+                        textElement.innerHTML = currentPhrase.substring(0, charIndex + 4);
+                        charIndex += 4;
+                    } else {
+                        textElement.innerHTML = currentPhrase.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    if (charIndex === currentPhrase.length) {
+                        isWaiting = true;
+                        // ПАУЗА 3 СЕКУНД (3000 мс)
+                        setTimeout(() => {
+                            isDeleting = true;
+                            isWaiting = false;
+                            type();
+                        }, 3000);
+                        return;
+                    }
+                } else {
+                    // УДАЛЕНИЕ
+                    if (textElement.innerHTML.endsWith('<br>')) {
+                        charIndex -= 4;
+                    } else {
+                        charIndex--;
+                    }
+                    
+                    textElement.innerHTML = currentPhrase.substring(0, charIndex);
+
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        typeSpeed = 500; // Пауза перед стартом новой фразы
+                    }
+                }
+            }
+            setTimeout(type, typeSpeed);
+        }
+
+        // Запуск
+        document.addEventListener('DOMContentLoaded', type);
     </script>
 </body>
 </html>
