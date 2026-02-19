@@ -40,7 +40,7 @@
         /* Курсор печатной машинки */
         .cursor-blink {
             display: inline-block;
-            width: 3px; /* Толщина курсора */
+            width: 3px;
             background-color: #111111;
             animation: blink 1s step-end infinite;
             vertical-align: text-bottom;
@@ -72,11 +72,10 @@
                 text-align: right;
             }
 
-            /* Hero heading — fix for jumpy layout */
             section h2.text-4xl {
                 font-size: 2rem !important;
                 line-height: 1.1;
-                word-break: keep-all; /* Запрещает разрыв слов посередине */
+                word-break: keep-all; 
                 overflow-wrap: normal;
             }
         }
@@ -123,7 +122,7 @@
 
             <section class="md:col-span-4 flex flex-col">
                 <div class="p-8 border-b-grid flex justify-center items-center bg-gray-50">
-                    <div class="w-48 h-48 md:w-64 md:h-64 overflow-hidden grid-border relative bg-white shadow-xl">
+                    <div class="w-56 h-56 md:w-80 md:h-80 overflow-hidden grid-border relative bg-white shadow-xl">
                         <img src="./me.jpg" alt="Abzal Photo" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -258,7 +257,7 @@
 
         <section class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white">
              <div class="col-span-1 md:col-span-12 p-6 md:p-12">
-                <h2 class="text-2xl font-bold uppercase mb-12 tracking-tighter">Технологический стек (Core Expertise)</h2>
+                <h2 class="text-2xl font-bold uppercase mb-12 tracking-tighter">Core Expertise</h2>
                 
                 <div class="grid grid-cols-2 md:grid-cols-6 gap-8 text-center">
                     <div class="flex flex-col items-center gap-4 group">
@@ -297,13 +296,11 @@
     </footer>
 
     <script>
-        // ДАТА
         const dateTag = document.getElementById('date-tag');
         const now = new Date();
         const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
         dateTag.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 
-        // АНИМАЦИЯ ПЕЧАТНОЙ МАШИНКИ
         const textElement = document.getElementById('typewriter-text');
         const phrases = [
             "Бизнес-<br>ориентированный<br>разработчик.",
@@ -318,13 +315,11 @@
         function type() {
             const currentPhrase = phrases[phraseIndex];
             
-            // Скорость: печать 50мс, удаление 30мс
             let typeSpeed = 50;
             if (isDeleting) typeSpeed = 30;
 
             if (!isWaiting) {
                 if (!isDeleting) {
-                    // ПЕЧАТЬ
                     if (currentPhrase.substring(charIndex).startsWith('<br>')) {
                         textElement.innerHTML = currentPhrase.substring(0, charIndex + 4);
                         charIndex += 4;
@@ -335,16 +330,14 @@
 
                     if (charIndex === currentPhrase.length) {
                         isWaiting = true;
-                        // ПАУЗА 3 СЕКУНД (3000 мс)
                         setTimeout(() => {
                             isDeleting = true;
                             isWaiting = false;
                             type();
-                        }, 3000);
+                        }, 5000);
                         return;
                     }
                 } else {
-                    // УДАЛЕНИЕ
                     if (textElement.innerHTML.endsWith('<br>')) {
                         charIndex -= 4;
                     } else {
@@ -356,14 +349,13 @@
                     if (charIndex === 0) {
                         isDeleting = false;
                         phraseIndex = (phraseIndex + 1) % phrases.length;
-                        typeSpeed = 500; // Пауза перед стартом новой фразы
+                        typeSpeed = 500; 
                     }
                 }
             }
             setTimeout(type, typeSpeed);
         }
 
-        // Запуск
         document.addEventListener('DOMContentLoaded', type);
     </script>
 </body>
