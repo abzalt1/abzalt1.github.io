@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="bg-white dark:bg-black">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>abzalt1.dev | Business-Oriented Developer</title>
+    <meta name="description" content="Разработка сайтов для бизнеса. Tilda, Webflow, Custom Frontend. Визуально чисто, технически грамотно.">
+    <meta property="og:title" content="abzalt1.dev | Business-Oriented Developer">
+    <meta property="og:description" content="Разработка сайтов, которые приносят прибыль.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -11,7 +14,10 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    </noscript>
     
     <script>
         tailwind.config = {
@@ -23,9 +29,22 @@
                     },
                     colors: {
                         black: "#111111",
+                        white: "#fafafa",
                     }
                 },
             },
+        }
+    </script>
+    <script>
+        // Init theme immediately to prevent FOUC (Flash of Unstyled Content)
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Priority: LocalStorage -> System Preference
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
     </script>
     <style>
@@ -57,11 +76,11 @@
         }
 
         /* Dark mode overrides for custom borders */
-        .dark .grid-border { border-color: #ffffff; }
-        .dark .border-r-grid { border-right-color: #ffffff; }
-        .dark .border-b-grid { border-bottom-color: #ffffff; }
-        .dark .border-t-grid { border-top-color: #ffffff; }
-        .dark .cursor-blink { background-color: #ffffff; }
+        .dark .grid-border { border-color: #fafafa; }
+        .dark .border-r-grid { border-right-color: #fafafa; }
+        .dark .border-b-grid { border-bottom-color: #fafafa; }
+        .dark .border-t-grid { border-top-color: #fafafa; }
+        .dark .cursor-blink { background-color: #fafafa; }
         .dark .text-stroke-white { -webkit-text-stroke: 1px white; }
 
         /* Mobile-only fixes */
@@ -94,22 +113,124 @@
         /* Fade In Animation */
         .fade-in-section {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            will-change: opacity, transform;
+            transform: translateY(30px) scale(0.95);
+            filter: blur(10px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform, filter;
+        }
+        @media (min-width: 768px) {
+            .fade-in-section {
+                transform: translateY(60px) scale(0.95);
+            }
         }
         .fade-in-section.is-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        /* Noise / Grain Effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 30;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 100px 100px;
+        }
+        .dark body::before {
+            opacity: 0.08;
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        .glitch:hover::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff00c1;
+            animation: glitch-anim-1 0.3s infinite linear alternate-reverse;
+        }
+        .glitch:hover::after {
+            left: -2px;
+            text-shadow: -1px 0 #00fff9;
+            animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(20% 0 80% 0); } 20% { clip-path: inset(60% 0 10% 0); } 40% { clip-path: inset(40% 0 50% 0); } 60% { clip-path: inset(80% 0 5% 0); } 80% { clip-path: inset(10% 0 70% 0); } 100% { clip-path: inset(30% 0 20% 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(10% 0 60% 0); } 20% { clip-path: inset(30% 0 20% 0); } 40% { clip-path: inset(70% 0 10% 0); } 60% { clip-path: inset(20% 0 50% 0); } 80% { clip-path: inset(60% 0 30% 0); } 100% { clip-path: inset(5% 0 80% 0); }
+        }
+
+        /* Animated Gradient Background */
+        #gradient-bg {
+            background-size: 400% 400%;
+            transition: background-position 0.1s ease-out;
+        }
+
+        /* Magnetic Button Effect */
+        .magnetic-button {
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        /* Hover Underline Animation */
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
     </style>
 </head>
 
-<body class="bg-white text-black dark:bg-black dark:text-white dark:border-white font-sans min-h-screen p-4 md:p-8 border-[12px] border-black transition-colors duration-300">
+<body class="bg-transparent text-black dark:text-white dark:border-white font-sans min-h-screen p-4 md:p-8 border-[12px] border-black transition-colors duration-300 relative">
 
-    <header class="sticky top-0 z-40 bg-white dark:bg-black mb-8 border-b-[4px] border-black dark:border-white pb-4 -mt-[12px] pt-[12px] md:-mt-8 md:pt-8 transition-colors duration-300">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-white dark:bg-black flex justify-center items-center transition-opacity duration-500">
+        <div class="w-12 h-12 border-4 border-gray-200 border-t-black dark:border-gray-800 dark:border-t-white rounded-full animate-spin"></div>
+    </div>
+
+    <!-- Gradient Background -->
+    <div id="gradient-bg" class="fixed inset-0 z-[-1] bg-[linear-gradient(135deg,var(--tw-gradient-stops))] from-white via-gray-100 to-white dark:from-black dark:via-gray-900 dark:to-black"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-black dark:bg-white z-50 w-0 transition-[width] duration-75 ease-out"></div>
+
+    <header id="main-header" class="sticky top-0 z-40 bg-white dark:bg-black mb-8 border-b-[4px] border-black dark:border-white pb-4 -mt-[12px] pt-[12px] md:-mt-8 md:pt-8 transition-all duration-300">
         <div class="flex justify-between items-end">
-            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none glitch cursor-default" data-text="abzalt1.dev">
                 abzalt1.dev
             </h1>
             <div class="flex gap-8 text-sm md:text-lg font-semibold uppercase tracking-widest items-center">
@@ -120,17 +241,17 @@
                 </nav>
                 <span>Almaty, KZ</span>
                 <span id="date-tag" class="text-black dark:text-white font-bold">Загрузка...</span>
-                <button id="theme-toggle" class="hover:opacity-60 transition-opacity" aria-label="Toggle theme">
+                <button id="theme-toggle" class="hover:opacity-60 transition-opacity magnetic-button" aria-label="Toggle theme">
                     <i class="ri-moon-line text-lg md:text-xl"></i>
                 </button>
-                <button id="mobile-menu-btn" class="md:hidden hover:opacity-60 transition-opacity" aria-label="Open menu">
+                <button id="mobile-menu-btn" class="md:hidden hover:opacity-60 transition-opacity" aria-label="Open menu" aria-expanded="false">
                     <i class="ri-menu-line text-lg"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="mb-12">
+    <main class="mb-12 relative z-10">
         
         <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section">
             <section class="md:col-span-8 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
@@ -142,7 +263,7 @@
                     </h2>
                     <div class="space-y-6 text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
                         <p>
-                            Мне 32 года. До перехода в разработку я работал в рознице, развивал бренд одежды и работал в сети оптик креативным директором. Я буду разработчиком, который поймёт ваш язык бизнеса и не будет усложнять процесс разработки сайта, основная цель которого — приносить прибыль.
+                            Мне 32 года. До перехода в разработку я работал в рознице, развивал бренд одежды и работал в сети оптик креативным директором. Я буду разработчиком, который поймёт ваш язык бизнеса и не будет усложнять процесс разработки сайта, основная цель которого - приносить прибыль.
                         </p>
                     </div>
                 </div>
@@ -209,7 +330,7 @@
             
             <div class="fade-in-section">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black transform transition-transform duration-300 hover:scale-[1.02]">
-                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid bg-black text-white dark:bg-white dark:text-black flex flex-col justify-between">
+                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                     <div>
                         <span class="block text-sm font-bold uppercase tracking-widest mb-4">01. Избранный проект</span>
                         <h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight">
@@ -220,29 +341,59 @@
                 </div>
                 <div class="md:col-span-8 p-0 flex flex-col">
                     <div class="aspect-video border-b-grid overflow-hidden relative">
-                        <img src="./mycook.jpg" alt="My-Cook Website" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
+                        <img src="./mycook.jpg" alt="My-Cook Website" loading="lazy" class="w-full h-full object-cover object-top cursor-zoom-in" onclick="openLightbox(this.src)">
                     </div>
                     <div class="p-6 md:p-10 flex flex-col md:flex-row gap-6 justify-between items-start">
                         <div class="max-w-md">
-                            <h4 class="text-lg font-bold uppercase mb-3">Задача</h4>
-                            <p class="text-base leading-relaxed font-medium mb-4 text-gray-600 dark:text-gray-300">
-                                Запустить интернет-магазин доставки без покупки дорогих CRM. Реализован расчёт зон доставки по координатам (API).
-                            </p>
-                            <a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors">
+                            <h4 class="text-lg font-bold uppercase mb-3">Задачи</h4>
+                            <ul class="list-disc list-outside ml-4 text-base leading-relaxed font-medium mb-6 text-gray-600 dark:text-gray-300 space-y-2">
+                                <li>Запуск интернет-магазина доставки без покупки дорогих CRM.</li>
+                                <li>Определение стоимости доставки по координатам через API.</li>
+                                <li>Сбор содержимого корзины в WhatsApp сообщение без подключения WhatsApp Business API.</li>
+                                <li>Автоматический расчет скидок по базе данных.</li>
+                                <li>Динамический расчет времени на доставку в зависимости от сложности блюда.</li>
+                            </ul>
+                            <a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:opacity-80 transition-opacity magnetic-button">
                                 Сайт <i class="ri-arrow-right-up-line"></i>
                             </a>
                         </div>
                         <div class="w-full md:w-auto">
                             <h4 class="text-xs font-semibold uppercase mb-3 tracking-widest opacity-50">Стек проекта</h4>
-                            <ul class="space-y-3 text-base font-bold uppercase">
-                                <li class="flex items-center gap-3">
-                                    <i class="ri-layout-masonry-fill text-xl"></i> Tilda Pro
+                            <ul class="space-y-3 text-sm font-bold uppercase pb-2">
+                                <li class="flex items-center gap-3 group relative cursor-help w-fit">
+                                    <i class="ri-layout-masonry-fill text-lg"></i> Tilda Zero Block
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                        Гибкая верстка уникальных блоков.
+                                        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
+                                    </div>
                                 </li>
-                                <li class="flex items-center gap-3">
-                                    <i class="ri-javascript-fill text-xl"></i> Custom JS
+                                <li class="flex items-center gap-3 group relative cursor-help w-fit">
+                                    <i class="ri-javascript-fill text-lg"></i> Vanilla JS (ES6+)
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                        Логика корзины и калькулятора доставки.
+                                        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
+                                    </div>
                                 </li>
-                                <li class="flex items-center gap-3">
-                                    <i class="ri-server-fill text-xl"></i> DaData API
+                                <li class="flex items-center gap-3 group relative cursor-help w-fit">
+                                    <i class="ri-map-pin-2-fill text-lg"></i> DaData API
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                        Геокодинг адресов и определение зон.
+                                        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center gap-3 group relative cursor-help w-fit">
+                                    <i class="ri-database-2-fill text-lg"></i> Google Sheets API
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                        Управление товарами и скидками (CMS).
+                                        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center gap-3 group relative cursor-help w-fit">
+                                    <i class="ri-whatsapp-fill text-lg"></i> WhatsApp Logic
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                        Формирование заказа в мессенджер.
+                                        <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -252,7 +403,7 @@
             </div>
 
             <div class="fade-in-section">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-[#1a1a1a] opacity-60 hover:opacity-100 transform transition-all duration-500 hover:scale-[1.02]">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-black opacity-60 hover:opacity-100 transform transition-all duration-500 hover:scale-[1.02]">
                 <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                     <div>
                         <span class="block text-sm font-bold uppercase tracking-widest mb-4">02. In Progress</span>
@@ -273,7 +424,7 @@
             </div>
 
             <div class="fade-in-section">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-[#1a1a1a] opacity-60 hover:opacity-100 transform transition-all duration-500 hover:scale-[1.02]">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-black opacity-60 hover:opacity-100 transform transition-all duration-500 hover:scale-[1.02]">
                 <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                     <div>
                         <span class="block text-sm font-bold uppercase tracking-widest mb-4">03. In Progress</span>
@@ -328,14 +479,31 @@
              </div>
         </section>
 
+        <section id="contact" class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section">
+            <div class="col-span-1 md:col-span-12 p-8 md:p-24 bg-white dark:bg-black text-center flex flex-col items-center justify-center">
+                <h2 class="text-3xl md:text-5xl font-bold uppercase mb-6 tracking-tighter min-h-[1.2em]">
+                    <span id="contact-typewriter"></span><span class="cursor-blink"></span>
+                </h2>
+                <p class="text-lg md:text-xl mb-10 max-w-2xl opacity-70 font-medium">
+                    Самый быстрый способ обсудить детали - написать мне напрямую в Telegram.
+                </p>
+                <a href="https://t.me/abzalt1" target="_blank" class="inline-flex items-center gap-2 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-6 py-3 md:px-10 md:py-5 text-sm md:text-xl font-bold uppercase hover:opacity-80 transition-opacity tracking-widest magnetic-button">
+                    Написать в Telegram 
+                    <svg class="w-5 h-5 md:w-7 md:h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42l10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001l-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15l4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="flex justify-between items-center text-xs font-bold uppercase tracking-wider opacity-60">
-        <p>© 2026 abzalt1.dev</p>
-        <span>Architectural Web Design</span>
+    <footer class="flex justify-between items-center text-xs font-bold uppercase tracking-wider opacity-60 relative z-10">
+        <p>© <span id="current-year"></span> <a href="#" class="hover-underline-animation">abzalt1.dev</a></p>
+        <a href="#" class="hover-underline-animation">Architectural Web Design</a>
     </footer>
 
-    <button id="back-to-top" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-black text-white dark:bg-white dark:text-black p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible z-50 hover:-translate-y-1" aria-label="Наверх">
+    <button id="back-to-top" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-black text-white dark:bg-white dark:text-black p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible z-50 magnetic-button" aria-label="Наверх">
         <i class="ri-arrow-up-line text-xl"></i>
     </button>
 
@@ -347,6 +515,14 @@
         <a href="#services" class="mobile-link hover:opacity-60 transition-opacity">Услуги</a>
         <a href="#projects" class="mobile-link hover:opacity-60 transition-opacity">Проекты</a>
         <a href="#expertise" class="mobile-link hover:opacity-60 transition-opacity">Навыки</a>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/80 hidden flex justify-center items-center opacity-0 transition-opacity duration-300 backdrop-blur-md" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Full screen project" class="max-w-[90%] max-h-[90%] object-contain shadow-2xl transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+        <button class="absolute top-4 right-4 text-white hover:opacity-60 p-4 transition-opacity" aria-label="Close">
+            <i class="ri-close-line text-4xl"></i>
+        </button>
     </div>
 
     <script>
@@ -362,19 +538,6 @@
             }
         }
 
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const hour = new Date().getHours();
-            
-            // Priority: LocalStorage -> Time (20:00-07:00)
-            if (savedTheme === 'dark' || (!savedTheme && (hour >= 20 || hour < 7))) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-            updateThemeIcon();
-        }
-
         themeToggleBtn.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
             const isDark = document.documentElement.classList.contains('dark');
@@ -382,8 +545,25 @@
             updateThemeIcon();
         });
 
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            // Only update if user hasn't manually overridden the theme
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                updateThemeIcon();
+            }
+        });
+
         const dateTag = document.getElementById('date-tag');
         const now = new Date();
+        
+        // Set dynamic year
+        document.getElementById('current-year').textContent = now.getFullYear();
+
         const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
         dateTag.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 
@@ -459,6 +639,42 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // Scroll Progress Bar Logic
+        const progressBar = document.getElementById('scroll-progress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrolled + "%";
+        });
+
+        // Gradient Background Logic
+        const gradientBg = document.getElementById('gradient-bg');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollFraction = scrolled / maxScroll;
+            
+            // Move gradient position based on scroll (0% -> 100%)
+            const pos = scrollFraction * 100;
+            gradientBg.style.backgroundPosition = `${pos}% ${pos}%`;
+        });
+
+        // Smart Header Logic
+        let lastScrollTop = 0;
+        const header = document.getElementById('main-header');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
+                header.classList.add('-translate-y-full');
+            } else {
+                header.classList.remove('-translate-y-full');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
         // Mobile Menu Logic
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
@@ -468,6 +684,8 @@
         function toggleMenu() {
             mobileMenu.classList.toggle('translate-x-full');
             document.body.classList.toggle('overflow-hidden');
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
         }
 
         mobileMenuBtn.addEventListener('click', toggleMenu);
@@ -475,18 +693,23 @@
         mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
         // Fade In Animation Logic
+        const isMobile = window.innerWidth < 768;
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
+            rootMargin: isMobile ? '0px' : '0px 0px -100px 0px',
             threshold: 0.1
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
+            // Filter intersecting entries and sort them by top position
+            const visibleEntries = entries.filter(entry => entry.isIntersecting);
+            visibleEntries.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+            visibleEntries.forEach((entry, index) => {
+                observer.unobserve(entry.target);
+                setTimeout(() => {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
+                }, index * 200); // 200ms delay per item
             });
         }, observerOptions);
 
@@ -494,8 +717,90 @@
             observer.observe(section);
         });
 
+        // Contact Section Typewriter Logic
+        const contactTextElement = document.getElementById('contact-typewriter');
+        const contactPhrase = "Есть проект?";
+        let contactCharIndex = 0;
+        let contactTypeStarted = false;
+
+        function typeContact() {
+            if (contactCharIndex < contactPhrase.length) {
+                contactTextElement.textContent += contactPhrase.charAt(contactCharIndex);
+                contactCharIndex++;
+                setTimeout(typeContact, 100);
+            }
+        }
+
+        const contactObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !contactTypeStarted) {
+                    contactTypeStarted = true;
+                    typeContact();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const contactSection = document.getElementById('contact');
+        if (contactSection) contactObserver.observe(contactSection);
+
+        // Magnetic Button Logic
+        const magneticButtons = document.querySelectorAll('.magnetic-button');
+        magneticButtons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0px, 0px)';
+            });
+        });
+
+        // Lightbox Logic
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = src;
+            lightbox.classList.remove('hidden');
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightbox.classList.add('opacity-0');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightboxImg.src = '';
+            }, 300);
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('opacity-0');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
         document.addEventListener('DOMContentLoaded', type);
-        document.addEventListener('DOMContentLoaded', initTheme);
+        document.addEventListener('DOMContentLoaded', updateThemeIcon);
     </script>
 </body>
 </html>
