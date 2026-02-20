@@ -15,6 +15,7 @@
     
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -28,6 +29,8 @@
         }
     </script>
     <style>
+        html { scroll-behavior: smooth; }
+        
         .grid-border { border: 2px solid #111111; }
         .border-r-grid { border-right: 2px solid #111111; }
         .border-b-grid { border-bottom: 2px solid #111111; }
@@ -52,6 +55,14 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+
+        /* Dark mode overrides for custom borders */
+        .dark .grid-border { border-color: #ffffff; }
+        .dark .border-r-grid { border-right-color: #ffffff; }
+        .dark .border-b-grid { border-bottom-color: #ffffff; }
+        .dark .border-t-grid { border-top-color: #ffffff; }
+        .dark .cursor-blink { background-color: #ffffff; }
+        .dark .text-stroke-white { -webkit-text-stroke: 1px white; }
 
         /* Mobile-only fixes */
         @media (max-width: 767px) {
@@ -79,26 +90,49 @@
                 overflow-wrap: normal;
             }
         }
+
+        /* Fade In Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
-<body class="bg-white text-black font-sans min-h-screen p-4 md:p-8 border-[12px] border-black">
+<body class="bg-white text-black dark:bg-black dark:text-white dark:border-white font-sans min-h-screen p-4 md:p-8 border-[12px] border-black transition-colors duration-300">
 
-    <header class="mb-8 border-b-[4px] border-black pb-4">
+    <header class="sticky top-0 z-40 bg-white dark:bg-black mb-8 border-b-[4px] border-black dark:border-white pb-4 -mt-[12px] pt-[12px] md:-mt-8 md:pt-8 transition-colors duration-300">
         <div class="flex justify-between items-end">
             <h1 class="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none">
                 abzalt1.dev
             </h1>
-            <div class="flex gap-8 text-sm md:text-lg font-semibold uppercase tracking-widest">
+            <div class="flex gap-8 text-sm md:text-lg font-semibold uppercase tracking-widest items-center">
+                <nav class="hidden md:flex gap-8">
+                    <a href="#services" class="hover:opacity-60 transition-opacity">Услуги</a>
+                    <a href="#projects" class="hover:opacity-60 transition-opacity">Проекты</a>
+                    <a href="#expertise" class="hover:opacity-60 transition-opacity">Навыки</a>
+                </nav>
                 <span>Almaty, KZ</span>
-                <span id="date-tag" class="text-black font-bold">Загрузка...</span>
+                <span id="date-tag" class="text-black dark:text-white font-bold">Загрузка...</span>
+                <button id="theme-toggle" class="hover:opacity-60 transition-opacity" aria-label="Toggle theme">
+                    <i class="ri-moon-line text-lg md:text-xl"></i>
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden hover:opacity-60 transition-opacity" aria-label="Open menu">
+                    <i class="ri-menu-line text-lg"></i>
+                </button>
             </div>
         </div>
     </header>
 
     <main class="mb-12">
         
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section">
             <section class="md:col-span-8 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
                     <h2 class="text-4xl md:text-6xl font-bold uppercase mb-8 leading-tight tracking-tight min-h-[110px] md:min-h-[220px] flex flex-col justify-start">
@@ -121,22 +155,22 @@
             </section>
 
             <section class="md:col-span-4 flex flex-col">
-                <div class="p-8 border-b-grid flex justify-center items-center bg-gray-50">
-                    <div class="w-56 h-56 md:w-80 md:h-80 overflow-hidden grid-border relative bg-white shadow-xl">
+                <div class="p-8 border-b-grid flex justify-center items-center bg-white dark:bg-black">
+                    <div class="w-56 h-56 md:w-80 md:h-80 overflow-hidden grid-border relative bg-white dark:bg-black shadow-xl">
                         <img src="./me.jpg" alt="Abzal Photo" class="w-full h-full object-cover">
                     </div>
                 </div>
                 
                 <div class="flex-grow flex flex-col">
-                    <a href="https://t.me/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white transition-colors group">
+                    <a href="https://t.me/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group">
                         <span>Telegram</span>
                         <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
                     </a>
-                    <a href="https://wa.me/77081901222" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white transition-colors group">
+                    <a href="https://wa.me/77081901222" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group">
                         <span>WhatsApp</span>
                         <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
                     </a>
-                        <a href="https://instagram.com/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase hover:bg-black hover:text-white transition-colors group">
+                        <a href="https://instagram.com/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group">
                         <span>Instagram</span>
                         <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
                     </a>
@@ -144,9 +178,9 @@
             </section>
         </div>
 
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left">
+        <section id="services" class="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left scroll-mt-8 fade-in-section">
             
-            <div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white transition-colors group cursor-default">
+            <div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group cursor-default">
                 <i class="ri-layout-masonry-fill text-4xl mb-4 block"></i>
                 <h3 class="text-xl font-bold uppercase mb-2">Tilda / Webflow</h3>
                 <p class="text-sm opacity-80 leading-relaxed font-medium">
@@ -154,7 +188,7 @@
                 </p>
             </div>
 
-            <div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white transition-colors group cursor-default">
+            <div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group cursor-default">
                 <i class="ri-code-s-slash-line text-4xl mb-4 block"></i>
                 <h3 class="text-xl font-bold uppercase mb-2">Custom Frontend</h3>
                 <p class="text-sm opacity-80 leading-relaxed font-medium">
@@ -162,7 +196,7 @@
                 </p>
             </div>
 
-            <div class="p-8 md:p-12 hover:bg-black hover:text-white transition-colors group cursor-default">
+            <div class="p-8 md:p-12 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group cursor-default">
                 <i class="ri-cpu-line text-4xl mb-4 block"></i>
                 <h3 class="text-xl font-bold uppercase mb-2">Сложная логика</h3>
                 <p class="text-sm opacity-80 leading-relaxed font-medium">
@@ -171,10 +205,11 @@
             </div>
         </section>
 
-        <section class="grid grid-cols-1 gap-8 mb-8">
+        <section id="projects" class="grid grid-cols-1 gap-8 mb-8 scroll-mt-8">
             
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white">
-                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid bg-black text-white flex flex-col justify-between">
+            <div class="fade-in-section">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black transform transition-transform duration-300 hover:scale-[1.02]">
+                <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid bg-black text-white dark:bg-white dark:text-black flex flex-col justify-between">
                     <div>
                         <span class="block text-sm font-bold uppercase tracking-widest mb-4">01. Избранный проект</span>
                         <h3 class="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight">
@@ -190,7 +225,7 @@
                     <div class="p-6 md:p-10 flex flex-col md:flex-row gap-6 justify-between items-start">
                         <div class="max-w-md">
                             <h4 class="text-lg font-bold uppercase mb-3">Задача</h4>
-                            <p class="text-base leading-relaxed font-medium mb-4 text-gray-600">
+                            <p class="text-base leading-relaxed font-medium mb-4 text-gray-600 dark:text-gray-300">
                                 Запустить интернет-магазин доставки без покупки дорогих CRM. Реализован расчёт зон доставки по координатам (API).
                             </p>
                             <a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:bg-gray-800 transition-colors">
@@ -214,8 +249,10 @@
                     </div>
                 </div>
             </div>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 opacity-60 hover:opacity-100 transition-opacity duration-500">
+            <div class="fade-in-section">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-[#1a1a1a] opacity-60 hover:opacity-100 transform transition-all duration-500 hover:scale-[1.02]">
                 <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                     <div>
                         <span class="block text-sm font-bold uppercase tracking-widest mb-4">02. In Progress</span>
@@ -223,9 +260,9 @@
                             MODEL<br>PORTFOLIO
                         </h3>
                     </div>
-                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
+                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
                 </div>
-                <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white min-h-[300px]">
+                <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white dark:bg-black min-h-[300px]">
                     <i class="ri-image-edit-line text-6xl text-gray-300 mb-4"></i>
                     <p class="text-lg font-bold uppercase text-gray-400 text-center max-w-xs">
                         Разработка визуального портфолио для fashion-модели.
@@ -233,8 +270,10 @@
                     </p>
                 </div>
             </div>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 opacity-60 hover:opacity-100 transition-opacity duration-500">
+            <div class="fade-in-section">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-[#1a1a1a] opacity-60 hover:opacity-100 transform transition-all duration-500 hover:scale-[1.02]">
                 <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                     <div>
                         <span class="block text-sm font-bold uppercase tracking-widest mb-4">03. In Progress</span>
@@ -242,9 +281,9 @@
                             B2B FASHION<br>WHOLESALE
                         </h3>
                     </div>
-                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
+                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
                 </div>
-                <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white min-h-[300px]">
+                <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white dark:bg-black min-h-[300px]">
                     <i class="ri-store-3-line text-6xl text-gray-300 mb-4"></i>
                     <p class="text-lg font-bold uppercase text-gray-400 text-center max-w-xs">
                         Оптовый магазин одежды.
@@ -252,10 +291,11 @@
                     </p>
                 </div>
             </div>
+            </div>
 
         </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white">
+        <section id="expertise" class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black scroll-mt-8 fade-in-section">
              <div class="col-span-1 md:col-span-12 p-6 md:p-12">
                 <h2 class="text-2xl font-bold uppercase mb-12 tracking-tighter">Core Expertise</h2>
                 
@@ -295,7 +335,53 @@
         <span>Architectural Web Design</span>
     </footer>
 
+    <button id="back-to-top" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-black text-white dark:bg-white dark:text-black p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible z-50 hover:-translate-y-1" aria-label="Наверх">
+        <i class="ri-arrow-up-line text-xl"></i>
+    </button>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white dark:bg-black z-[60] flex flex-col justify-center items-center gap-8 text-2xl font-bold uppercase transition-transform duration-300 translate-x-full md:hidden">
+        <button id="close-menu-btn" class="absolute top-4 right-4 p-4 hover:opacity-60 transition-opacity" aria-label="Close menu">
+            <i class="ri-close-line text-4xl"></i>
+        </button>
+        <a href="#services" class="mobile-link hover:opacity-60 transition-opacity">Услуги</a>
+        <a href="#projects" class="mobile-link hover:opacity-60 transition-opacity">Проекты</a>
+        <a href="#expertise" class="mobile-link hover:opacity-60 transition-opacity">Навыки</a>
+    </div>
+
     <script>
+        // Adaptive Theme Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        function updateThemeIcon() {
+            if (document.documentElement.classList.contains('dark')) {
+                themeIcon.className = 'ri-sun-line text-lg md:text-xl';
+            } else {
+                themeIcon.className = 'ri-moon-line text-lg md:text-xl';
+            }
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const hour = new Date().getHours();
+            
+            // Priority: LocalStorage -> Time (20:00-07:00)
+            if (savedTheme === 'dark' || (!savedTheme && (hour >= 20 || hour < 7))) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateThemeIcon();
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcon();
+        });
+
         const dateTag = document.getElementById('date-tag');
         const now = new Date();
         const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
@@ -303,7 +389,7 @@
 
         const textElement = document.getElementById('typewriter-text');
         const phrases = [
-            "Бизнес-<br>ориентированный<br>разработчик.",
+            "Бизнес-<br>ориентированный<br>разработчик",
             "Frontend Developer<br>& Low-code Expert"
         ];
 
@@ -356,7 +442,60 @@
             setTimeout(type, typeSpeed);
         }
 
+        // Back to Top Logic
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Fade In Animation Logic
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
         document.addEventListener('DOMContentLoaded', type);
+        document.addEventListener('DOMContentLoaded', initTheme);
     </script>
 </body>
 </html>
