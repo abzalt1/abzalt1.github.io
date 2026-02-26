@@ -212,6 +212,30 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
+
+        /* Floating Header Styles */
+        #main-header.floating-header {
+            margin-top: 1rem !important;
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.75rem !important;
+            border-bottom-width: 2px !important;
+            border-width: 2px !important;
+            border-radius: 9999px;
+            top: 1rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        #main-header.floating-header > div {
+            align-items: center !important;
+        }
+        @media (min-width: 768px) {
+            #main-header.floating-header {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 1024px;
+            }
+        }
     </style>
 </head>
 
@@ -219,7 +243,9 @@
 
     <!-- Preloader -->
     <div id="preloader" class="fixed inset-0 z-[9999] bg-white dark:bg-black flex justify-center items-center transition-opacity duration-500">
-        <div class="w-12 h-12 border-4 border-gray-200 border-t-black dark:border-gray-800 dark:border-t-white rounded-full animate-spin"></div>
+        <div class="text-3xl md:text-5xl font-bold font-mono tracking-tight">
+            <span id="preloader-text"></span><span class="cursor-blink"></span>
+        </div>
     </div>
 
     <!-- Gradient Background -->
@@ -253,7 +279,7 @@
 
     <main class="mb-12 relative z-10">
         
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section rounded-3xl overflow-hidden">
             <section class="md:col-span-8 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
                     <h2 class="text-4xl md:text-6xl font-bold uppercase mb-8 leading-tight tracking-tight min-h-[110px] md:min-h-[220px] flex flex-col justify-start">
@@ -277,7 +303,7 @@
 
             <section class="md:col-span-4 flex flex-col">
                 <div class="p-8 border-b-grid flex justify-center items-center bg-white dark:bg-black">
-                    <div class="w-56 h-56 md:w-80 md:h-80 overflow-hidden grid-border relative bg-white dark:bg-black shadow-xl">
+                    <div class="w-56 h-56 md:w-80 md:h-80 overflow-hidden grid-border relative bg-white dark:bg-black shadow-xl rounded-2xl">
                         <img src="./me.jpg" alt="Abzal Photo" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -299,7 +325,7 @@
             </section>
         </div>
 
-        <section id="services" class="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left scroll-mt-8 fade-in-section">
+        <section id="services" class="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left scroll-mt-8 fade-in-section rounded-3xl overflow-hidden">
             
             <div class="p-8 md:p-12 border-b-grid md:border-b-0 md:border-r-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group cursor-default">
                 <i class="ri-layout-masonry-fill text-4xl mb-4 block"></i>
@@ -329,7 +355,7 @@
         <section id="projects" class="grid grid-cols-1 gap-8 mb-8 scroll-mt-8">
             
             <div class="fade-in-section">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black transform transition-transform duration-300 hover:scale-[1.02]">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black transform transition-transform duration-300 rounded-3xl overflow-hidden tilt-card">
                 <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                     <div>
                         <span class="block text-sm font-bold uppercase tracking-widest mb-4">01. Избранный проект</span>
@@ -353,7 +379,7 @@
                                 <li>Автоматический расчет скидок по базе данных.</li>
                                 <li>Динамический расчет времени на доставку в зависимости от сложности блюда.</li>
                             </ul>
-                            <a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:opacity-80 transition-opacity magnetic-button">
+                            <a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:opacity-80 transition-opacity magnetic-button rounded-full">
                                 Сайт <i class="ri-arrow-right-up-line"></i>
                             </a>
                         </div>
@@ -362,35 +388,35 @@
                             <ul class="space-y-3 text-sm font-bold uppercase pb-2">
                                 <li class="flex items-center gap-3 group relative cursor-help w-fit">
                                     <i class="ri-layout-masonry-fill text-lg"></i> Tilda Zero Block
-                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
                                         Гибкая верстка уникальных блоков.
                                         <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
                                     </div>
                                 </li>
                                 <li class="flex items-center gap-3 group relative cursor-help w-fit">
                                     <i class="ri-javascript-fill text-lg"></i> Vanilla JS (ES6+)
-                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
                                         Логика корзины и калькулятора доставки.
                                         <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
                                     </div>
                                 </li>
                                 <li class="flex items-center gap-3 group relative cursor-help w-fit">
                                     <i class="ri-map-pin-2-fill text-lg"></i> DaData API
-                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
                                         Геокодинг адресов и определение зон.
                                         <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
                                     </div>
                                 </li>
                                 <li class="flex items-center gap-3 group relative cursor-help w-fit">
                                     <i class="ri-database-2-fill text-lg"></i> Google Sheets API
-                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
                                         Управление товарами и скидками (CMS).
                                         <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
                                     </div>
                                 </li>
                                 <li class="flex items-center gap-3 group relative cursor-help w-fit">
                                     <i class="ri-whatsapp-fill text-lg"></i> WhatsApp Logic
-                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
                                         Формирование заказа в мессенджер.
                                         <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
                                     </div>
@@ -403,7 +429,7 @@
             </div>
 
             <div class="fade-in-section">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-black opacity-60 hover:opacity-100 transform transition-all duration-500 hover:scale-[1.02]">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-black opacity-60 hover:opacity-100 transform transition-all duration-500 rounded-3xl overflow-hidden tilt-card">
                 <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                     <div>
                         <span class="block text-sm font-bold uppercase tracking-widest mb-4">02. In Progress</span>
@@ -411,7 +437,7 @@
                             MODEL<br>PORTFOLIO
                         </h3>
                     </div>
-                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
+                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase tracking-widest w-fit rounded-full">Скоро релиз</span>
                 </div>
                 <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white dark:bg-black min-h-[300px]">
                     <i class="ri-image-edit-line text-6xl text-gray-300 mb-4"></i>
@@ -424,7 +450,7 @@
             </div>
 
             <div class="fade-in-section">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-black opacity-60 hover:opacity-100 transform transition-all duration-500 hover:scale-[1.02]">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-gray-50 dark:bg-black opacity-60 hover:opacity-100 transform transition-all duration-500 rounded-3xl overflow-hidden tilt-card">
                 <div class="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                     <div>
                         <span class="block text-sm font-bold uppercase tracking-widest mb-4">03. In Progress</span>
@@ -432,7 +458,7 @@
                             B2B FASHION<br>WHOLESALE
                         </h3>
                     </div>
-                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase tracking-widest w-fit">Скоро релиз</span>
+                    <span class="mt-8 inline-block px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase tracking-widest w-fit rounded-full">Скоро релиз</span>
                 </div>
                 <div class="md:col-span-8 p-0 flex flex-col justify-center items-center border-l-grid bg-white dark:bg-black min-h-[300px]">
                     <i class="ri-store-3-line text-6xl text-gray-300 mb-4"></i>
@@ -446,40 +472,40 @@
 
         </section>
 
-        <section id="expertise" class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black scroll-mt-8 fade-in-section">
+        <section id="expertise" class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black scroll-mt-8 fade-in-section rounded-3xl overflow-hidden">
              <div class="col-span-1 md:col-span-12 p-6 md:p-12">
                 <h2 class="text-2xl font-bold uppercase mb-12 tracking-tighter">Core Expertise</h2>
                 
                 <div class="grid grid-cols-2 md:grid-cols-6 gap-8 text-center">
                     <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-html5-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <i class="ri-html5-fill text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300"></i>
                         <span class="text-xs font-bold uppercase tracking-widest">HTML5</span>
                     </div>
                     <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-javascript-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <i class="ri-javascript-fill text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300"></i>
                         <span class="text-xs font-bold uppercase tracking-widest">JS (ES6+)</span>
                     </div>
                     <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-window-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <i class="ri-window-fill text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300"></i>
                         <span class="text-xs font-bold uppercase tracking-widest">Webflow</span>
                     </div>
                     <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-layout-masonry-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <i class="ri-layout-masonry-fill text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300"></i>
                         <span class="text-xs font-bold uppercase tracking-widest">Tilda Pro</span>
                     </div>
                     <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-server-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <i class="ri-server-fill text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300"></i>
                         <span class="text-xs font-bold uppercase tracking-widest">REST API</span>
                     </div>
                     <div class="flex flex-col items-center gap-4 group">
-                        <i class="ri-git-merge-fill text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <i class="ri-git-merge-fill text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300"></i>
                         <span class="text-xs font-bold uppercase tracking-widest">Git</span>
                     </div>
                 </div>
              </div>
         </section>
 
-        <section id="contact" class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section">
+        <section id="contact" class="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section rounded-3xl overflow-hidden">
             <div class="col-span-1 md:col-span-12 p-8 md:p-24 bg-white dark:bg-black text-center flex flex-col items-center justify-center">
                 <h2 class="text-3xl md:text-5xl font-bold uppercase mb-6 tracking-tighter min-h-[1.2em]">
                     <span id="contact-typewriter"></span><span class="cursor-blink"></span>
@@ -487,7 +513,7 @@
                 <p class="text-lg md:text-xl mb-10 max-w-2xl opacity-70 font-medium">
                     Самый быстрый способ обсудить детали - написать мне напрямую в Telegram.
                 </p>
-                <a href="https://t.me/abzalt1" target="_blank" class="inline-flex items-center gap-2 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-6 py-3 md:px-10 md:py-5 text-sm md:text-xl font-bold uppercase hover:opacity-80 transition-opacity tracking-widest magnetic-button">
+                <a id="telegram-cta" href="https://t.me/abzalt1" target="_blank" class="inline-flex items-center gap-2 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-6 py-3 md:px-10 md:py-5 text-sm md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest magnetic-button rounded-full">
                     Написать в Telegram 
                     <svg class="w-5 h-5 md:w-7 md:h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42l10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001l-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15l4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
@@ -672,8 +698,70 @@
             } else {
                 header.classList.remove('-translate-y-full');
             }
+
+            // Floating Island Logic
+            if (scrollTop > 50) {
+                header.classList.add('floating-header');
+            } else {
+                header.classList.remove('floating-header');
+            }
+            
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         });
+
+        // 3D Tilt Effect for Projects
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -3; // Max rotation deg
+                const rotateY = ((x - centerX) / centerX) * 3;
+
+                card.style.transition = 'transform 0.1s ease-out';
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.5s ease-out';
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // Telegram Copy Logic
+        const tgBtn = document.getElementById('telegram-cta');
+        if (tgBtn) {
+            tgBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const originalContent = tgBtn.innerHTML;
+                
+                try {
+                    await navigator.clipboard.writeText('@abzalt1');
+                    
+                    // Visual Feedback
+                    tgBtn.innerHTML = 'Никнейм скопирован <i class="ri-check-line"></i>';
+                    tgBtn.classList.remove('bg-black', 'dark:bg-white', 'text-white', 'dark:text-black');
+                    tgBtn.classList.add('bg-green-600', 'text-white', 'dark:bg-green-500', 'dark:text-white', 'scale-105');
+                    
+                    setTimeout(() => {
+                        // Restore
+                        tgBtn.innerHTML = originalContent;
+                        tgBtn.classList.remove('bg-green-600', 'text-white', 'dark:bg-green-500', 'dark:text-white', 'scale-105');
+                        tgBtn.classList.add('bg-black', 'dark:bg-white', 'text-white', 'dark:text-black');
+                        
+                        // Open Link
+                        window.open(tgBtn.href, '_blank');
+                    }, 1200);
+                } catch (err) {
+                    window.open(tgBtn.href, '_blank');
+                }
+            });
+        }
 
         // Mobile Menu Logic
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -791,13 +879,37 @@
         });
 
         // Preloader Logic
+        const preloaderText = "abzalt1.dev";
+        const preloaderEl = document.getElementById('preloader');
+        const preloaderTextEl = document.getElementById('preloader-text');
+        let preloaderIndex = 0;
+        let isPageLoaded = false;
+
         window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.classList.add('opacity-0');
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
+            isPageLoaded = true;
         });
+
+        function typePreloader() {
+            if (preloaderIndex < preloaderText.length) {
+                preloaderTextEl.textContent += preloaderText.charAt(preloaderIndex);
+                preloaderIndex++;
+                setTimeout(typePreloader, 100); // Скорость печати
+            } else {
+                const checkLoad = setInterval(() => {
+                    if (isPageLoaded) {
+                        clearInterval(checkLoad);
+                        setTimeout(() => {
+                            preloaderEl.classList.add('opacity-0');
+                            setTimeout(() => {
+                                preloaderEl.style.display = 'none';
+                            }, 500);
+                        }, 500); // Пауза после завершения печати
+                    }
+                }, 100);
+            }
+        }
+        
+        typePreloader();
 
         document.addEventListener('DOMContentLoaded', type);
         document.addEventListener('DOMContentLoaded', updateThemeIcon);
