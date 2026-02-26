@@ -7,6 +7,10 @@
     <meta name="description" content="Разработка сайтов для бизнеса. Tilda, Webflow, Custom Frontend. Визуально чисто, технически грамотно.">
     <meta property="og:title" content="abzalt1.dev | Business-Oriented Developer">
     <meta property="og:description" content="Разработка сайтов, которые приносят прибыль.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://abzalt1.github.io/portfolio/">
+    <meta property="og:image" content="https://abzalt1.github.io/portfolio/me.jpg">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -309,15 +313,15 @@
                 </div>
                 
                 <div class="flex-grow flex flex-col">
-                    <a href="https://t.me/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group">
+                    <a href="https://t.me/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group" rel="noopener noreferrer">
                         <span>Telegram</span>
                         <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
                     </a>
-                    <a href="https://wa.me/77081901222" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group">
+                    <a href="https://wa.me/77081901222" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group" rel="noopener noreferrer">
                         <span>WhatsApp</span>
                         <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
                     </a>
-                        <a href="https://instagram.com/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group">
+                        <a href="https://instagram.com/abzalt1" target="_blank" class="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group" rel="noopener noreferrer">
                         <span>Instagram</span>
                         <i class="ri-arrow-right-up-line arrow-icon transition-transform"></i>
                     </a>
@@ -379,7 +383,7 @@
                                 <li>Автоматический расчет скидок по базе данных.</li>
                                 <li>Динамический расчет времени на доставку в зависимости от сложности блюда.</li>
                             </ul>
-                            <a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:opacity-80 transition-opacity magnetic-button rounded-full">
+                            <a href="https://my-cook.kz" target="_blank" class="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:opacity-80 transition-opacity magnetic-button rounded-full" rel="noopener noreferrer">
                                 Сайт <i class="ri-arrow-right-up-line"></i>
                             </a>
                         </div>
@@ -513,7 +517,7 @@
                 <p class="text-lg md:text-xl mb-10 max-w-2xl opacity-70 font-medium">
                     Самый быстрый способ обсудить детали - написать мне напрямую в Telegram.
                 </p>
-                <a id="telegram-cta" href="https://t.me/abzalt1" target="_blank" class="inline-flex items-center gap-2 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-6 py-3 md:px-10 md:py-5 text-sm md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest magnetic-button rounded-full">
+                <a id="telegram-cta" href="https://t.me/abzalt1" target="_blank" class="inline-flex items-center gap-2 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-6 py-3 md:px-10 md:py-5 text-sm md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest magnetic-button rounded-full" rel="noopener noreferrer">
                     Написать в Telegram 
                     <svg class="w-5 h-5 md:w-7 md:h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42l10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001l-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15l4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/>
@@ -648,65 +652,70 @@
             setTimeout(type, typeSpeed);
         }
 
-        // Back to Top Logic
-        const backToTopBtn = document.getElementById('back-to-top');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.remove('opacity-0', 'invisible');
-                backToTopBtn.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopBtn.classList.add('opacity-0', 'invisible');
-                backToTopBtn.classList.remove('opacity-100', 'visible');
-            }
-        });
-
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Scroll Progress Bar Logic
+        // Scroll Logic (Optimized)
         const progressBar = document.getElementById('scroll-progress');
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (scrollTop / scrollHeight) * 100;
-            progressBar.style.width = scrolled + "%";
-        });
-
-        // Gradient Background Logic
         const gradientBg = document.getElementById('gradient-bg');
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollFraction = scrolled / maxScroll;
-            
-            // Move gradient position based on scroll (0% -> 100%)
-            const pos = scrollFraction * 100;
-            gradientBg.style.backgroundPosition = `${pos}% ${pos}%`;
-        });
-
-        // Smart Header Logic
         let lastScrollTop = 0;
         const header = document.getElementById('main-header');
-
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        let isScrolling = false;
+        
         window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 50) {
-                header.classList.add('-translate-y-full');
-            } else {
-                header.classList.remove('-translate-y-full');
-            }
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY || document.documentElement.scrollTop;
+                    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+                    
+                    // 1. Progress Bar
+                    if (maxScroll > 0) {
+                        const scrolled = (scrollY / maxScroll) * 100;
+                        progressBar.style.width = scrolled + "%";
+                    }
+                    
+                    // 2. Gradient Background
+                    if (maxScroll > 0) {
+                        const scrollFraction = scrollY / maxScroll;
+                        const pos = scrollFraction * 100;
+                        gradientBg.style.backgroundPosition = `${pos}% ${pos}%`;
+                    }
+                    
+                    // 3. Smart Header
+                    if (scrollY > lastScrollTop && scrollY > 50) {
+                        header.classList.add('-translate-y-full');
+                    } else {
+                        header.classList.remove('-translate-y-full');
+                    }
 
-            // Floating Island Logic
-            if (scrollTop > 50) {
-                header.classList.add('floating-header');
-            } else {
-                header.classList.remove('floating-header');
+                    if (scrollY > 50) {
+                        header.classList.add('floating-header');
+                    } else {
+                        header.classList.remove('floating-header');
+                    }
+                    
+                    lastScrollTop = scrollY <= 0 ? 0 : scrollY;
+                    
+                    // 4. Back to Top
+                    if (scrollY > 300) {
+                        backToTopBtn.classList.remove('opacity-0', 'invisible');
+                        backToTopBtn.classList.add('opacity-100', 'visible');
+                    } else {
+                        backToTopBtn.classList.add('opacity-0', 'invisible');
+                        backToTopBtn.classList.remove('opacity-100', 'visible');
+                    }
+                    
+                    isScrolling = false;
+                });
+                isScrolling = true;
             }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // 3D Tilt Effect for Projects
