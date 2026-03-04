@@ -73,7 +73,7 @@ export default function Contact() {
                 <a
                     href="https://t.me/abzalt1"
                     onClick={handleTelegramClick}
-                    className="inline-flex items-center gap-2 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-6 py-3 md:px-10 md:py-5 text-sm md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
+                    className="inline-flex items-center gap-3 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
                     rel="noopener noreferrer"
                 >
                     Написать в Telegram

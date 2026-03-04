@@ -59,7 +59,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section overflow-hidden">
             <section className="md:col-span-8 p-10 md:p-20 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
-                    <h2 className="text-4xl md:text-6xl font-bold uppercase mb-12 leading-none tracking-tighter min-h-[110px] md:min-h-[220px] flex flex-col justify-start">
+                    <h2 className="text-3xl md:text-6xl font-bold uppercase mb-12 leading-none tracking-tighter min-h-[110px] md:min-h-[220px] flex flex-col justify-start">
                         {renderDisplayText()}
                     </h2>
                     <div className="space-y-6 text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
