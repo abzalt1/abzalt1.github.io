@@ -18,12 +18,19 @@ export default function ScrollEffects() {
 
             // Back to Top Visibility
             setShowBackToTop(scrollY > 300);
+
+            // Gradient Background Movement
+            const gradientBg = document.getElementById('gradient-bg');
+            if (gradientBg && docHeight > 0) {
+                const pos = (scrollY / docHeight) * 100;
+                gradientBg.style.backgroundPosition = `${pos}% ${pos}%`;
+            }
         };
 
         // Fade-in Animation Logic
         const observerOptions = {
             root: null,
-            rootMargin: '0px 0px -80px 0px',
+            rootMargin: '0px 0px -100px 0px',
             threshold: 0.1
         };
 
@@ -35,7 +42,7 @@ export default function ScrollEffects() {
                 observer.unobserve(entry.target);
                 setTimeout(() => {
                     entry.target.classList.add('is-visible');
-                }, index * 150);
+                }, index * 200);
             });
         }, observerOptions);
 
@@ -60,15 +67,22 @@ export default function ScrollEffects() {
             {/* Scroll Progress Bar */}
             <div
                 id="scroll-progress"
-                className="fixed top-0 left-0 h-[2px] bg-black dark:bg-white z-50 transition-[width] duration-75 ease-out"
+                className="fixed top-0 left-0 h-1 bg-black dark:bg-white z-50 transition-[width] duration-75 ease-out"
                 style={{ width: `${scrollProgress}%` }}
+            ></div>
+
+            {/* Gradient Background */}
+            <div
+                id="gradient-bg"
+                className="fixed inset-0 z-[-1] bg-[linear-gradient(135deg,var(--tw-gradient-stops))] from-white via-gray-100 to-white dark:hidden transition-[background-position] duration-100 ease-out"
+                style={{ backgroundSize: '400% 400%' }}
             ></div>
 
             {/* Back to Top Button */}
             <button
                 id="back-to-top"
                 onClick={scrollToTop}
-                className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-black text-white dark:bg-white dark:text-black p-3 transition-all duration-300 z-50 ${showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-black text-white dark:bg-white dark:text-black p-3 shadow-lg transition-all duration-300 z-50 magnetic-button ${showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                 aria-label="Наверх"
             >
                 <i className="ri-arrow-up-line text-xl"></i>

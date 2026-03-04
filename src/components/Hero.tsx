@@ -6,8 +6,8 @@ import Image from 'next/image';
 export default function Hero() {
     const [displayText, setDisplayText] = useState('');
     const phrases = [
-        "Бизнес-\nориентированный\nразработчик",
-        "Frontend Developer\n& Low-code Expert"
+        "Бизнес-<br>ориентированный<br>разработчик",
+        "Frontend Developer<br>& Low-code Expert"
     ];
 
     useEffect(() => {
@@ -21,6 +21,7 @@ export default function Hero() {
 
         const type = () => {
             const currentPhrase = phrases[phraseIndex];
+
             if (!isWaiting) {
                 if (!isDeleting) {
                     charIndex++;
@@ -47,7 +48,7 @@ export default function Hero() {
     }, []);
 
     const renderDisplayText = () => {
-        return displayText.split('\n').map((line, i) => (
+        return displayText.split('<br>').map((line, i) => (
             <span key={i} className="block">
                 {line}
             </span>
@@ -55,45 +56,54 @@ export default function Hero() {
     };
 
     return (
-        <section className="fade-in-section">
-            {/* Full-width hero photo */}
-            <div className="w-full aspect-[21/9] md:aspect-[3/1] relative overflow-hidden">
-                <Image
-                    src="/me.jpg"
-                    alt="Abzal — Developer"
-                    fill
-                    className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
-                    priority
-                />
-            </div>
-
-            {/* Content area */}
-            <div className="max-w-7xl mx-auto px-6 md:px-16">
-                {/* Massive heading */}
-                <div className="pt-12 md:pt-20 pb-10 md:pb-16">
-                    <h2 className="text-5xl md:text-8xl lg:text-9xl font-bold uppercase leading-[0.9] tracking-tighter min-h-[120px] md:min-h-[260px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section overflow-hidden">
+            <section className="md:col-span-8 p-10 md:p-20 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
+                <div>
+                    <h2 className="text-4xl md:text-6xl font-bold uppercase mb-12 leading-none tracking-tighter min-h-[110px] md:min-h-[220px] flex flex-col justify-start">
                         {renderDisplayText()}
                     </h2>
-                </div>
-
-                <hr className="swiss-divider" />
-
-                {/* Two-column text */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 py-10 md:py-16">
-                    <div>
-                        <p className="text-sm font-bold uppercase tracking-widest mb-4 opacity-50">Обо мне</p>
-                        <p className="text-base md:text-lg leading-relaxed">
-                            Мне 32 года. До перехода в разработку я работал в рознице, развивал бренд одежды и работал в сети оптик креативным директором. Я буду разработчиком, который поймёт ваш язык бизнеса и не будет усложнять процесс разработки сайта, основная цель которого — приносить прибыль.
-                        </p>
-                    </div>
-                    <div>
-                        <p className="text-sm font-bold uppercase tracking-widest mb-4 opacity-50">Визуальный подход</p>
-                        <p className="text-base md:text-lg leading-relaxed">
-                            Большая насмотренность в брендинге. Понимаю бренд-код, делаю визуально чисто, строго и правильно. Каждый проект — это решение бизнес-задачи, а не просто красивая картинка.
+                    <div className="space-y-6 text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
+                        <p>
+                            Мне 32 года. До перехода в разработку я работал в рознице, развивал бренд одежды и работал в сети оптик креативным директором. Я буду разработчиком, который поймёт ваш язык бизнеса и не будет усложнять процесс разработки сайта, основная цель которого - приносить прибыль.
                         </p>
                     </div>
                 </div>
-            </div>
-        </section>
+                <div className="mt-12 pt-6 border-t-grid">
+                    <p className="text-base font-bold uppercase tracking-wider mb-2">Визуальный подход</p>
+                    <p className="text-lg leading-snug">
+                        Большая насмотренность в брендинге. Понимаю бренд-код, делаю визуально чисто, строго и правильно.
+                    </p>
+                </div>
+            </section>
+
+            <section className="md:col-span-4 flex flex-col">
+                <div className="p-10 md:p-16 border-b-grid flex justify-center items-center bg-white dark:bg-black">
+                    <div className="w-56 h-56 md:w-80 md:h-80 overflow-hidden relative shadow-xl">
+                        <Image
+                            src="/me.jpg"
+                            alt="Abzal Photo"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
+                </div>
+
+                <div className="flex-grow flex flex-col">
+                    <a href="https://t.me/abzalt1" target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group" rel="noopener noreferrer">
+                        <span>Telegram</span>
+                        <i className="ri-arrow-right-up-line arrow-icon transition-transform"></i>
+                    </a>
+                    <a href="https://wa.me/77081901222" target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group" rel="noopener noreferrer">
+                        <span>WhatsApp</span>
+                        <i className="ri-arrow-right-up-line arrow-icon transition-transform"></i>
+                    </a>
+                    <a href="https://instagram.com/abzalt1" target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group" rel="noopener noreferrer">
+                        <span>Instagram</span>
+                        <i className="ri-arrow-right-up-line arrow-icon transition-transform"></i>
+                    </a>
+                </div>
+            </section>
+        </div>
     );
 }

@@ -13,27 +13,17 @@ export default function Expertise() {
     ];
 
     return (
-        <section id="expertise" className="max-w-7xl mx-auto px-6 md:px-16 py-16 md:py-24 scroll-mt-8 fade-in-section">
-            <hr className="swiss-divider mb-12 md:mb-16" />
+        <section id="expertise" className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black scroll-mt-8 fade-in-section overflow-hidden">
+            <div className="col-span-1 md:col-span-12 p-10 md:p-20">
+                <h2 className="text-2xl font-bold uppercase mb-16 tracking-tighter">Core Expertise</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-                {/* Left: heading */}
-                <div className="md:col-span-4">
-                    <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter leading-none">
-                        Core<br />Expertise
-                    </h2>
-                </div>
-
-                {/* Right: skill grid */}
-                <div className="md:col-span-8">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
-                        {skills.map((skill, index) => (
-                            <div key={index} className="flex flex-col items-start gap-3">
-                                <i className={`${skill.icon} text-3xl md:text-4xl`}></i>
-                                <span className="text-xs font-bold uppercase tracking-widest opacity-70">{skill.name}</span>
-                            </div>
-                        ))}
-                    </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-16 text-center">
+                    {skills.map((skill, index) => (
+                        <div key={index} className="flex flex-col items-center gap-4 group">
+                            <i className={`${skill.icon} text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300`}></i>
+                            <span className="text-xs font-bold uppercase tracking-widest">{skill.name}</span>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

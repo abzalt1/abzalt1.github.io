@@ -16,14 +16,14 @@ export default function Home() {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   return (
-    <div className="bg-transparent text-black dark:text-white font-sans min-h-screen transition-colors duration-300 relative">
+    <div className="bg-transparent text-black dark:text-white dark:border-white font-sans min-h-screen transition-colors duration-300 relative">
       <Preloader />
       <ScrollEffects />
       <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />
 
       <Header />
 
-      <main className="relative z-10">
+      <main className="mb-20 relative z-10">
         <Hero />
         <Services />
         <Projects onOpenLightbox={setLightboxSrc} />

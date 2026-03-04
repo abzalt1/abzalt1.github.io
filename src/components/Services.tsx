@@ -20,30 +20,19 @@ export default function Services() {
     ];
 
     return (
-        <section id="services" className="max-w-7xl mx-auto px-6 md:px-16 py-16 md:py-24 scroll-mt-8 fade-in-section">
-            {/* Section header */}
-            <div className="flex items-center gap-8 mb-12 md:mb-16">
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter leading-none">
-                    Услуги
-                </h2>
-                <hr className="swiss-divider flex-1" />
-            </div>
-
-            {/* Three-column card grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-                {services.map((service, index) => (
-                    <div
-                        key={index}
-                        className={`p-8 md:p-10 ${index < services.length - 1 ? 'border-b md:border-b-0 md:border-r' : ''} border-black/10 dark:border-white/10`}
-                    >
-                        <i className={`${service.icon} text-4xl mb-6 block`}></i>
-                        <h3 className="text-lg font-bold uppercase tracking-tight mb-3">{service.title}</h3>
-                        <p className="text-sm leading-relaxed opacity-60">
-                            {service.description}
-                        </p>
-                    </div>
-                ))}
-            </div>
+        <section id="services" className="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left scroll-mt-8 fade-in-section overflow-hidden">
+            {services.map((service, index) => (
+                <div
+                    key={index}
+                    className={`p-10 md:p-16 border-b-grid md:border-b-0 ${index < services.length - 1 ? 'md:border-r-grid' : ''} hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors group cursor-default`}
+                >
+                    <i className={`${service.icon} text-4xl mb-6 block`}></i>
+                    <h3 className="text-xl font-bold uppercase mb-2">{service.title}</h3>
+                    <p className="text-sm opacity-80 leading-relaxed font-medium">
+                        {service.description}
+                    </p>
+                </div>
+            ))}
         </section>
     );
 }
