@@ -14,18 +14,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "abzalt1.dev | Business-Oriented Developer",
     description: "Разработка сайтов, которые приносят прибыль.",
-    url: "https://abzalt1.github.io/portfolio/",
+    url: "https://abzalt1.github.io/",
     siteName: "abzalt1.dev",
     locale: "ru_RU",
     type: "website",
-    images: [{ url: "https://abzalt1.github.io/portfolio/me.jpg" }],
+    images: [{ url: "https://abzalt1.github.io/me.jpg" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "abzalt1.dev | Business-Oriented Developer",
     description: "Разработка сайтов, которые приносят прибыль.",
     creator: "@abzalt1",
-    images: ["https://abzalt1.github.io/portfolio/me.jpg"],
+    images: ["https://abzalt1.github.io/me.jpg"],
   },
 };
 
