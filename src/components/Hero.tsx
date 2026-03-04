@@ -24,8 +24,15 @@ export default function Hero() {
 
             if (!isWaiting) {
                 if (!isDeleting) {
-                    charIndex++;
-                    if (charIndex === currentPhrase.length + 1) {
+                    // Check for <br> and skip it
+                    if (currentPhrase.substring(charIndex, charIndex + 4) === '<br>') {
+                        charIndex += 4;
+                    } else {
+                        charIndex++;
+                    }
+
+                    if (charIndex >= currentPhrase.length) {
+                        charIndex = currentPhrase.length; // Ensure we don't go out of bounds
                         isWaiting = true;
                         setTimeout(() => {
                             isDeleting = true;
@@ -33,8 +40,15 @@ export default function Hero() {
                         }, waitTime);
                     }
                 } else {
-                    charIndex--;
-                    if (charIndex === 0) {
+                    // Check for <br> when deleting and skip it
+                    if (charIndex > 4 && currentPhrase.substring(charIndex - 4, charIndex) === '<br>') {
+                        charIndex -= 4;
+                    } else {
+                        charIndex--;
+                    }
+
+                    if (charIndex <= 0) {
+                        charIndex = 0;
                         isDeleting = false;
                         phraseIndex = (phraseIndex + 1) % phrases.length;
                     }

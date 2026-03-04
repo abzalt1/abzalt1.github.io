@@ -72,10 +72,10 @@ export default function Header() {
             <header
                 id="main-header"
                 className={`sticky top-0 z-40 bg-white dark:bg-black transition-all duration-300 w-full
-          ${isFloating ? 'floating-header py-4' : 'mb-8 pb-6 -mt-[6px] pt-[6px] md:-mt-[12px] md:pt-[12px] border-b-[4px] border-black dark:border-white'} 
+          ${isFloating ? 'floating-header py-4' : 'pb-6 -mt-[6px] pt-[6px] md:-mt-[12px] md:pt-[12px] border-b border-black dark:border-white'} 
           ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
             >
-                <div className="flex justify-between items-end px-6 md:px-10">
+                <div className="flex justify-between items-center px-6 md:px-10">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none cursor-default">
                         abzalt1.dev
                     </h1>
