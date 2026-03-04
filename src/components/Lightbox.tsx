@@ -40,7 +40,7 @@ export default function Lightbox({ src, onClose }: LightboxProps) {
             </div>
             <button
                 onClick={onClose}
-                className="absolute top-4 right-4 text-white hover:opacity-60 p-4 transition-opacity"
+                className="absolute top-6 right-6 md:top-12 md:right-12 text-white hover:opacity-60 p-4 transition-opacity"
                 aria-label="Close"
             >
                 <i className="ri-close-line text-4xl"></i>

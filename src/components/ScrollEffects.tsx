@@ -82,10 +82,10 @@ export default function ScrollEffects() {
             <button
                 id="back-to-top"
                 onClick={scrollToTop}
-                className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-black text-white dark:bg-white dark:text-black p-3 shadow-lg transition-all duration-300 z-50 magnetic-button ${showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                className={`fixed bottom-10 right-10 md:bottom-16 md:right-16 bg-black text-white dark:bg-white dark:text-black p-4 shadow-2xl transition-all duration-300 z-50 hover:scale-110 active:scale-90 flex items-center justify-center ${showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                 aria-label="Наверх"
             >
-                <i className="ri-arrow-up-line text-xl"></i>
+                <i className="ri-arrow-up-line text-2xl"></i>
             </button>
         </>
     );
