@@ -45,14 +45,12 @@ export default function Contact() {
         try {
             await navigator.clipboard.writeText('@abzalt1');
             btn.innerHTML = 'Никнейм скопирован <i class="ri-check-line"></i>';
-            btn.classList.add('bg-green-600', 'scale-105');
 
             setTimeout(() => {
                 btn.innerHTML = originalContent;
-                btn.classList.remove('bg-green-600', 'scale-105');
                 window.open('https://t.me/abzalt1', '_blank');
             }, 1200);
-        } catch (err) {
+        } catch {
             window.open('https://t.me/abzalt1', '_blank');
         }
     };
@@ -61,23 +59,28 @@ export default function Contact() {
         <section
             id="contact"
             ref={sectionRef}
-            className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section overflow-hidden"
+            className="max-w-7xl mx-auto px-6 md:px-16 py-20 md:py-32 fade-in-section"
         >
-            <div className="col-span-1 md:col-span-12 p-8 md:p-24 bg-white dark:bg-black text-center flex flex-col items-center justify-center">
-                <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6 tracking-tighter min-h-[1.2em] text-black dark:text-white">
-                    <span>{displayText}</span><span className="cursor-blink"></span>
+            <hr className="swiss-divider mb-16 md:mb-20" />
+
+            <div className="text-center max-w-3xl mx-auto">
+                {/* Quote-style heading */}
+                <p className="text-2xl md:text-3xl font-light mb-3 opacity-40">"</p>
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter leading-none mb-6">
+                    <span>{displayText}</span>
+                    <span className="cursor-blink"></span>
                 </h2>
-                <p className="text-lg md:text-xl mb-10 max-w-2xl opacity-70 font-medium">
-                    Самый быстрый способ обсудить детали - написать мне напрямую в Telegram.
+                <p className="text-base md:text-lg opacity-50 font-medium mb-10 max-w-xl mx-auto">
+                    Самый быстрый способ обсудить детали — написать мне напрямую в Telegram.
                 </p>
                 <a
                     href="https://t.me/abzalt1"
                     onClick={handleTelegramClick}
-                    className="inline-flex items-center gap-2 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-6 py-3 md:px-10 md:py-5 text-sm md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest"
+                    className="inline-flex items-center gap-3 bg-black text-white dark:bg-white dark:text-black px-8 py-4 md:px-12 md:py-5 text-sm md:text-base font-bold uppercase tracking-widest hover:opacity-80 transition-opacity"
                     rel="noopener noreferrer"
                 >
                     Написать в Telegram
-                    <svg className="w-5 h-5 md:w-7 md:h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42l10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001l-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15l4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
                     </svg>
                 </a>
