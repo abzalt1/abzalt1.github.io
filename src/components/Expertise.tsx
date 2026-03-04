@@ -2,8 +2,10 @@
 
 export default function Expertise() {
     const skills = [
-        { icon: 'ri-html5-fill', name: 'HTML5' },
+        { icon: 'ri-reactjs-fill', name: 'React' },
+        { icon: 'ri-nextjs-fill', name: 'Next.js' },
         { icon: 'ri-javascript-fill', name: 'JS (ES6+)' },
+        { icon: 'ri-html5-fill', name: 'HTML5' },
         { icon: 'ri-window-fill', name: 'Webflow' },
         { icon: 'ri-layout-masonry-fill', name: 'Tilda Pro' },
         { icon: 'ri-server-fill', name: 'REST API' },
@@ -15,7 +17,7 @@ export default function Expertise() {
             <div className="col-span-1 md:col-span-12 p-6 md:p-12">
                 <h2 className="text-2xl font-bold uppercase mb-12 tracking-tighter">Core Expertise</h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-6 gap-8 text-center">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
                     {skills.map((skill, index) => (
                         <div key={index} className="flex flex-col items-center gap-4 group">
                             <i className={`${skill.icon} text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300`}></i>
