@@ -19,12 +19,14 @@ export default function ScrollEffects() {
             // Back to Top Visibility
             setShowBackToTop(scrollY > 300);
 
-            // Gradient Background Movement
+            // Gradient Background Movement (Disabled for Swiss Design)
+            /*
             const gradientBg = document.getElementById('gradient-bg');
             if (gradientBg && docHeight > 0) {
                 const pos = (scrollY / docHeight) * 100;
                 gradientBg.style.backgroundPosition = `${pos}% ${pos}%`;
             }
+            */
         };
 
         // Fade-in Animation Logic

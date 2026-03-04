@@ -78,27 +78,14 @@
 
   .fade-in-section {
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    filter: blur(10px);
-    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform, filter;
-  }
-
-  @media (min-width: 768px) {
-    .fade-in-section {
-      transform: translateY(60px) scale(0.95);
-    }
+    transform: translateY(20px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
   }
 
   .fade-in-section.is-visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-
-  .magnetic-button {
-    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
+    transform: translateY(0);
   }
 
   .hover-underline-animation {
@@ -124,22 +111,16 @@
     transform-origin: bottom left;
   }
 
-  /* Floating Header Styles */
+  /* Full-width Sticky Header Styles */
   .floating-header {
-    margin-top: 2rem;
-    padding: 1.25rem 2.5rem;
-    border-bottom-width: 1px;
-    border-width: 1px;
-    top: 0;
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(12px);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.82);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .dark .floating-header {
-    background-color: rgba(17, 17, 17, 0.8);
+    background-color: rgba(17, 17, 17, 0.82);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 

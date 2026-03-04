@@ -18,33 +18,9 @@ interface ProjectCardProps {
 const ProjectCard = ({ number, title, category, image, tasks, link, stack, onImageClick, status }: ProjectCardProps) => {
     const cardRef = useRef<HTMLDivElement>(null);
 
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * -3;
-        const rotateY = ((x - centerX) / centerX) * 3;
-
-        cardRef.current.style.transition = 'transform 0.1s ease-out';
-        cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    };
-
-    const handleMouseLeave = () => {
-        if (!cardRef.current) return;
-        cardRef.current.style.transition = 'transform 0.5s ease-out';
-        cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    };
-
     return (
         <div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className={`grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black transform transition-all duration-300 overflow-hidden tilt-card ${status ? 'opacity-60 hover:opacity-100 duration-500' : ''}`}
+            className={`grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black overflow-hidden ${status ? 'opacity-60 hover:opacity-100 duration-500' : ''}`}
         >
             <div className="md:col-span-4 p-8 md:p-16 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
@@ -79,7 +55,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                         <li key={i}>{task}</li>
                                     ))}
                                 </ul>
-                                <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:opacity-80 transition-opacity magnetic-button" rel="noopener noreferrer">
+                                <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px]" rel="noopener noreferrer">
                                     Сайт <i className="ri-arrow-right-up-line"></i>
                                 </a>
                             </div>
