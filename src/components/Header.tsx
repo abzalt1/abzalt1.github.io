@@ -72,7 +72,7 @@ export default function Header() {
             <header
                 id="main-header"
                 className={`sticky top-0 z-40 bg-white dark:bg-black transition-all duration-300 w-full
-          ${isFloating ? 'floating-header py-4' : 'pb-6 -mt-[6px] pt-[6px] md:-mt-[12px] md:pt-[12px] border-b border-black dark:border-white'} 
+          ${isFloating ? 'floating-header py-4' : 'py-6 md:py-8 border-b border-black dark:border-white'} 
           ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
             >
                 <div className="flex justify-between items-center px-6 md:px-10">
