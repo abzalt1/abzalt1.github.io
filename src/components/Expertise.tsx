@@ -13,7 +13,7 @@ export default function Expertise() {
     ];
 
     return (
-        <section id="expertise" className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black scroll-mt-8 fade-in-section rounded-3xl overflow-hidden">
+        <section id="expertise" className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black scroll-mt-8 fade-in-section overflow-hidden">
             <div className="col-span-1 md:col-span-12 p-6 md:p-12">
                 <h2 className="text-2xl font-bold uppercase mb-12 tracking-tighter">Core Expertise</h2>
 

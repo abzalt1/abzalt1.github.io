@@ -44,7 +44,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className={`grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black transform transition-all duration-300 rounded-3xl overflow-hidden tilt-card ${status ? 'opacity-60 hover:opacity-100 duration-500' : ''}`}
+            className={`grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black transform transition-all duration-300 overflow-hidden tilt-card ${status ? 'opacity-60 hover:opacity-100 duration-500' : ''}`}
         >
             <div className="md:col-span-4 p-6 md:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
@@ -54,7 +54,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                     </h3>
                 </div>
                 {status ? (
-                    <span className="mt-8 inline-block px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase tracking-widest w-fit rounded-full">{status}</span>
+                    <span className="mt-8 inline-block px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-xs font-bold uppercase tracking-widest w-fit">{status}</span>
                 ) : (
                     <p className="mt-8 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline">{category}</p>
                 )}
@@ -79,7 +79,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                         <li key={i}>{task}</li>
                                     ))}
                                 </ul>
-                                <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:opacity-80 transition-opacity magnetic-button rounded-full" rel="noopener noreferrer">
+                                <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white dark:bg-white dark:text-black px-6 py-3 hover:opacity-80 transition-opacity magnetic-button" rel="noopener noreferrer">
                                     Сайт <i className="ri-arrow-right-up-line"></i>
                                 </a>
                             </div>
@@ -89,7 +89,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                     {stack.map((item, i) => (
                                         <li key={i} className="flex items-center gap-3 group relative cursor-help w-fit">
                                             <i className={`${item.icon} text-lg`}></i> {item.name}
-                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-3 bg-black text-white dark:bg-white dark:text-black text-xs font-medium normal-case shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-20 text-center pointer-events-none">
                                                 {item.info}
                                                 <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-black dark:border-t-white"></div>
                                             </div>

@@ -61,7 +61,7 @@ export default function Contact() {
         <section
             id="contact"
             ref={sectionRef}
-            className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section rounded-3xl overflow-hidden"
+            className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section overflow-hidden"
         >
             <div className="col-span-1 md:col-span-12 p-8 md:p-24 bg-white dark:bg-black text-center flex flex-col items-center justify-center">
                 <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6 tracking-tighter min-h-[1.2em] text-black dark:text-white">
@@ -73,7 +73,7 @@ export default function Contact() {
                 <a
                     href="https://t.me/abzalt1"
                     onClick={handleTelegramClick}
-                    className="inline-flex items-center gap-2 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-6 py-3 md:px-10 md:py-5 text-sm md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest magnetic-button rounded-full"
+                    className="inline-flex items-center gap-2 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-6 py-3 md:px-10 md:py-5 text-sm md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest"
                     rel="noopener noreferrer"
                 >
                     Написать в Telegram

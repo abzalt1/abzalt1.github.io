@@ -50,33 +50,11 @@ export default function ScrollEffects() {
             observer.observe(section);
         });
 
-        // Magnetic Button Logic
-        const handleMagneticMove = (e: MouseEvent) => {
-            const target = (e.target as HTMLElement).closest('.magnetic-button') as HTMLElement;
-            if (!target) return;
-
-            const rect = target.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            target.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-        };
-
-        const handleMagneticLeave = (e: MouseEvent) => {
-            const target = (e.target as HTMLElement).closest('.magnetic-button') as HTMLElement;
-            if (!target) return;
-            target.style.transform = 'translate(0px, 0px)';
-        };
-
-        document.addEventListener('mousemove', handleMagneticMove);
-        document.addEventListener('mouseleave', handleMagneticLeave, true);
-
         window.addEventListener('scroll', handleScroll, { passive: true });
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
             observer.disconnect();
-            document.removeEventListener('mousemove', handleMagneticMove);
-            document.removeEventListener('mouseleave', handleMagneticLeave, true);
         };
     }, []);
 
@@ -96,7 +74,7 @@ export default function ScrollEffects() {
             {/* Gradient Background */}
             <div
                 id="gradient-bg"
-                className="fixed inset-0 z-[-1] bg-[linear-gradient(135deg,var(--tw-gradient-stops))] from-white via-gray-100 to-white dark:from-black dark:via-gray-900 dark:to-black transition-[background-position] duration-100 ease-out"
+                className="fixed inset-0 z-[-1] bg-[linear-gradient(135deg,var(--tw-gradient-stops))] from-white via-gray-100 to-white dark:hidden transition-[background-position] duration-100 ease-out"
                 style={{ backgroundSize: '400% 400%' }}
             ></div>
 
@@ -104,7 +82,7 @@ export default function ScrollEffects() {
             <button
                 id="back-to-top"
                 onClick={scrollToTop}
-                className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-black text-white dark:bg-white dark:text-black p-3 rounded-full shadow-lg transition-all duration-300 z-50 magnetic-button ${showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                className={`fixed bottom-6 right-6 md:bottom-10 md:right-10 bg-black text-white dark:bg-white dark:text-black p-3 shadow-lg transition-all duration-300 z-50 magnetic-button ${showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                 aria-label="Наверх"
             >
                 <i className="ri-arrow-up-line text-xl"></i>

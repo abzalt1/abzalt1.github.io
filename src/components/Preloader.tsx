@@ -10,8 +10,8 @@ export default function Preloader() {
     useEffect(() => {
         let index = 0;
         const typeInterval = setInterval(() => {
-            if (index < fullText.length) {
-                setText(fullText.substring(0, index + 1));
+            if (index <= fullText.length) {
+                setText(fullText.substring(0, index));
                 index++;
             } else {
                 clearInterval(typeInterval);

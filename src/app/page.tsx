@@ -16,7 +16,7 @@ export default function Home() {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   return (
-    <div className="bg-transparent text-black dark:text-white dark:border-white font-sans min-h-screen p-4 md:p-8 border-[6px] md:border-[12px] border-black transition-colors duration-300 relative">
+    <div className="bg-transparent text-black dark:text-white dark:border-white font-sans min-h-screen transition-colors duration-300 relative">
       <Preloader />
       <ScrollEffects />
       <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />

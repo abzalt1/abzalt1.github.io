@@ -20,7 +20,7 @@ export default function Services() {
     ];
 
     return (
-        <section id="services" className="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left scroll-mt-8 fade-in-section rounded-3xl overflow-hidden">
+        <section id="services" className="grid grid-cols-1 md:grid-cols-3 gap-0 grid-border mb-8 text-center md:text-left scroll-mt-8 fade-in-section overflow-hidden">
             {services.map((service, index) => (
                 <div
                     key={index}

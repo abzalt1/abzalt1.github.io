@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function Header() {
     const [theme, setTheme] = useState<'light' | 'dark'>('light');
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isFloating, setIsFloating] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
-    const [lastScrollY, setLastScrollY] = useState(0);
+    const lastScrollY = useRef(0);
     const [currentDate, setCurrentDate] = useState('Загрузка...');
 
     useEffect(() => {
@@ -16,21 +16,26 @@ export default function Header() {
         const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
         setTheme(initialTheme);
+
         if (initialTheme === 'dark') {
             document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
 
         // Date initialization
         const now = new Date();
         const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
         setCurrentDate(formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1));
+    }, []);
 
+    useEffect(() => {
         // Scroll handling
         const handleScroll = () => {
             const scrollY = window.scrollY;
 
             // Smart Header Hide/Show
-            if (scrollY > lastScrollY && scrollY > 50) {
+            if (scrollY > lastScrollY.current && scrollY > 50) {
                 setIsHidden(true);
             } else {
                 setIsHidden(false);
@@ -38,12 +43,12 @@ export default function Header() {
 
             // Floating effect
             setIsFloating(scrollY > 50);
-            setLastScrollY(scrollY);
+            lastScrollY.current = scrollY;
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, [lastScrollY]);
+    }, []);
 
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -71,7 +76,7 @@ export default function Header() {
           ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
             >
                 <div className="flex justify-between items-end px-4 md:px-0">
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none glitch cursor-default" data-text="abzalt1.dev">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none cursor-default">
                         abzalt1.dev
                     </h1>
                     <div className="flex gap-4 md:gap-8 text-sm md:text-lg font-semibold uppercase tracking-widest items-center">
@@ -86,7 +91,7 @@ export default function Header() {
                         <span id="date-tag" className="hidden sm:inline text-black dark:text-white font-bold">{currentDate}</span>
                         <button
                             onClick={toggleTheme}
-                            className="hover:opacity-60 transition-opacity magnetic-button p-2"
+                            className="hover:opacity-60 transition-opacity p-2"
                             aria-label="Toggle theme"
                         >
                             <i className={theme === 'dark' ? 'ri-sun-line text-lg md:text-xl' : 'ri-moon-line text-lg md:text-xl'}></i>
