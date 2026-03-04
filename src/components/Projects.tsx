@@ -130,10 +130,10 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
             link: "https://my-cook.kz",
             stack: [
                 { icon: "ri-layout-masonry-fill", name: "Tilda Zero Block", info: "Гибкая верстка уникальных блоков." },
-                { icon: "ri-javascript-fill", name: "Vanilla JS (ES6+)", info: "Логика корзины и калькулятора доставки." },
+                { icon: "ri-shield-check-fill", name: "Order Logic Engine", info: "Скрипт валидации гео-зон, строгого контроля времени и логики корзины." },
                 { icon: "ri-map-pin-2-fill", name: "DaData API", info: "Геокодинг адресов и определение зон." },
                 { icon: "ri-code-box-fill", name: "Google Apps Script", info: "Custom API для системы лояльности и динамических скидок." },
-                { icon: "ri-whatsapp-fill", name: "WhatsApp Logic", info: "Формирование заказа в мессенджер." }
+                { icon: "ri-whatsapp-fill", name: "WhatsApp Integration", info: "Автоматическое формирование структуры заказа и отправка в мессенджер." }
             ]
         },
         {
