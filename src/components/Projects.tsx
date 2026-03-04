@@ -132,7 +132,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
                 { icon: "ri-layout-masonry-fill", name: "Tilda Zero Block", info: "Гибкая верстка уникальных блоков." },
                 { icon: "ri-javascript-fill", name: "Vanilla JS (ES6+)", info: "Логика корзины и калькулятора доставки." },
                 { icon: "ri-map-pin-2-fill", name: "DaData API", info: "Геокодинг адресов и определение зон." },
-                { icon: "ri-database-2-fill", name: "Google Sheets API", info: "Управление товарами и скидками (CMS)." },
+                { icon: "ri-code-box-fill", name: "Google Apps Script", info: "Custom API для системы лояльности и динамических скидок." },
                 { icon: "ri-whatsapp-fill", name: "WhatsApp Logic", info: "Формирование заказа в мессенджер." }
             ]
         },
