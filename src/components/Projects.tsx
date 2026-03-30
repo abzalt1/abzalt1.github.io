@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface ProjectCardProps {
     number: string;
     title: React.ReactNode;
     category: string;
-    image: string;
+    image?: string | string[];
     tasks: string[];
     link: string;
     stack: { icon: string; name: string; info: string }[];
@@ -17,10 +17,28 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ number, title, category, image, tasks, link, stack, onImageClick, status }: ProjectCardProps) => {
     const cardRef = useRef<HTMLDivElement>(null);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
+
+    const images = Array.isArray(image) ? image : (image ? [image] : []);
+
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        if (isHovered && images.length > 1) {
+            interval = setInterval(() => {
+                setCurrentImageIndex((prev) => (prev + 1) % images.length);
+            }, 2000);
+        } else {
+            setCurrentImageIndex(0);
+        }
+        return () => clearInterval(interval);
+    }, [isHovered, images.length]);
 
     return (
         <div
             className={`grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black overflow-hidden ${status ? 'opacity-60 hover:opacity-100 duration-500' : ''}`}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
             <div className="md:col-span-4 p-8 md:p-16 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
@@ -36,16 +54,19 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                 )}
             </div>
             <div className="md:col-span-8 p-0 flex flex-col">
-                {image ? (
+                {images.length > 0 ? (
                     <>
                         <div className="aspect-video border-b-grid overflow-hidden relative">
-                            <Image
-                                src={image}
-                                alt="Website screenshot"
-                                fill
-                                className="object-cover object-top cursor-zoom-in"
-                                onClick={() => onImageClick(image)}
-                            />
+                            {images.map((img, idx) => (
+                                <Image
+                                    key={idx}
+                                    src={img}
+                                    alt="Website screenshot"
+                                    fill
+                                    className={`object-cover object-top cursor-zoom-in transition-opacity duration-1000 ${idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                                    onClick={() => onImageClick(img)}
+                                />
+                            ))}
                         </div>
                         <div className="p-8 md:p-16 flex flex-col md:flex-row gap-10 justify-between items-start">
                             <div className="max-w-md">
@@ -115,12 +136,20 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
         {
             number: "02.",
             title: <>MODEL<br />PORTFOLIO</>,
-            category: "Разработка визуального портфолио для fashion-модели.",
-            image: "", // In progress
-            status: "Скоро релиз",
-            tasks: ["Акцент на Webflow анимации и эстетику."],
-            link: "#",
-            stack: []
+            category: "Индивидуальное визуальное портфолио для fashion-модели.",
+            image: ["/dilya1.png", "/dilya2.png", "/dilya3.png"],
+            tasks: [
+                "Проектирование минималистичного и эстетичного UI/UX.",
+                "Разработка плавных анимаций и нестандартного скролла.",
+                "Оптимизация медиафайлов для быстрой загрузки.",
+                "Полная адаптация под мобильные устройства."
+            ],
+            link: "https://dilyara-portfoliov2.vercel.app/",
+            stack: [
+                { icon: "ri-reactjs-fill", name: "React", info: "Компонентный подход и быстрый рендеринг." },
+                { icon: "ri-javascript-fill", name: "Next.js", info: "Оптимизация производительности и SEO." },
+                { icon: "ri-css3-fill", name: "Tailwind CSS", info: "Детализированная кастомная стилизация." }
+            ]
         },
         {
             number: "03.",
