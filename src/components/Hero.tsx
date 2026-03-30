@@ -7,7 +7,7 @@ export default function Hero() {
     const [displayText, setDisplayText] = useState('');
     const phrases = [
         "Бизнес-<br>ориентированный<br>разработчик",
-        "Frontend Developer<br>& Low-code Expert"
+        "Full-stack Frontend<br>& No/Low-code Expert"
     ];
 
     useEffect(() => {
