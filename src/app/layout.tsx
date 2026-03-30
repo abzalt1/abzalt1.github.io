@@ -11,6 +11,9 @@ const interTight = Inter_Tight({
 export const metadata: Metadata = {
   title: "abzalt1.dev | Business-Oriented Developer",
   description: "Разработка сайтов для бизнеса. Tilda, Webflow, Custom Frontend. Визуально чисто, технически грамотно.",
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     title: "abzalt1.dev | Business-Oriented Developer",
     description: "Разработка сайтов, которые приносят прибыль.",
