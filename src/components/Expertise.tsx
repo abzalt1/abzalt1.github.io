@@ -5,10 +5,10 @@ export default function Expertise() {
         { icon: 'ri-reactjs-fill', name: 'React' },
         { icon: 'ri-nextjs-fill', name: 'Next.js' },
         { icon: 'ri-javascript-fill', name: 'JS (ES6+)' },
-        { icon: 'ri-html5-fill', name: 'HTML5' },
+        { icon: 'ri-tailwind-css-fill', name: 'Tailwind CSS' },
         { icon: 'ri-window-fill', name: 'Webflow' },
         { icon: 'ri-layout-masonry-fill', name: 'Tilda Pro' },
-        { icon: 'ri-server-fill', name: 'REST API' },
+        { icon: 'ri-server-fill', name: 'API Integrations' },
         { icon: 'ri-git-merge-fill', name: 'Git' }
     ];
 

@@ -150,8 +150,9 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
             link: "https://dilyara-portfoliov2.vercel.app/",
             stack: [
                 { icon: "ri-reactjs-fill", name: "React", info: "Компонентный подход и быстрый рендеринг." },
-                { icon: "ri-javascript-fill", name: "Next.js", info: "Оптимизация производительности и SEO." },
-                { icon: "ri-css3-fill", name: "Tailwind CSS", info: "Детализированная кастомная стилизация." }
+                { icon: "ri-javascript-fill", name: "Next.js", info: "Оптимизация производительности (SSG/SSR) и кастомные API-роуты для админ-панели." },
+                { icon: "ri-css3-fill", name: "Tailwind CSS", info: "Детализированная кастомная стилизация." },
+                { icon: "ri-image-circle-line", name: "Cloudinary API", info: "Автоматическая оптимизация, трансформация и хранение фото/видео контента галереи." }
             ]
         },
         {
