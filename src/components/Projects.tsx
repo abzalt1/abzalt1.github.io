@@ -56,17 +56,19 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
             <div className="md:col-span-8 p-0 flex flex-col">
                 {images.length > 0 ? (
                     <>
-                        <div className="aspect-video border-b-grid overflow-hidden relative">
-                            {images.map((img, idx) => (
-                                <Image
-                                    key={idx}
-                                    src={img}
-                                    alt="Website screenshot"
-                                    fill
-                                    className={`object-cover object-top cursor-zoom-in transition-opacity duration-1000 ${idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                                    onClick={() => onImageClick(img)}
-                                />
-                            ))}
+                        <div className="p-4 md:p-6 border-b-grid">
+                            <div className="aspect-video overflow-hidden relative rounded-lg border border-white/10 shadow-2xl">
+                                {images.map((img, idx) => (
+                                    <Image
+                                        key={idx}
+                                        src={img}
+                                        alt="Website screenshot"
+                                        fill
+                                        className={`object-cover object-top cursor-zoom-in transition-opacity duration-1000 ${idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                                        onClick={() => onImageClick(img)}
+                                    />
+                                ))}
+                            </div>
                         </div>
                         <div className="p-8 md:p-16 flex flex-col md:flex-row gap-10 justify-between items-start">
                             <div className="max-w-md">
