@@ -137,7 +137,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
             number: "02.",
             title: <>MODEL<br />PORTFOLIO</>,
             category: "Индивидуальное визуальное портфолио для fashion-модели.",
-            image: ["/dilya1.png", "/dilya2.png", "/dilya3.png"],
+            image: ["/dilya1.webp", "/dilya2.webp", "/dilya3.webp"],
             tasks: [
                 "Проектирование минималистичного и эстетичного UI/UX.",
                 "Разработка плавных анимаций и нестандартного скролла.",
