@@ -18,9 +18,14 @@ export default function Expertise() {
             <div className="col-span-1 md:col-span-12 p-10 md:p-20">
                 <h2 className="text-2xl font-bold uppercase mb-16 tracking-tighter">Core Expertise</h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-16 text-center">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16 md:gap-16 text-center justify-items-center">
                     {skills.map((skill, index) => (
-                        <div key={index} className="flex flex-col items-center gap-4 group">
+                        <div 
+                            key={index} 
+                            className={`flex flex-col items-center gap-4 group ${
+                                index === skills.length - 1 ? 'col-span-2 md:col-span-1' : ''
+                            }`}
+                        >
                             <i className={`${skill.icon} text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300`}></i>
                             <span className="text-xs font-bold uppercase tracking-widest">{skill.name}</span>
                         </div>
