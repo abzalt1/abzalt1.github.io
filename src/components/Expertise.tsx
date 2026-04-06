@@ -9,6 +9,7 @@ export default function Expertise() {
         { icon: 'ri-window-fill', name: 'Webflow' },
         { icon: 'ri-layout-masonry-fill', name: 'Tilda Pro' },
         { icon: 'ri-server-fill', name: 'API Integrations' },
+        { icon: 'ri-triangle-fill', name: 'Vercel' },
         { icon: 'ri-git-merge-fill', name: 'Git' }
     ];
 
