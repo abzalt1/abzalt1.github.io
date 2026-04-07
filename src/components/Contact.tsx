@@ -37,23 +37,29 @@ export default function Contact() {
         return () => clearInterval(interval);
     }, [hasStarted]);
 
-    const handleTelegramClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
+    const handleTelegramClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        // We don't use e.preventDefault() here anymore to ensure the browser 
+        // handles the link click immediately and natively, which is essential
+        // for opening deep links (like Telegram) in Instagram and Safari.
+        
         const btn = e.currentTarget;
         const originalContent = btn.innerHTML;
 
+        // Optional: Try to copy the nickname to clipboard without blocking navigation
         try {
-            await navigator.clipboard.writeText('@abzalt1');
-            btn.innerHTML = 'Никнейм скопирован <i class="ri-check-line"></i>';
-            btn.classList.add('bg-green-600', 'scale-105');
+            navigator.clipboard.writeText('@abzalt1').then(() => {
+                // If the page doesn't navigate away immediately (e.g. target="_blank" opens new tab),
+                // we show the feedback.
+                btn.innerHTML = 'Никнейм скопирован <i class="ri-check-line"></i>';
+                btn.classList.add('bg-green-600', 'scale-105');
 
-            setTimeout(() => {
-                btn.innerHTML = originalContent;
-                btn.classList.remove('bg-green-600', 'scale-105');
-                window.open('https://t.me/abzalt1', '_blank');
-            }, 1200);
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('bg-green-600', 'scale-105');
+                }, 2000);
+            });
         } catch (err) {
-            window.open('https://t.me/abzalt1', '_blank');
+            // If clipboard fails, we do nothing and let the link handle the rest
         }
     };
 
@@ -73,6 +79,7 @@ export default function Contact() {
                 <a
                     href="https://t.me/abzalt1"
                     onClick={handleTelegramClick}
+                    target="_blank"
                     className="inline-flex items-center gap-3 md:gap-3 bg-black text-white dark:bg-white dark:text-black px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
                     rel="noopener noreferrer"
                 >
