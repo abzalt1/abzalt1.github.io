@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const publicDir = './public';
-const images = ['mycook1.png', 'mycook2.png', 'mycook3.png', 'mycook4.png'];
+const images = ['mycook1.png', 'mycook2.png', 'mycook3.png', 'mycook4.png', 'dilya3.png'];
 
 async function optimize() {
     for (const img of images) {

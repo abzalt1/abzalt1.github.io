@@ -144,9 +144,26 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                         </div>
                                     ))}
 
-                                    {/* Invisible Tap Areas for Navigation */}
+                                    {/* Navigation Areas */}
                                     {images.length > 1 && (
                                         <>
+                                            {/* Visible Arrows (Desktop Only) */}
+                                            <button
+                                                onClick={handlePrev}
+                                                className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0 items-center justify-center"
+                                                aria-label="Previous image"
+                                            >
+                                                <i className="ri-arrow-left-s-line text-xl"></i>
+                                            </button>
+                                            <button
+                                                onClick={handleNext}
+                                                className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 items-center justify-center"
+                                                aria-label="Next image"
+                                            >
+                                                <i className="ri-arrow-right-s-line text-xl"></i>
+                                            </button>
+
+                                            {/* Invisible Tap Areas (Mobile & Desktop) */}
                                             <button
                                                 onClick={handlePrev}
                                                 className="absolute left-0 top-0 bottom-0 z-30 w-1/4 cursor-w-resize"
@@ -158,7 +175,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                                 aria-label="Next image"
                                             />
                                             
-                                            {/* Subtle Interaction Hint (Visible on Mobile/Hover) */}
+                                            {/* Subtle Interaction Hint */}
                                             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-opacity duration-500 opacity-60 group-hover:opacity-100 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/20 dark:bg-white/10 backdrop-blur-md border border-white/10">
                                                 <i className="ri-expand-left-right-line text-xs"></i>
                                                 <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Листайте или нажимайте на края</span>
