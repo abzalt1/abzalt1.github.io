@@ -50,6 +50,36 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
         setCurrentImageIndex(idx);
     };
 
+    const [touchStart, setTouchStart] = useState<number | null>(null);
+    const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) {
+            setIsAutoPlaying(false);
+            setCurrentImageIndex((prev) => (prev + 1) % images.length);
+        }
+        if (isRightSwipe) {
+            setIsAutoPlaying(false);
+            setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+        }
+    };
+
     return (
         <div
             className={`grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black overflow-hidden ${status ? 'opacity-60 hover:opacity-100 duration-500' : ''}`}
@@ -91,7 +121,12 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                 </div>
 
                                 {/* Content Area with dynamic transition */}
-                                <div className="relative aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center transition-all duration-700">
+                                <div 
+                                    className="relative aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center transition-all duration-700"
+                                    onTouchStart={onTouchStart}
+                                    onTouchMove={onTouchMove}
+                                    onTouchEnd={onTouchEnd}
+                                >
                                     {images.map((img, idx) => (
                                         <div
                                             key={idx}
@@ -114,14 +149,14 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                         <>
                                             <button
                                                 onClick={handlePrev}
-                                                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0"
+                                                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 md:transform md:-translate-x-2 md:group-hover:translate-x-0"
                                                 aria-label="Previous image"
                                             >
                                                 <i className="ri-arrow-left-s-line text-xl"></i>
                                             </button>
                                             <button
                                                 onClick={handleNext}
-                                                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0"
+                                                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 md:transform md:translate-x-2 md:group-hover:translate-x-0"
                                                 aria-label="Next image"
                                             >
                                                 <i className="ri-arrow-right-s-line text-xl"></i>
