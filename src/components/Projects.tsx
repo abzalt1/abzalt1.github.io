@@ -75,18 +75,18 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
             <div className="md:col-span-8 p-0 flex flex-col">
                 {images.length > 0 ? (
                     <>
-                        <div className="p-4 md:p-8 flex flex-col gap-4 border-b-grid bg-gray-50/50 dark:bg-zinc-900/20">
+                        <div className="p-4 md:p-8 flex flex-col gap-4 border-b-grid bg-gray-50/50 dark:bg-zinc-900/40">
                             {/* macOS Window Frame */}
-                            <div className="relative group w-full max-w-4xl mx-auto flex flex-col rounded-xl overflow-hidden border border-black/5 dark:border-white/10 shadow-2xl transition-all duration-500 ease-in-out bg-white dark:bg-black">
+                            <div className="relative group w-full max-w-4xl mx-auto flex flex-col rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] dark:shadow-[0_0_30px_-5px_rgba(255,255,255,0.1)] transition-all duration-500 ease-in-out bg-white dark:bg-black">
                                 {/* Chrome Bar */}
-                                <div className="h-10 bg-gray-100/80 dark:bg-zinc-800/80 backdrop-blur-md flex items-center px-4 gap-2 border-b border-black/5 dark:border-white/5 relative z-20">
+                                <div className="h-10 bg-gray-100/90 dark:bg-zinc-800/90 backdrop-blur-md flex items-center px-4 gap-2 border-b border-black/5 dark:border-white/10 relative z-20">
                                     <div className="flex gap-1.5">
-                                        <div className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-sm"></div>
-                                        <div className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-sm"></div>
-                                        <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-sm"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-sm border border-black/5"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-sm border border-black/5"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-sm border border-black/5"></div>
                                     </div>
-                                    <div className="absolute left-1/2 -translate-x-1/2 text-[11px] font-medium opacity-40 uppercase tracking-widest pointer-events-none hidden sm:block">
-                                        Preview.app
+                                    <div className="absolute left-1/2 -translate-x-1/2 text-[10px] font-bold text-black/60 dark:text-white/60 uppercase tracking-[0.2em] pointer-events-none hidden sm:block whitespace-nowrap">
+                                        {category.split(' / ')[0]} — Browsing
                                     </div>
                                 </div>
 
