@@ -144,23 +144,25 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                         </div>
                                     ))}
 
-                                    {/* Navigation Arrows */}
+                                    {/* Invisible Tap Areas for Navigation */}
                                     {images.length > 1 && (
                                         <>
                                             <button
                                                 onClick={handlePrev}
-                                                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 md:transform md:-translate-x-2 md:group-hover:translate-x-0"
+                                                className="absolute left-0 top-0 bottom-0 z-30 w-1/4 cursor-w-resize"
                                                 aria-label="Previous image"
-                                            >
-                                                <i className="ri-arrow-left-s-line text-xl"></i>
-                                            </button>
+                                            />
                                             <button
                                                 onClick={handleNext}
-                                                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 md:transform md:translate-x-2 md:group-hover:translate-x-0"
+                                                className="absolute right-0 top-0 bottom-0 z-30 w-1/4 cursor-e-resize"
                                                 aria-label="Next image"
-                                            >
-                                                <i className="ri-arrow-right-s-line text-xl"></i>
-                                            </button>
+                                            />
+                                            
+                                            {/* Subtle Interaction Hint (Visible on Mobile/Hover) */}
+                                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-opacity duration-500 opacity-60 group-hover:opacity-100 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/20 dark:bg-white/10 backdrop-blur-md border border-white/10">
+                                                <i className="ri-expand-left-right-line text-xs"></i>
+                                                <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Листайте или нажимайте на края</span>
+                                            </div>
                                         </>
                                     )}
                                 </div>
