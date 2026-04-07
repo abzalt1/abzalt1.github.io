@@ -16,29 +16,48 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ number, title, category, image, tasks, link, stack, onImageClick, status }: ProjectCardProps) => {
-    const cardRef = useRef<HTMLDivElement>(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
+    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
     const images = Array.isArray(image) ? image : (image ? [image] : []);
 
     useEffect(() => {
         let interval: NodeJS.Timeout;
-        if (isHovered && images.length > 1) {
+        if (isHovered && isAutoPlaying && images.length > 1) {
             interval = setInterval(() => {
                 setCurrentImageIndex((prev) => (prev + 1) % images.length);
-            }, 2000);
-        } else {
-            setCurrentImageIndex(0);
+            }, 3000);
         }
         return () => clearInterval(interval);
-    }, [isHovered, images.length]);
+    }, [isHovered, isAutoPlaying, images.length]);
+
+    const handlePrev = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setIsAutoPlaying(false);
+        setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    };
+
+    const handleNext = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setIsAutoPlaying(false);
+        setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    };
+
+    const goToImage = (e: React.MouseEvent, idx: number) => {
+        e.stopPropagation();
+        setIsAutoPlaying(false);
+        setCurrentImageIndex(idx);
+    };
 
     return (
         <div
             className={`grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white dark:bg-black overflow-hidden ${status ? 'opacity-60 hover:opacity-100 duration-500' : ''}`}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseLeave={() => {
+                setIsHovered(false);
+                setIsAutoPlaying(true);
+            }}
         >
             <div className="md:col-span-4 p-8 md:p-16 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
@@ -56,20 +75,88 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
             <div className="md:col-span-8 p-0 flex flex-col">
                 {images.length > 0 ? (
                     <>
-                        <div className="p-4 md:p-6 border-b-grid">
-                            <div className="aspect-video overflow-hidden relative rounded-lg border border-white/10 shadow-2xl">
-                                {images.map((img, idx) => (
-                                    <Image
-                                        key={idx}
-                                        src={img}
-                                        alt="Website screenshot"
-                                        fill
-                                        className={`object-cover object-top cursor-zoom-in transition-opacity duration-1000 ${idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                                        onClick={() => onImageClick(img)}
-                                    />
-                                ))}
+                        <div className="p-4 md:p-8 flex flex-col gap-4 border-b-grid bg-gray-50/50 dark:bg-zinc-900/20">
+                            {/* macOS Window Frame */}
+                            <div className="relative group w-full max-w-4xl mx-auto flex flex-col rounded-xl overflow-hidden border border-black/5 dark:border-white/10 shadow-2xl transition-all duration-500 ease-in-out bg-white dark:bg-black">
+                                {/* Chrome Bar */}
+                                <div className="h-10 bg-gray-100/80 dark:bg-zinc-800/80 backdrop-blur-md flex items-center px-4 gap-2 border-b border-black/5 dark:border-white/5 relative z-20">
+                                    <div className="flex gap-1.5">
+                                        <div className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-sm"></div>
+                                        <div className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-sm"></div>
+                                        <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-sm"></div>
+                                    </div>
+                                    <div className="absolute left-1/2 -translate-x-1/2 text-[11px] font-medium opacity-40 uppercase tracking-widest pointer-events-none hidden sm:block">
+                                        Preview.app
+                                    </div>
+                                </div>
+
+                                {/* Content Area with dynamic transition */}
+                                <div className="relative aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center transition-all duration-700">
+                                    {images.map((img, idx) => (
+                                        <div
+                                            key={idx}
+                                            className={`absolute inset-0 transition-all duration-700 ease-in-out ${idx === currentImageIndex ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-95 z-0'
+                                                }`}
+                                        >
+                                            <Image
+                                                src={img}
+                                                alt="Website screenshot"
+                                                fill
+                                                className="object-contain p-2 cursor-zoom-in"
+                                                onClick={() => onImageClick(img)}
+                                                priority={idx === 0}
+                                            />
+                                        </div>
+                                    ))}
+
+                                    {/* Navigation Arrows */}
+                                    {images.length > 1 && (
+                                        <>
+                                            <button
+                                                onClick={handlePrev}
+                                                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-x-2 group-hover:translate-x-0"
+                                                aria-label="Previous image"
+                                            >
+                                                <i className="ri-arrow-left-s-line text-xl"></i>
+                                            </button>
+                                            <button
+                                                onClick={handleNext}
+                                                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0"
+                                                aria-label="Next image"
+                                            >
+                                                <i className="ri-arrow-right-s-line text-xl"></i>
+                                            </button>
+                                        </>
+                                    )}
+                                </div>
+                                
+                                {/* Status bar / Pagination */}
+                                <div className="h-1 bg-black/5 dark:bg-white/5 w-full relative overflow-hidden">
+                                    <div 
+                                        className="absolute top-0 left-0 h-full bg-black dark:bg-white transition-all duration-500 ease-out"
+                                        style={{ width: `${((currentImageIndex + 1) / images.length) * 100}%` }}
+                                    ></div>
+                                </div>
                             </div>
+
+                            {/* Dot Pagination Below Container */}
+                            {images.length > 1 && (
+                                <div className="flex justify-center gap-2 mt-2">
+                                    {images.map((_, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={(e) => goToImage(e, idx)}
+                                            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentImageIndex 
+                                                ? 'bg-black dark:bg-white w-6' 
+                                                : 'bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40'
+                                            }`}
+                                            aria-label={`Go to image ${idx + 1}`}
+                                        />
+                                    ))}
+                                </div>
+                            )}
                         </div>
+
                         <div className="p-8 md:p-16 flex flex-col md:flex-row gap-10 justify-between items-start">
                             <div className="max-w-md">
                                 <h4 className="text-lg font-bold uppercase mb-3">Задачи</h4>
