@@ -19,6 +19,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const [hasInteracted, setHasInteracted] = useState(false);
 
     const images = Array.isArray(image) ? image : (image ? [image] : []);
 
@@ -35,18 +36,21 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
     const handlePrev = (e: React.MouseEvent) => {
         e.stopPropagation();
         setIsAutoPlaying(false);
+        setHasInteracted(true);
         setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
     };
 
     const handleNext = (e: React.MouseEvent) => {
         e.stopPropagation();
         setIsAutoPlaying(false);
+        setHasInteracted(true);
         setCurrentImageIndex((prev) => (prev + 1) % images.length);
     };
 
     const goToImage = (e: React.MouseEvent, idx: number) => {
         e.stopPropagation();
         setIsAutoPlaying(false);
+        setHasInteracted(true);
         setCurrentImageIndex(idx);
     };
 
@@ -70,13 +74,15 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
         const isLeftSwipe = distance > minSwipeDistance;
         const isRightSwipe = distance < -minSwipeDistance;
 
-        if (isLeftSwipe) {
+        if (isLeftSwipe || isRightSwipe) {
             setIsAutoPlaying(false);
-            setCurrentImageIndex((prev) => (prev + 1) % images.length);
-        }
-        if (isRightSwipe) {
-            setIsAutoPlaying(false);
-            setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+            setHasInteracted(true);
+            
+            if (isLeftSwipe) {
+                setCurrentImageIndex((prev) => (prev + 1) % images.length);
+            } else {
+                setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+            }
         }
     };
 
@@ -157,7 +163,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                             </button>
                                             <button
                                                 onClick={handleNext}
-                                                className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 items-center justify-center"
+                                                className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 items-center justify-center hidden md:flex"
                                                 aria-label="Next image"
                                             >
                                                 <i className="ri-arrow-right-s-line text-xl"></i>
@@ -176,9 +182,9 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                             />
                                             
                                             {/* Subtle Interaction Hint */}
-                                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-opacity duration-500 opacity-60 group-hover:opacity-100 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/20 dark:bg-white/10 backdrop-blur-md border border-white/10">
-                                                <i className="ri-expand-left-right-line text-xs"></i>
-                                                <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Листайте или нажимайте на края</span>
+                                            <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-all duration-500 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 dark:bg-white/20 backdrop-blur-md border border-white/10 ${hasInteracted ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
+                                                <i className="ri-expand-left-right-line text-xs text-white"></i>
+                                                <span className="text-[10px] font-extrabold text-white uppercase tracking-widest whitespace-nowrap">Листайте или нажимайте на края</span>
                                             </div>
                                         </>
                                     )}
