@@ -118,7 +118,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
             number: "01.",
             title: <>MY-COOK<br />DELIVERY</>,
             category: "E-commerce / Food Tech",
-            image: ["/mycook.webp", "/mycook1.webp", "/mycook2.webp"],
+            image: ["/mycook1.webp", "/mycook2.webp", "/mycook3.webp", "/mycook4.webp"],
             tasks: [
                 "Запуск интернет-магазина доставки без покупки дорогих CRM.",
                 "Определение стоимости доставки по координатам через API.",
