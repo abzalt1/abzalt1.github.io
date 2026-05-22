@@ -3,26 +3,13 @@
 import { useEffect, useState, useRef } from 'react';
 
 export default function Header() {
- const [theme, setTheme] = useState<'light' | 'dark'>('light');
- const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
  const [isFloating, setIsFloating] = useState(false);
  const [isHidden, setIsHidden] = useState(false);
  const lastScrollY = useRef(0);
  const [currentDate, setCurrentDate] = useState('Загрузка...');
 
  useEffect(() => {
- // Theme initialization
- const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
- const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
- const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
- setTheme(initialTheme);
-
- if (initialTheme === 'dark') {
- document.documentElement.classList.add('dark');
- } else {
- document.documentElement.classList.remove('dark');
- }
-
  // Date initialization
  const now = new Date();
  const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
@@ -49,17 +36,6 @@ export default function Header() {
  window.addEventListener('scroll', handleScroll, { passive: true });
  return () => window.removeEventListener('scroll', handleScroll);
  }, []);
-
- const toggleTheme = () => {
- const newTheme = theme === 'light' ? 'dark' : 'light';
- setTheme(newTheme);
- localStorage.setItem('theme', newTheme);
- if (newTheme === 'dark') {
- document.documentElement.classList.add('dark');
- } else {
- document.documentElement.classList.remove('dark');
- }
- };
 
  const navLinks = [
  { href: '#services', label: 'Услуги' },
@@ -89,13 +65,7 @@ export default function Header() {
  </nav>
  <span className="hidden sm:inline">Almaty, KZ</span>
  <span id="date-tag" className="hidden sm:inline text-black font-bold">{currentDate}</span>
- <button
- onClick={toggleTheme}
- className="hover:opacity-60 transition-opacity p-2"
- aria-label="Toggle theme"
- >
- <i className={theme === 'dark' ? 'ri-sun-line text-lg md:text-xl' : 'ri-moon-line text-lg md:text-xl'}></i>
- </button>
+
  <button
  onClick={() => setIsMenuOpen(true)}
  className="md:hidden hover:opacity-60 transition-opacity p-2"

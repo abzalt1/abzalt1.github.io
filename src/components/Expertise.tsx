@@ -25,9 +25,7 @@ export default function Expertise() {
  {skills.map((skill, index) => (
  <div 
  key={index} 
- className={`flex flex-col items-center gap-4 group ${
- index === skills.length - 1 ? 'col-span-2 md:col-span-1' : ''
- }`}
+ className="flex flex-col items-center gap-4 group"
  >
  <i className={`${skill.icon} text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300`}></i>
  <span className="text-xs font-bold uppercase tracking-widest">{skill.name}</span>
