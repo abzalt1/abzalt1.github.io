@@ -305,13 +305,25 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
         },
         {
             number: "03.",
-            title: <>B2B FASHION<br />WHOLESALE</>,
-            category: "Оптовый магазин одежды.",
-            image: "", // In progress
-            status: "Скоро релиз",
-            tasks: ["Лидогенерация и оптовые каталоги."],
-            link: "#",
-            stack: []
+            title: <>PASTRY<br />STUDIO</>,
+            category: "B2B Portal / Food Tech",
+            image: ["/pastry1.png", "/pastry2.png", "/pastry3.png", "/pastry4.png", "/pastry5.png", "/pastry6.png"],
+            tasks: [
+                "Разработка B2B-портала оптовых заказов для пекарни, снабжающей 50+ кофеен.",
+                "Ролевая система доступа: кофейня, менеджер нескольких точек, офис, администратор.",
+                "Интеграция с 1С для автоматической передачи и синхронизации статусов заказов.",
+                "Корректировка заказов администратором с отслеживанием изменений и причин.",
+                "Аналитическая панель с фильтрацией по периодам и экспортом отчётов в CSV.",
+                "PWA с mobile-first дизайном и дедлайном приёма заказов до 21:00."
+            ],
+            link: "https://pastrystudio.vercel.app/",
+            stack: [
+                { icon: "ri-reactjs-fill", name: "React / Next.js", info: "App Router, SSR и API-роуты для серверной логики." },
+                { icon: "ri-database-2-fill", name: "Supabase", info: "PostgreSQL + Auth + Row Level Security для мультитенантной архитектуры." },
+                { icon: "ri-css3-fill", name: "Tailwind CSS", info: "Утилитарная стилизация с mobile-first подходом." },
+                { icon: "ri-exchange-fill", name: "1C Integration", info: "REST API для передачи заказов и приёма статусов из 1С." },
+                { icon: "ri-triangle-fill", name: "Vercel", info: "Хостинг с Edge Functions и автодеплоем из GitHub." }
+            ]
         }
     ];
 
