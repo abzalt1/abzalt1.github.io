@@ -77,7 +77,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
         if (isLeftSwipe || isRightSwipe) {
             setIsAutoPlaying(false);
             setHasInteracted(true);
-            
+
             if (isLeftSwipe) {
                 setCurrentImageIndex((prev) => (prev + 1) % images.length);
             } else {
@@ -127,7 +127,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                 </div>
 
                                 {/* Content Area with dynamic transition */}
-                                <div 
+                                <div
                                     className="relative aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center transition-all duration-700"
                                     onTouchStart={onTouchStart}
                                     onTouchMove={onTouchMove}
@@ -180,7 +180,7 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                                 className="absolute right-0 top-0 bottom-0 z-30 w-1/4 cursor-e-resize"
                                                 aria-label="Next image"
                                             />
-                                            
+
                                             {/* Subtle Interaction Hint */}
                                             <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-all duration-500 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 dark:bg-white/20 backdrop-blur-md border border-white/10 ${hasInteracted ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
                                                 <i className="ri-expand-left-right-line text-xs text-white"></i>
@@ -189,10 +189,10 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                         </>
                                     )}
                                 </div>
-                                
+
                                 {/* Status bar / Pagination */}
                                 <div className="h-1 bg-black/5 dark:bg-white/5 w-full relative overflow-hidden">
-                                    <div 
+                                    <div
                                         className="absolute top-0 left-0 h-full bg-black dark:bg-white transition-all duration-500 ease-out"
                                         style={{ width: `${((currentImageIndex + 1) / images.length) * 100}%` }}
                                     ></div>
@@ -206,10 +206,10 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
                                         <button
                                             key={idx}
                                             onClick={(e) => goToImage(e, idx)}
-                                            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentImageIndex 
-                                                ? 'bg-black dark:bg-white w-6' 
+                                            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentImageIndex
+                                                ? 'bg-black dark:bg-white w-6'
                                                 : 'bg-black/20 dark:bg-white/20 hover:bg-black/40 dark:hover:bg-white/40'
-                                            }`}
+                                                }`}
                                             aria-label={`Go to image ${idx + 1}`}
                                         />
                                     ))}
