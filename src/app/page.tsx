@@ -13,25 +13,25 @@ import ScrollEffects from '@/components/ScrollEffects';
 import Lightbox from '@/components/Lightbox';
 
 export default function Home() {
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+ const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
-  return (
-    <div className="bg-transparent text-black dark:text-white dark:border-white font-sans min-h-screen transition-colors duration-300 relative">
-      <Preloader />
-      <ScrollEffects />
-      <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />
+ return (
+ <div className="bg-transparent text-black font-sans min-h-screen transition-colors duration-300 relative">
+ <Preloader />
+ <ScrollEffects />
+ <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />
 
-      <Header />
+ <Header />
 
-      <main className="mb-20 relative z-10">
-        <Hero />
-        <Services />
-        <Projects onOpenLightbox={setLightboxSrc} />
-        <Expertise />
-        <Contact />
-      </main>
+ <main className="mb-20 relative z-10">
+ <Hero />
+ <Services />
+ <Projects onOpenLightbox={setLightboxSrc} />
+ <Expertise />
+ <Contact />
+ </main>
 
-      <Footer />
-    </div>
-  );
+ <Footer />
+ </div>
+ );
 }
