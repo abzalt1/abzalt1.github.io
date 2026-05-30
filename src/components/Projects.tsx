@@ -322,6 +322,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
                 { icon: "ri-database-2-fill", name: "Supabase", info: "PostgreSQL + Auth + Row Level Security для мультитенантной архитектуры." },
                 { icon: "ri-css3-fill", name: "Tailwind CSS", info: "Утилитарная стилизация с mobile-first подходом." },
                 { icon: "ri-exchange-fill", name: "1C Integration", info: "REST API для передачи заказов и приёма статусов из 1С." },
+                { icon: "ri-telegram-fill", name: "Telegram Bot API", info: "Автоматизированные уведомления о статусах заказов (отправка в 1С, ошибки)." },
                 { icon: "ri-triangle-fill", name: "Vercel", info: "Хостинг с Edge Functions и автодеплоем из GitHub." }
             ]
         }
