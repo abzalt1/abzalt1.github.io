@@ -3,19 +3,19 @@
 export default function Services() {
  const services = [
  {
- icon: 'ri-layout-masonry-fill',
- title: 'Tilda / Webflow',
- description: 'Быстрый запуск красивых сайтов на конструкторах. Идеально для лендингов, MVP и промо-страниц.'
+ icon: 'ri-braces-line',
+ title: 'Full-Stack Web Apps',
+ description: 'Разработка масштабируемых B2B/B2C порталов, CRM-систем и дашбордов. Современный стек на Next.js, надежные базы данных (Supabase) и полная свобода логики.'
  },
  {
- icon: 'ri-reactjs-line',
- title: 'Custom Web Apps',
- description: 'Разработка сложных интерактивных интерфейсов на React / Next.js. Максимальная производительность, идеальное SEO и полная свобода.'
- },
- {
- icon: 'ri-cpu-line',
+ icon: 'ri-exchange-line',
  title: 'Автоматизация & API',
- description: 'Сложная бизнес-логика, калькуляторы, API-интеграции (DaData, CRM, мессенджеры). Автоматизируем то, с чем не справляются стандартные решения.'
+ description: 'Глубокие интеграции с 1С, складскими системами, платежными шлюзами и мессенджерами (Telegram, WhatsApp). Связываю ИТ-инфраструктуру бизнеса воедино.'
+ },
+ {
+ icon: 'ri-layout-masonry-line',
+ title: 'No/Low-Code MVP',
+ description: 'Сборка эстетичных промо-страниц и быстрых MVP на Tilda или Webflow. Идеальный вариант для проверки бизнес-гипотез без овер-инжиниринга.'
  }
  ];
 
