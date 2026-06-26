@@ -9,13 +9,14 @@ interface ProjectCardProps {
     category: string;
     image?: string | string[];
     tasks: string[];
+    result?: string;
     link: string;
     stack: { icon: string; name: string; info: string }[];
     onImageClick: (src: string) => void;
     status?: string;
 }
 
-const ProjectCard = ({ number, title, category, image, tasks, link, stack, onImageClick, status }: ProjectCardProps) => {
+const ProjectCard = ({ number, title, category, image, tasks, result, link, stack, onImageClick, status }: ProjectCardProps) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -219,6 +220,12 @@ const ProjectCard = ({ number, title, category, image, tasks, link, stack, onIma
 
                         <div className="p-8 md:p-16 flex flex-col md:flex-row gap-10 justify-between items-start">
                             <div className="max-w-md">
+                                {result && (
+                                    <div className="mb-8 p-6 bg-black/5 border-l-4 border-black">
+                                        <h4 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h4>
+                                        <p className="text-base font-medium leading-relaxed text-black">{result}</p>
+                                    </div>
+                                )}
                                 <h4 className="text-lg font-bold uppercase mb-3">Задачи</h4>
                                 <ul className="list-disc list-outside ml-4 text-base leading-relaxed font-medium mb-6 text-gray-600 space-y-2">
                                     {tasks.map((task, i) => (
@@ -266,9 +273,9 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
             title: <>PASTRY<br />STUDIO</>,
             category: "B2B Portal / Food Tech",
             image: ["/pastry1.png", "/pastry2.png", "/pastry3.png", "/pastry4.png", "/pastry5.png", "/pastry6.png"],
+            result: "Автоматизирована работа с 60+ контрагентами, исключены ошибки ручного ввода заказов в 1С, накладные формируются автоматически с суммарным подсчетом количества позиций для производства.",
             tasks: [
                 "Разработка B2B-портала оптовых заказов для пекарни, снабжающей 50+ кофеен.",
-                "Результат: Автоматизирована работа с 60+ контрагентами, исключены ошибки ручного ввода заказов в 1С, накладные формируются автоматически с суммарным подсчетом количества позиций для производства.",
                 "Ролевая система доступа: кофейня, менеджер нескольких точек, офис, администратор.",
                 "Интеграция с 1С для автоматической передачи и синхронизации статусов заказов.",
                 "Корректировка заказов администратором с отслеживанием изменений и причин.",
@@ -290,8 +297,8 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
             title: <>MY-COOK<br />DELIVERY</>,
             category: "E-commerce / Food Tech",
             image: ["/mycook1.webp", "/mycook2.webp", "/mycook3.webp", "/mycook4.webp"],
+            result: "Клиент запустил онлайн продажи и доставку без ежемесячных затрат на дорогие CRM-системы, получая заказы напрямую в WhatsApp.",
             tasks: [
-                "Результат: Клиент запустил онлайн продажи и доставку без ежемесячных затрат на дорогие CRM-системы, получая заказы напрямую в WhatsApp.",
                 "Определение стоимости доставки по координатам через API.",
                 "Сбор содержимого корзины в WhatsApp сообщение без подключения WhatsApp Business API.",
                 "Автоматический расчет скидок по базе данных.",
