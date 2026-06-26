@@ -82,12 +82,6 @@ export default function Hero() {
  </p>
  </div>
  </div>
- <div className="mt-12 pt-6 border-t-grid">
- <p className="text-base font-bold uppercase tracking-wider mb-2">Визуальный подход</p>
- <p className="text-lg leading-snug">
- Большая насмотренность в брендинге. Понимаю бренд-код, делаю визуально чисто, строго и правильно.
- </p>
- </div>
  </section>
 
  <section className="md:col-span-4 flex flex-col">
