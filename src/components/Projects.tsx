@@ -263,11 +263,35 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
     const projects = [
         {
             number: "01.",
+            title: <>PASTRY<br />STUDIO</>,
+            category: "B2B Portal / Food Tech",
+            image: ["/pastry1.png", "/pastry2.png", "/pastry3.png", "/pastry4.png", "/pastry5.png", "/pastry6.png"],
+            tasks: [
+                "Разработка B2B-портала оптовых заказов для пекарни, снабжающей 50+ кофеен.",
+                "Результат: Автоматизирована работа с 60+ контрагентами, исключены ошибки ручного ввода заказов в 1С, накладные формируются автоматически с суммарным подсчетом количества позиций для производства.",
+                "Ролевая система доступа: кофейня, менеджер нескольких точек, офис, администратор.",
+                "Интеграция с 1С для автоматической передачи и синхронизации статусов заказов.",
+                "Корректировка заказов администратором с отслеживанием изменений и причин.",
+                "Аналитическая панель с фильтрацией по периодам и экспортом отчётов в CSV.",
+                "PWA с mobile-first дизайном и дедлайном приёма заказов до 21:00."
+            ],
+            link: "https://pastrystudio.vercel.app/",
+            stack: [
+                { icon: "ri-reactjs-fill", name: "React / Next.js", info: "App Router, SSR и API-роуты для серверной логики." },
+                { icon: "ri-database-2-fill", name: "Supabase", info: "PostgreSQL + Auth + Row Level Security для мультитенантной архитектуры." },
+                { icon: "ri-css3-fill", name: "Tailwind CSS", info: "Утилитарная стилизация с mobile-first подходом." },
+                { icon: "ri-exchange-fill", name: "1C Integration", info: "REST API для передачи заказов и приёма статусов из 1С." },
+                { icon: "ri-telegram-fill", name: "Telegram Bot API", info: "Автоматизированные уведомления о статусах заказов (отправка в 1С, ошибки)." },
+                { icon: "ri-triangle-fill", name: "Vercel", info: "Хостинг с Edge Functions и автодеплоем из GitHub." }
+            ]
+        },
+        {
+            number: "02.",
             title: <>MY-COOK<br />DELIVERY</>,
             category: "E-commerce / Food Tech",
             image: ["/mycook1.webp", "/mycook2.webp", "/mycook3.webp", "/mycook4.webp"],
             tasks: [
-                "Запуск интернет-магазина доставки без покупки дорогих CRM.",
+                "Результат: Клиент запустил онлайн продажи и доставку без ежемесячных затрат на дорогие CRM-системы, получая заказы напрямую в WhatsApp.",
                 "Определение стоимости доставки по координатам через API.",
                 "Сбор содержимого корзины в WhatsApp сообщение без подключения WhatsApp Business API.",
                 "Автоматический расчет скидок по базе данных.",
@@ -283,7 +307,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
             ]
         },
         {
-            number: "02.",
+            number: "03.",
             title: <>MODEL<br />PORTFOLIO</>,
             category: "Индивидуальное визуальное портфолио для fashion-модели.",
             image: ["/dilya1.webp", "/dilya2.webp", "/dilya3.webp"],
@@ -301,29 +325,6 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: str
                 { icon: "ri-css3-fill", name: "Tailwind CSS", info: "Детализированная кастомная стилизация." },
                 { icon: "ri-cloud-line", name: "Cloudflare R2", info: "S3-совместимое объектное хранилище для медиафайлов с нулевой стоимостью исходящего трафика." },
                 { icon: "ri-triangle-fill", name: "Vercel", info: "Хостинг и автоматизированный деплой с глобальной сетью доставки контента (Edge Network)." }
-            ]
-        },
-        {
-            number: "03.",
-            title: <>PASTRY<br />STUDIO</>,
-            category: "B2B Portal / Food Tech",
-            image: ["/pastry1.png", "/pastry2.png", "/pastry3.png", "/pastry4.png", "/pastry5.png", "/pastry6.png"],
-            tasks: [
-                "Разработка B2B-портала оптовых заказов для пекарни, снабжающей 50+ кофеен.",
-                "Ролевая система доступа: кофейня, менеджер нескольких точек, офис, администратор.",
-                "Интеграция с 1С для автоматической передачи и синхронизации статусов заказов.",
-                "Корректировка заказов администратором с отслеживанием изменений и причин.",
-                "Аналитическая панель с фильтрацией по периодам и экспортом отчётов в CSV.",
-                "PWA с mobile-first дизайном и дедлайном приёма заказов до 21:00."
-            ],
-            link: "https://pastrystudio.vercel.app/",
-            stack: [
-                { icon: "ri-reactjs-fill", name: "React / Next.js", info: "App Router, SSR и API-роуты для серверной логики." },
-                { icon: "ri-database-2-fill", name: "Supabase", info: "PostgreSQL + Auth + Row Level Security для мультитенантной архитектуры." },
-                { icon: "ri-css3-fill", name: "Tailwind CSS", info: "Утилитарная стилизация с mobile-first подходом." },
-                { icon: "ri-exchange-fill", name: "1C Integration", info: "REST API для передачи заказов и приёма статусов из 1С." },
-                { icon: "ri-telegram-fill", name: "Telegram Bot API", info: "Автоматизированные уведомления о статусах заказов (отправка в 1С, ошибки)." },
-                { icon: "ri-triangle-fill", name: "Vercel", info: "Хостинг с Edge Functions и автодеплоем из GitHub." }
             ]
         }
     ];
