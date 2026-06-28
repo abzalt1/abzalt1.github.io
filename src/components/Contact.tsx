@@ -77,7 +77,7 @@ export default function Contact() {
  <span>{displayText}</span><span className="cursor-blink"></span>
  </h2>
  <p className="text-lg md:text-xl mb-10 max-w-2xl opacity-70 font-medium">
- Самый быстрый способ обсудить детали - написать мне напрямую в Telegram.
+ Напишите мне, и я бесплатно предложу оптимальную архитектуру и рассчитаю точные сроки разработки вашего продукта.
  </p>
  <a
  href="https://t.me/abzalt1"
