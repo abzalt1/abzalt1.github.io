@@ -12,7 +12,7 @@ interface ProjectCardProps {
     result?: string;
     link: string;
     stack: { icon: string; name: string; info: string }[];
-    onImageClick: (src: string) => void;
+    onImageClick: (images: string[], index: number) => void;
     status?: string;
 }
 
@@ -145,7 +145,7 @@ const ProjectCard = ({ number, title, category, image, tasks, result, link, stac
                                                 alt="Website screenshot"
                                                 fill
                                                 className="object-contain p-2 cursor-zoom-in"
-                                                onClick={() => onImageClick(img)}
+                                                onClick={(e) => { e.stopPropagation(); onImageClick(images, idx); }}
                                                 priority={idx === 0}
                                             />
                                         </div>
@@ -266,7 +266,7 @@ const ProjectCard = ({ number, title, category, image, tasks, result, link, stac
     );
 };
 
-export default function Projects({ onOpenLightbox }: { onOpenLightbox: (src: string) => void }) {
+export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: string[], index: number) => void }) {
     const projects = [
         {
             number: "01.",
