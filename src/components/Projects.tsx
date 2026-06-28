@@ -11,12 +11,13 @@ interface ProjectCardProps {
     tasks: string[];
     result?: string;
     link: string;
+    demoCredentials?: { login: string; pass: string };
     stack: { icon: string; name: string; info: string }[];
     onImageClick: (images: string[], index: number) => void;
     status?: string;
 }
 
-const ProjectCard = ({ number, title, category, image, tasks, result, link, stack, onImageClick, status }: ProjectCardProps) => {
+const ProjectCard = ({ number, title, category, image, tasks, result, link, demoCredentials, stack, onImageClick, status }: ProjectCardProps) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -235,6 +236,13 @@ const ProjectCard = ({ number, title, category, image, tasks, result, link, stac
                                 <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px]" rel="noopener noreferrer">
                                     Сайт <i className="ri-arrow-right-up-line"></i>
                                 </a>
+                                {demoCredentials && (
+                                    <div className="mt-4 p-4 bg-gray-100 rounded-[8px] border border-gray-200">
+                                        <p className="text-xs font-bold uppercase mb-1 text-black/60 tracking-widest">Демо-доступ</p>
+                                        <p className="text-sm font-medium text-black">Логин: <span className="font-mono bg-white px-1 py-0.5 rounded border">{demoCredentials.login}</span></p>
+                                        <p className="text-sm font-medium text-black mt-1">Пароль: <span className="font-mono bg-white px-1 py-0.5 rounded border">{demoCredentials.pass}</span></p>
+                                    </div>
+                                )}
                             </div>
                             <div className="w-full md:w-auto">
                                 <h4 className="text-xs font-semibold uppercase mb-3 tracking-widest opacity-50">Стек проекта</h4>
@@ -282,6 +290,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: 
                 "Аналитическая панель с фильтрацией по периодам и экспортом отчётов в CSV.",
                 "PWA с mobile-first дизайном и дедлайном приёма заказов до 21:00."
             ],
+            demoCredentials: { login: 'demo', pass: 'demo1234' },
             link: "https://pastrystudio.vercel.app/",
             stack: [
                 { icon: "ri-reactjs-fill", name: "React / Next.js", info: "App Router, SSR и API-роуты для серверной логики." },
