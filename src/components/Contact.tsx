@@ -42,6 +42,9 @@ export default function Contact() {
  // handles the link click immediately and natively, which is essential
  // for opening deep links (like Telegram) in Instagram and Safari.
  
+ // Track Meta Pixel event
+ window.fbq?.('track', 'Contact');
+
  const btn = e.currentTarget;
  const originalContent = btn.innerHTML;
 
