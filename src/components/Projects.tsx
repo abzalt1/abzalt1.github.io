@@ -233,26 +233,24 @@ const ProjectCard = ({ number, title, category, image, tasks, result, link, demo
                                         <li key={i}>{task}</li>
                                     ))}
                                 </ul>
-                                <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px]" rel="noopener noreferrer">
-                                    Сайт <i className="ri-arrow-right-up-line"></i>
-                                </a>
-                                {demoCredentials && (
-                                    <div className="mt-6 p-5 bg-black/5 border-l-4 border-black">
-                                        <h4 className="text-xs font-bold uppercase mb-4 text-black/60 tracking-widest flex items-center gap-2">
-                                            <i className="ri-key-2-line text-sm"></i> Демо-доступ
-                                        </h4>
-                                        <div className="space-y-3">
-                                            <div className="flex items-center gap-4">
-                                                <span className="text-xs font-bold uppercase w-14 opacity-50 tracking-wider">Логин</span>
-                                                <span className="text-sm font-mono font-medium bg-white px-3 py-1.5 rounded-md shadow-sm border border-black/5 select-all">{demoCredentials.login}</span>
+                                <div className="flex flex-wrap items-center gap-4 mt-2">
+                                    <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px] whitespace-nowrap" rel="noopener noreferrer">
+                                        Сайт <i className="ri-arrow-right-up-line"></i>
+                                    </a>
+                                    {demoCredentials && (
+                                        <div className="flex flex-wrap items-center gap-4 px-5 py-3 bg-black/5 rounded-[8px] border border-black/10">
+                                            <div className="flex items-center gap-2">
+                                                <i className="ri-key-2-line text-sm opacity-50"></i>
+                                                <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Логин:</span>
+                                                <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all">{demoCredentials.login}</span>
                                             </div>
-                                            <div className="flex items-center gap-4">
-                                                <span className="text-xs font-bold uppercase w-14 opacity-50 tracking-wider">Пароль</span>
-                                                <span className="text-sm font-mono font-medium bg-white px-3 py-1.5 rounded-md shadow-sm border border-black/5 select-all">{demoCredentials.pass}</span>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Пароль:</span>
+                                                <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all">{demoCredentials.pass}</span>
                                             </div>
                                         </div>
-                                    </div>
-                                )}
+                                    )}
+                                </div>
                             </div>
                             <div className="w-full md:w-auto">
                                 <h4 className="text-xs font-semibold uppercase mb-3 tracking-widest opacity-50">Стек проекта</h4>
