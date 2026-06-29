@@ -237,10 +237,20 @@ const ProjectCard = ({ number, title, category, image, tasks, result, link, demo
                                     Сайт <i className="ri-arrow-right-up-line"></i>
                                 </a>
                                 {demoCredentials && (
-                                    <div className="mt-4 p-4 bg-gray-100 rounded-[8px] border border-gray-200">
-                                        <p className="text-xs font-bold uppercase mb-1 text-black/60 tracking-widest">Демо-доступ</p>
-                                        <p className="text-sm font-medium text-black">Логин: <span className="font-mono bg-white px-1 py-0.5 rounded border">{demoCredentials.login}</span></p>
-                                        <p className="text-sm font-medium text-black mt-1">Пароль: <span className="font-mono bg-white px-1 py-0.5 rounded border">{demoCredentials.pass}</span></p>
+                                    <div className="mt-6 p-5 bg-black/5 border-l-4 border-black">
+                                        <h4 className="text-xs font-bold uppercase mb-4 text-black/60 tracking-widest flex items-center gap-2">
+                                            <i className="ri-key-2-line text-sm"></i> Демо-доступ
+                                        </h4>
+                                        <div className="space-y-3">
+                                            <div className="flex items-center gap-4">
+                                                <span className="text-xs font-bold uppercase w-14 opacity-50 tracking-wider">Логин</span>
+                                                <span className="text-sm font-mono font-medium bg-white px-3 py-1.5 rounded-md shadow-sm border border-black/5 select-all">{demoCredentials.login}</span>
+                                            </div>
+                                            <div className="flex items-center gap-4">
+                                                <span className="text-xs font-bold uppercase w-14 opacity-50 tracking-wider">Пароль</span>
+                                                <span className="text-sm font-mono font-medium bg-white px-3 py-1.5 rounded-md shadow-sm border border-black/5 select-all">{demoCredentials.pass}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 )}
                             </div>
