@@ -219,8 +219,8 @@ const ProjectCard = ({ number, title, category, image, tasks, result, link, demo
                             )}
                         </div>
 
-                        <div className="p-8 md:p-16 flex flex-col md:flex-row gap-10 justify-between items-start">
-                            <div className="max-w-md">
+                        <div className="p-8 md:p-16 flex flex-col xl:flex-row gap-10 justify-between items-start">
+                            <div className="max-w-2xl w-full">
                                 {result && (
                                     <div className="mb-8 p-6 bg-black/5 border-l-4 border-black">
                                         <h4 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h4>
@@ -233,21 +233,18 @@ const ProjectCard = ({ number, title, category, image, tasks, result, link, demo
                                         <li key={i}>{task}</li>
                                     ))}
                                 </ul>
-                                <div className="flex flex-wrap items-center gap-4 mt-2">
-                                    <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px] whitespace-nowrap" rel="noopener noreferrer">
+                                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-6">
+                                    <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px] whitespace-nowrap shrink-0" rel="noopener noreferrer">
                                         Сайт <i className="ri-arrow-right-up-line"></i>
                                     </a>
                                     {demoCredentials && (
-                                        <div className="flex flex-wrap items-center gap-4 px-5 py-3 bg-black/5 rounded-[8px] border border-black/10">
-                                            <div className="flex items-center gap-2">
-                                                <i className="ri-key-2-line text-sm opacity-50"></i>
-                                                <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Логин:</span>
-                                                <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all">{demoCredentials.login}</span>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Пароль:</span>
-                                                <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all">{demoCredentials.pass}</span>
-                                            </div>
+                                        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 px-4 py-3 bg-black/5 rounded-[8px] border border-black/10 w-full sm:w-auto">
+                                            <i className="ri-key-2-line text-sm opacity-50 hidden sm:block"></i>
+                                            <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Логин:</span>
+                                            <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all mr-2">{demoCredentials.login}</span>
+                                            
+                                            <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Пароль:</span>
+                                            <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all">{demoCredentials.pass}</span>
                                         </div>
                                     )}
                                 </div>
