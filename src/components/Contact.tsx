@@ -66,6 +66,10 @@ export default function Contact() {
  }
  };
 
+ const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+ window.fbq?.('track', 'Contact');
+ };
+
  return (
  <section
  id="contact"
@@ -77,20 +81,32 @@ export default function Contact() {
  <span>{displayText}</span><span className="cursor-blink"></span>
  </h2>
  <p className="text-lg md:text-xl mb-10 max-w-2xl opacity-70 font-medium">
- Напишите мне в Telegram, и я бесплатно оценю сроки и стоимость разработки вашего проекта (MVP).
+ Напишите мне в Telegram или WhatsApp, и я бесплатно оценю сроки и стоимость разработки вашего проекта (MVP).
  </p>
+ <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
  <a
  href="https://t.me/abzalt1"
  onClick={handleTelegramClick}
  target="_blank"
- className="inline-flex items-center gap-3 md:gap-3 bg-black text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
+ className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-black text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
  rel="noopener noreferrer"
  >
- Написать в Telegram
- <svg className="w-5 h-5 md:w-7 md:h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+ Telegram
+ <svg className="w-5 h-5 md:w-7 md:h-7 fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
  <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42l10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001l-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15l4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
  </svg>
  </a>
+ <a
+ href="https://wa.me/77081901222"
+ onClick={handleWhatsAppClick}
+ target="_blank"
+ className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-[#25D366] text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
+ rel="noopener noreferrer"
+ >
+ WhatsApp
+ <i className="ri-whatsapp-line text-2xl md:text-3xl shrink-0"></i>
+ </a>
+ </div>
  </div>
  </section>
  );
