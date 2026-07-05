@@ -85,7 +85,7 @@ export default function Contact() {
  </p>
  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
  <a
- href="https://t.me/abzalt1"
+ href="https://t.me/abzalt1?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта"
  onClick={handleTelegramClick}
  target="_blank"
  className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-black text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
@@ -97,7 +97,7 @@ export default function Contact() {
  </svg>
  </a>
  <a
- href="https://wa.me/77081901222"
+ href="https://wa.me/77081901222?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта"
  onClick={handleWhatsAppClick}
  target="_blank"
  className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-[#25D366] text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"

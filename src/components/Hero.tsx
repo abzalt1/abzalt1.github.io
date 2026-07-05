@@ -98,11 +98,11 @@ export default function Hero() {
  </div>
 
  <div className="flex-grow flex flex-col">
- <a href="https://t.me/abzalt1" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white :bg-white :text-black transition-colors group" rel="noopener noreferrer">
+ <a href="https://t.me/abzalt1?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white :bg-white :text-black transition-colors group" rel="noopener noreferrer">
  <span>Telegram</span>
  <i className="ri-arrow-right-up-line arrow-icon transition-transform"></i>
  </a>
- <a href="https://wa.me/77081901222" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white :bg-white :text-black transition-colors group" rel="noopener noreferrer">
+ <a href="https://wa.me/77081901222?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white :bg-white :text-black transition-colors group" rel="noopener noreferrer">
  <span>WhatsApp</span>
  <i className="ri-arrow-right-up-line arrow-icon transition-transform"></i>
  </a>
