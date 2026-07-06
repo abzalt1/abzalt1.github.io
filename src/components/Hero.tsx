@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 export default function Hero() {
  const [displayText, setDisplayText] = useState('');
@@ -84,34 +83,26 @@ export default function Hero() {
  </div>
  </section>
 
- <section className="md:col-span-4 flex flex-col">
- <div className="p-10 md:p-16 border-b-grid flex justify-center items-center bg-white ">
- <div className="w-56 h-56 md:w-80 md:h-80 overflow-hidden relative shadow-xl">
- <Image
- src="/me.jpg"
- alt="Abzal Photo"
- fill
- className="object-cover"
- priority
- />
- </div>
- </div>
+  <section className="md:col-span-4 flex flex-col bg-white">
+  <a href="#contact" className="flex-grow p-10 md:p-16 border-b-grid md:border-b-0 flex flex-col justify-center items-center bg-black text-white hover:bg-neutral-800 transition-colors group min-h-[300px] md:min-h-[auto]">
+  <span className="text-3xl md:text-5xl font-bold uppercase text-center mb-6 tracking-tighter">Обсудить<br/>Проект</span>
+  <div className="w-16 h-16 rounded-full bg-white text-black flex justify-center items-center group-hover:scale-110 transition-transform">
+  <i className="ri-arrow-down-line text-3xl"></i>
+  </div>
+  </a>
 
- <div className="flex-grow flex flex-col">
- <a href="https://t.me/abzalt1?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white :bg-white :text-black transition-colors group" rel="noopener noreferrer">
- <span>Telegram</span>
- <i className="ri-arrow-right-up-line arrow-icon transition-transform"></i>
- </a>
- <a href="https://wa.me/77081901222?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase border-b-grid hover:bg-black hover:text-white :bg-white :text-black transition-colors group" rel="noopener noreferrer">
- <span>WhatsApp</span>
- <i className="ri-arrow-right-up-line arrow-icon transition-transform"></i>
- </a>
- <a href="https://instagram.com/abzalt1" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="arrow-link flex-1 flex items-center justify-between p-6 text-xl font-bold uppercase hover:bg-black hover:text-white :bg-white :text-black transition-colors group" rel="noopener noreferrer">
- <span>Instagram</span>
- <i className="ri-arrow-right-up-line arrow-icon transition-transform"></i>
- </a>
- </div>
- </section>
- </div>
+  <div className="flex border-t-grid md:border-b-grid h-24">
+  <a href="https://t.me/abzalt1?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-black hover:text-white transition-colors" rel="noopener noreferrer" title="Telegram">
+  <i className="ri-telegram-fill text-4xl"></i>
+  </a>
+  <a href="https://wa.me/77081901222?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-[#25D366] hover:text-white transition-colors" rel="noopener noreferrer" title="WhatsApp">
+  <i className="ri-whatsapp-line text-4xl"></i>
+  </a>
+  <a href="https://instagram.com/abzalt1" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-purple-600 hover:text-white transition-colors" rel="noopener noreferrer" title="Instagram">
+  <i className="ri-instagram-line text-4xl"></i>
+  </a>
+  </div>
+  </section>
+  </div>
  );
 }
