@@ -310,7 +310,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: 
             number: "02.",
             title: <>MY-COOK<br />DELIVERY</>,
             category: "E-commerce / Food Tech",
-            image: ["/mycook1.webp", "/mycook2.webp", "/mycook3.webp", "/mycook4.webp"],
+            image: ["/mycook_new1.webp", "/mycook_new2.webp", "/mycook_new3.webp", "/mycook_new4.webp", "/mycook_new5.webp", "/mycook_new6.webp", "/mycook_new7.webp", "/mycook_new8.webp"],
             result: "Клиент запустил онлайн продажи и доставку без ежемесячных затрат на дорогие CRM-системы, получая заказы напрямую в WhatsApp.",
             tasks: [
                 "Определение стоимости доставки по координатам через API.",
@@ -318,13 +318,11 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: 
                 "Автоматический расчет скидок по базе данных.",
                 "Динамический расчет времени на доставку в зависимости от сложности блюда."
             ],
-            link: "https://my-cook.kz",
+            link: "https://mycook.kz",
             stack: [
-                { icon: "ri-layout-masonry-fill", name: "Tilda Zero Block", info: "Гибкая верстка уникальных блоков." },
-                { icon: "ri-shield-check-fill", name: "Order Logic Engine", info: "Скрипт валидации гео-зон, строгого контроля времени и логики корзины." },
-                { icon: "ri-map-pin-2-fill", name: "DaData API", info: "Геокодинг адресов и определение зон." },
-                { icon: "ri-code-box-fill", name: "Google Apps Script", info: "Custom API для системы лояльности и динамических скидок." },
-                { icon: "ri-whatsapp-fill", name: "WhatsApp Integration", info: "Автоматическое формирование структуры заказа и отправка в мессенджер." }
+                { icon: "ri-nextjs-fill", name: "Next.js", info: "App Router, SSR и API-роуты для быстрой работы приложения." },
+                { icon: "ri-database-2-fill", name: "Supabase", info: "PostgreSQL база данных для хранения каталога и заказов." },
+                { icon: "ri-triangle-fill", name: "Vercel", info: "Надежный хостинг с автоматическим деплоем из GitHub." }
             ]
         },
         {
