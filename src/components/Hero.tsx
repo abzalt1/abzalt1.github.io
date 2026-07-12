@@ -93,9 +93,7 @@ export default function Hero() {
 
   <div className="flex border-t-grid md:border-b-grid h-24">
   <a href="https://t.me/abzalt1?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-black hover:text-white transition-colors" rel="noopener noreferrer" title="Telegram">
-  <svg className="w-9 h-9 fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42l10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001l-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15l4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
-  </svg>
+  <i className="ri-send-plane-line text-4xl"></i>
   </a>
   <a href="https://wa.me/77081901222?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-[#25D366] hover:text-white transition-colors" rel="noopener noreferrer" title="WhatsApp">
   <i className="ri-whatsapp-line text-4xl"></i>
