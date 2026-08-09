@@ -84,9 +84,11 @@ export default function Hero() {
  </section>
 
   <section className="md:col-span-4 flex flex-col bg-white">
-  <a href="#contact" className="flex-grow p-10 md:p-16 border-b-grid md:border-b-0 flex flex-col justify-center items-center bg-black text-white hover:bg-neutral-800 transition-colors group min-h-[300px] md:min-h-[auto]">
-  <span className="text-3xl md:text-5xl font-bold uppercase text-center mb-6 tracking-tighter">Обсудить<br/>Проект</span>
-  <div className="w-16 h-16 rounded-full bg-white text-black flex justify-center items-center group-hover:scale-110 transition-transform">
+  <a href="#contact" className="relative flex-grow p-10 md:p-16 border-b-grid md:border-b-0 flex flex-col justify-center items-center text-black group min-h-[300px] md:min-h-[auto] overflow-hidden">
+  <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: 'url(/discuss-bg.png)' }} />
+  <div className="absolute inset-0 bg-white/30 group-hover:bg-white/10 transition-colors duration-700" />
+  <span className="relative z-10 text-3xl md:text-5xl font-bold uppercase text-center mb-6 tracking-tighter">Обсудить<br/>Проект</span>
+  <div className="relative z-10 w-16 h-16 rounded-full bg-black text-white flex justify-center items-center group-hover:scale-110 transition-transform shadow-md">
   <i className="ri-arrow-down-line text-3xl"></i>
   </div>
   </a>
