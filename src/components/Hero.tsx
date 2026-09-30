@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import useContactLinks from './useContactLinks';
 
 export default function Hero() {
+ const contactLinks = useContactLinks();
  const [displayText, setDisplayText] = useState('');
  const phrases = [
  "Бизнес-<br>ориентированный<br>разработчик",
@@ -96,10 +98,10 @@ export default function Hero() {
   </a>
 
   <div className="flex border-t-grid md:border-b-grid h-24">
-  <a href="https://t.me/abzalt1?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-black hover:text-white transition-colors" rel="noopener noreferrer" title="Telegram">
+  <a href={contactLinks.telegram} onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-black hover:text-white transition-colors" rel="noopener noreferrer" title="Telegram">
   <i className="ri-send-plane-line text-4xl"></i>
   </a>
-  <a href="https://wa.me/77081901222?text=Здравствуйте!%20Хочу%20обсудить%20разработку%20проекта" onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-[#25D366] hover:text-white transition-colors" rel="noopener noreferrer" title="WhatsApp">
+  <a href={contactLinks.whatsapp} onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-[#25D366] hover:text-white transition-colors" rel="noopener noreferrer" title="WhatsApp">
   <i className="ri-whatsapp-line text-4xl"></i>
   </a>
   <a href="https://instagram.com/abzalt1" target="_blank" className="flex-1 flex justify-center items-center hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-purple-600 hover:text-white transition-colors" rel="noopener noreferrer" title="Instagram">
