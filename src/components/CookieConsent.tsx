@@ -10,19 +10,27 @@ export default function CookieConsent() {
   const [consent, setConsent] = useState<'granted' | 'denied' | null>(null);
   const [showBanner, setShowBanner] = useState(false);
 
+  // Opt-out model: analytics load by default unless the visitor has declined.
+  // The banner only informs and offers a way to decline.
   useEffect(() => {
     const stored = window.localStorage.getItem(CONSENT_KEY);
-    if (stored === 'granted' || stored === 'denied') {
-      setConsent(stored);
+    if (stored === 'denied') {
+      setConsent('denied');
     } else {
-      setShowBanner(true);
+      setConsent('granted');
+      if (stored !== 'granted') setShowBanner(true);
     }
   }, []);
 
   const choose = (value: 'granted' | 'denied') => {
     window.localStorage.setItem(CONSENT_KEY, value);
-    setConsent(value);
     setShowBanner(false);
+    if (value === 'denied') {
+      // Scripts are already running on this page; stop the pixel now
+      // and reload so Metrica is not initialised either.
+      window.fbq?.('consent', 'revoke');
+      window.location.reload();
+    }
   };
 
   return (
@@ -80,7 +88,7 @@ export default function CookieConsent() {
               onClick={() => choose('granted')}
               className="px-5 py-2.5 bg-white text-black uppercase font-bold text-xs tracking-widest hover:opacity-80 transition-opacity rounded"
             >
-              Принять
+              Понятно
             </button>
           </div>
         </div>
