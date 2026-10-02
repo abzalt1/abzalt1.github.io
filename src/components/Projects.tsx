@@ -283,6 +283,34 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: 
     const projects = [
         {
             number: "01.",
+            title: <>FABRIKA<br />ERP</>,
+            category: "ERP-система / Food Production",
+            image: ["/fabrika1.webp", "/fabrika2.webp", "/fabrika3.webp", "/fabrika4.webp", "/fabrika5.webp", "/fabrika6.webp", "/fabrika7.webp"],
+            result: "Разработана собственная ERP-система для производства выпечки и готовой еды в Астане, которая заменила разрозненные таблицы и ручной учёт. Весь цикл — от заявки кофейни до списания муки со склада — проходит в одной системе: заказы автоматически превращаются в план производства, ингредиенты списываются по техкартам, а владелец видит выручку, себестоимость и маржу в реальном времени.",
+            tasks: [
+                "Ролевая PWA-платформа: отдельные интерфейсы для управляющих кофейнями, цеха, курьеров, бухгалтера и администратора с гибкой настройкой прав доступа.",
+                "Приём заказов с контролем дедлайнов: основной заказ на завтра до 22:00 и срочный дозаказ на сегодня — с серверной проверкой времени по Астане.",
+                "Производственный план: автоматическая сводка позиций по всем заявкам на день для цеха и ведение заказа по статусам от «Готовится» до «Доставлен».",
+                "Складской учёт: остатки по нескольким складам, приходные накладные, перемещения, инвентаризации и списания с печатью и выгрузкой в Excel для ревизии.",
+                "Технологические карты: состав каждого продукта и полуфабриката для автоматического списания сырья со склада по фактическим заказам.",
+                "Финансовая отчётность: акты сверок с покупателями и поставщиками, движение товаров и отчёт о себестоимости против выручки с расчётом маржи.",
+                "Документооборот: массовая печать накладных на чековой ленте (58/80 мм) и сводок на A4 через серверную генерацию PDF.",
+                "Курьерский модуль: маршрут доставок на день и фотоотчёт при передаче заказа с автоматическим сжатием снимков.",
+                "Продакшн-инфраструктура: собственный VPS в Казахстане, blue/green деплой без простоя, watchdog, автобэкапы и внешний мониторинг аптайма."
+            ],
+            link: "https://fabrika01.kz",
+            stack: [
+                { icon: "ri-nextjs-fill", name: "Next.js", info: "App Router, Server Actions и standalone-сборка для собственного сервера." },
+                { icon: "ri-database-2-fill", name: "Supabase", info: "PostgreSQL + Auth + Row Level Security для разграничения доступа по ролям." },
+                { icon: "ri-css3-fill", name: "Tailwind CSS", info: "Адаптивный интерфейс админки и мобильных кабинетов." },
+                { icon: "ri-smartphone-line", name: "PWA / Web Push", info: "Установка на телефон, офлайн-режим и push-уведомления о заказах." },
+                { icon: "ri-cloud-line", name: "Cloudflare R2", info: "Хранилище фото товаров и фотоотчётов курьеров." },
+                { icon: "ri-printer-line", name: "Puppeteer PDF", info: "Серверная генерация накладных и отчётов для печати." },
+                { icon: "ri-server-line", name: "VPS / Nginx", info: "Хостинг в Астане, blue/green деплой через systemd и rate-limit на nginx." }
+            ]
+        },
+        {
+            number: "02.",
             title: <>PASTRY<br />STUDIO</>,
             category: "B2B Portal / Food Tech",
             image: ["/pastry1.png", "/pastry2.png", "/pastry3.png", "/pastry4.png", "/pastry5.png", "/pastry6.png"],
@@ -308,7 +336,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: 
             ]
         },
         {
-            number: "02.",
+            number: "03.",
             title: <>MY-COOK<br />DELIVERY</>,
             category: "E-commerce / Food Tech",
             image: ["/mycook_new1.webp", "/mycook_new2.webp", "/mycook_new3.webp", "/mycook_new4.webp", "/mycook_new5.webp", "/mycook_new6.webp", "/mycook_new7.webp", "/mycook_new8.webp"],
@@ -330,7 +358,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: 
             ]
         },
         {
-            number: "03.",
+            number: "04.",
             title: <>MODEL<br />PORTFOLIO</>,
             category: "Индивидуальное визуальное портфолио для fashion-модели.",
             image: ["/dilya1.webp", "/dilya2.webp", "/dilya3.webp"],
