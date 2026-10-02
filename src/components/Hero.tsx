@@ -98,7 +98,7 @@ export default function Hero() {
   </a>
 
   <div className="flex border-t-grid md:border-b-grid h-24">
-  <a href={contactLinks.telegram} onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-black hover:text-white transition-colors" rel="noopener noreferrer" title="Telegram">
+  <a href={contactLinks.telegram} onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-[#229ED9] hover:text-white transition-colors" rel="noopener noreferrer" title="Telegram">
   <i className="ri-send-plane-line text-4xl"></i>
   </a>
   <a href={contactLinks.whatsapp} onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-[#25D366] hover:text-white transition-colors" rel="noopener noreferrer" title="WhatsApp">
