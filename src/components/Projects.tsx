@@ -11,13 +11,14 @@ interface ProjectCardProps {
     tasks: string[];
     result?: string;
     link: string;
+    linkLabel?: string;
     demoCredentials?: { login: string; pass: string };
     stack: { icon: string; name: string; info: string }[];
     onImageClick: (images: string[], index: number) => void;
     status?: string;
 }
 
-const ProjectCard = ({ number, title, category, image, tasks, result, link, demoCredentials, stack, onImageClick, status }: ProjectCardProps) => {
+const ProjectCard = ({ number, title, category, image, tasks, result, link, linkLabel = 'Сайт', demoCredentials, stack, onImageClick, status }: ProjectCardProps) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -235,7 +236,7 @@ const ProjectCard = ({ number, title, category, image, tasks, result, link, demo
                                 </ul>
                                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-6">
                                     <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px] whitespace-nowrap shrink-0" rel="noopener noreferrer">
-                                        Сайт <i className="ri-arrow-right-up-line"></i>
+                                        {linkLabel} <i className="ri-arrow-right-up-line"></i>
                                     </a>
                                     {demoCredentials && (
                                         <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 px-4 py-3 bg-black/5 rounded-[8px] border border-black/10 w-full sm:w-auto">
@@ -324,8 +325,8 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: 
                 "Аналитическая панель: Встроенный дашборд с фильтрацией продаж по периодам/точкам и выгрузкой отчетов в CSV для бухгалтерии.",
                 "Безопасный демо-режим: Архитектурно заложенная изолированная среда для презентации продукта без риска изменения боевой базы данных."
             ],
-            demoCredentials: { login: 'demo', pass: 'demo1234' },
-            link: "https://pastrystudio.vercel.app/",
+            link: "https://pastrystudio-demo.vercel.app/",
+            linkLabel: "Демо",
             stack: [
                 { icon: "ri-reactjs-fill", name: "React / Next.js", info: "App Router, SSR и API-роуты для серверной логики." },
                 { icon: "ri-database-2-fill", name: "Supabase", info: "PostgreSQL + Auth + Row Level Security для мультитенантной архитектуры." },
