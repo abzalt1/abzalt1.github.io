@@ -313,7 +313,7 @@ export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: 
             number: "02.",
             title: <>PASTRY<br />STUDIO</>,
             category: "B2B Portal / Food Tech",
-            image: ["/pastry1.png", "/pastry2.png", "/pastry3.png", "/pastry4.png", "/pastry5.png", "/pastry6.png"],
+            image: ["/pastry1.webp", "/pastry2.webp", "/pastry3.webp"],
             result: "Полностью автоматизирован цикл оптовых B2B-продаж. Исключен человеческий фактор при вводе данных в 1С, а время на обработку заказов сокращено до нуля. Автоматизировано формирование ежедневных сводных накладных для цеха, что обеспечило бесперебойное снабжение 60+ партнерских точек.",
             tasks: [
                 "Mobile-first PWA-приложение: Удобный портал для оформления заказов со смартфона с жестким системным контролем дедлайнов (прием заявок строго до 21:00).",
