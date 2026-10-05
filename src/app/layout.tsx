@@ -22,14 +22,14 @@ export const metadata: Metadata = {
  siteName: "abzalt1.dev",
  locale: "ru_RU",
  type: "website",
- images: [{ url: "https://abzalt1.github.io/me.jpg", width: 1429, height: 1453 }],
+ images: [{ url: "https://abzalt1.github.io/og.png", width: 1200, height: 630, alt: "abzalt1.dev — Business-Oriented Developer" }],
  },
  twitter: {
  card: "summary_large_image",
  title: "abzalt1.dev | Business-Oriented Developer",
  description: "Разработка сайтов, которые приносят прибыль.",
  creator: "@abzalt1",
- images: ["https://abzalt1.github.io/me.jpg"],
+ images: ["https://abzalt1.github.io/og.png"],
  },
 };
 
