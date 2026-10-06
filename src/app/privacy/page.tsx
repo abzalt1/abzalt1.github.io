@@ -1,6 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Политика конфиденциальности | abzalt1.dev',
+  alternates: { canonical: '/privacy' },
+};
 
 export default function PrivacyPolicy() {
   return (

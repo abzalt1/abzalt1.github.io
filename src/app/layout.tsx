@@ -9,28 +9,74 @@ const interTight = Inter_Tight({
  weight: ["400", "500", "600", "700", "800"],
 });
 
+const SITE_URL = "https://abzalt1.github.io";
+const TITLE = "Разработка CRM, ERP и B2B-систем под ваш бизнес | Abzal Tolembi";
+const DESCRIPTION = "Разрабатываю CRM, ERP и системы приёма оптовых заказов под процессы бизнеса: заказы, склад, производство, накладные, интеграции с 1С и WhatsApp. Алматы, Астана, весь Казахстан.";
+const SHORT_DESCRIPTION = "CRM, ERP и системы приёма оптовых заказов под процессы вашего бизнеса.";
+
 export const metadata: Metadata = {
- title: "abzalt1.dev | Business-Oriented Developer",
- description: "Разработка сайтов для бизнеса. Tilda, Webflow, Custom Frontend. Визуально чисто, технически грамотно.",
+ metadataBase: new URL(SITE_URL),
+ title: TITLE,
+ description: DESCRIPTION,
+ alternates: {
+ canonical: "/",
+ },
  icons: {
  icon: "/favicon.png",
  },
  openGraph: {
- title: "abzalt1.dev | Business-Oriented Developer",
- description: "Разработка сайтов, которые приносят прибыль.",
- url: "https://abzalt1.github.io/",
+ title: TITLE,
+ description: SHORT_DESCRIPTION,
+ url: `${SITE_URL}/`,
  siteName: "abzalt1.dev",
  locale: "ru_RU",
  type: "website",
- images: [{ url: "https://abzalt1.github.io/og.png", width: 1200, height: 630, alt: "abzalt1.dev — Business-Oriented Developer" }],
+ images: [{ url: `${SITE_URL}/og.png`, width: 1200, height: 630, alt: "abzalt1.dev — разработка CRM, ERP и B2B-систем" }],
  },
  twitter: {
  card: "summary_large_image",
- title: "abzalt1.dev | Business-Oriented Developer",
- description: "Разработка сайтов, которые приносят прибыль.",
+ title: TITLE,
+ description: SHORT_DESCRIPTION,
  creator: "@abzalt1",
- images: ["https://abzalt1.github.io/og.png"],
+ images: [`${SITE_URL}/og.png`],
  },
+};
+
+// Structured data so search engines and AI assistants can tell who the site belongs to and what services it offers.
+const jsonLd = {
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Person",
+ "@id": `${SITE_URL}/#person`,
+ name: "Abzal Tolembi",
+ alternateName: "abzalt1",
+ jobTitle: "Full-stack разработчик бизнес-систем",
+ url: `${SITE_URL}/`,
+ sameAs: ["https://instagram.com/abzalt1", "https://t.me/abzalt1"],
+ knowsAbout: ["CRM", "ERP", "B2B-порталы", "Автоматизация бизнес-процессов", "Интеграция с 1С", "WhatsApp Business API", "Next.js", "Supabase"],
+ },
+ {
+ "@type": "ProfessionalService",
+ "@id": `${SITE_URL}/#service`,
+ name: "abzalt1.dev",
+ url: `${SITE_URL}/`,
+ description: DESCRIPTION,
+ founder: { "@id": `${SITE_URL}/#person` },
+ address: { "@type": "PostalAddress", addressLocality: "Алматы", addressCountry: "KZ" },
+ areaServed: { "@type": "Country", name: "Казахстан" },
+ hasOfferCatalog: {
+ "@type": "OfferCatalog",
+ name: "Услуги",
+ itemListElement: [
+ { "@type": "Offer", itemOffered: { "@type": "Service", name: "Разработка ERP-систем для производства и склада" } },
+ { "@type": "Offer", itemOffered: { "@type": "Service", name: "Разработка CRM-систем под процессы бизнеса" } },
+ { "@type": "Offer", itemOffered: { "@type": "Service", name: "Системы приёма оптовых заказов (B2B-порталы)" } },
+ { "@type": "Offer", itemOffered: { "@type": "Service", name: "Интеграции с 1С, Telegram и WhatsApp" } },
+ ],
+ },
+ },
+ ],
 };
 
 export default function RootLayout({
@@ -51,6 +97,10 @@ export default function RootLayout({
  <body
  className={`${interTight.variable} font-sans antialiased`}
  >
+ <script
+ type="application/ld+json"
+ dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+ />
  <CookieConsent />
  {children}
  </body>
