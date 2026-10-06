@@ -74,9 +74,11 @@ export default function Hero() {
  <div className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section overflow-hidden">
  <section className="md:col-span-8 p-10 md:p-20 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
  <div>
- <h2 className="text-3xl md:text-6xl font-bold uppercase mb-12 leading-none tracking-tighter min-h-[110px] md:min-h-[220px] flex flex-col justify-start">
- {renderDisplayText()}
- </h2>
+ <h1 className="text-3xl md:text-6xl font-bold uppercase mb-12 leading-none tracking-tighter min-h-[110px] md:min-h-[220px] flex flex-col justify-start">
+ {/* The typed text starts empty in the static HTML, so search engines and screen readers get the full heading here. */}
+ <span className="sr-only">Бизнес-ориентированный разработчик: CRM, ERP и B2B-системы под ваш бизнес</span>
+ <span aria-hidden="true" className="flex flex-col">{renderDisplayText()}</span>
+ </h1>
  <div className="space-y-6 text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
  <p>
  Мой бэкграунд топ-менеджера и опыт развития собственных брендов в ритейле позволяет мне создавать не просто красивый код, а работающие бизнес-инструменты. Я говорю с вами на языке требуемых метрик и прибыли. Подберу оптимальное техническое решение (от запуска быстрого MVP до сложной кастомной Next.js архитектуры), которое решит вашу задачу без овер-инжиниринга.

@@ -52,9 +52,9 @@ export default function Header() {
  ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
  >
  <div className="flex justify-between items-center px-6 md:px-10">
- <h1 className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none cursor-default">
+ <div className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none cursor-default">
  abzalt1.dev
- </h1>
+ </div>
  <div className="flex gap-4 md:gap-10 text-sm md:text-lg font-semibold uppercase tracking-widest items-center">
  <nav className="hidden md:flex gap-8">
  {navLinks.map(link => (
