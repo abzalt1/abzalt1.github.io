@@ -9,7 +9,7 @@ const interTight = Inter_Tight({
  weight: ["400", "500", "600", "700", "800"],
 });
 
-const SITE_URL = "https://abzalt1.github.io";
+const SITE_URL = "https://abzalt1.dev";
 const TITLE = "Разработка CRM, ERP и B2B-систем под ваш бизнес | Abzal Tolembi";
 const DESCRIPTION = "Разрабатываю CRM, ERP и системы приёма оптовых заказов под процессы бизнеса: заказы, склад, производство, накладные, интеграции с 1С и WhatsApp. Алматы, Астана, весь Казахстан.";
 const SHORT_DESCRIPTION = "CRM, ERP и системы приёма оптовых заказов под процессы вашего бизнеса.";
