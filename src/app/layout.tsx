@@ -23,6 +23,7 @@ export const metadata: Metadata = {
  },
  verification: {
  google: "pZFwH_HQkEECxqTlnEPQhU3vXO8o6GP4Jg592iRGfQc",
+ other: { "msvalidate.01": "B3E821C2C02E665868E32FEBB87A9D47" },
  },
  icons: {
  icon: "/favicon.png",
