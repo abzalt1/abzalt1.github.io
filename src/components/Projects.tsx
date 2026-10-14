@@ -4,8 +4,17 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { projects, type Project } from '@/data/projects';
 import ProjectGallery from './ProjectGallery';
-import StackList from './StackList';
 import CopyLinkButton from './CopyLinkButton';
+
+// The homepage card is a teaser; the full task list and stack live on the project page.
+const CARD_TASKS = 3;
+
+const pluralTasks = (n: number) => {
+    const mod10 = n % 10, mod100 = n % 100;
+    if (mod10 === 1 && mod100 !== 11) return 'задача';
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'задачи';
+    return 'задач';
+};
 
 interface ProjectCardProps {
     project: Project;
@@ -13,7 +22,9 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
-    const { slug, number, titleLines, category, images, tasks, result, link, linkLabel = 'Сайт', demoCredentials, stack, status } = project;
+    const { slug, number, titleLines, category, images, tasks, cardTasks, result, link, linkLabel = 'Сайт', demoCredentials, status } = project;
+    const shownTasks = cardTasks ? cardTasks.map((i) => tasks[i]) : tasks.slice(0, CARD_TASKS);
+    const hiddenCount = tasks.length - shownTasks.length;
     const [isHovered, setIsHovered] = useState(false);
     const href = `/projects/${slug}`;
 
@@ -50,7 +61,7 @@ const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
                             onImageClick={onImageClick}
                         />
 
-                        <div className="p-8 md:p-16 flex flex-col xl:flex-row gap-10 justify-between items-start">
+                        <div className="p-8 md:p-16">
                             <div className="max-w-2xl w-full">
                                 {result && (
                                     <div className="mb-8 p-6 bg-black/5 border-l-4 border-black">
@@ -59,11 +70,16 @@ const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
                                     </div>
                                 )}
                                 <h4 className="text-lg font-bold uppercase mb-3">Задачи</h4>
-                                <ul className="list-disc list-outside ml-4 text-base leading-relaxed font-medium mb-6 text-gray-600 space-y-2">
-                                    {tasks.map((task, i) => (
+                                <ul className="list-disc list-outside ml-4 text-base leading-relaxed font-medium mb-4 text-gray-600 space-y-2">
+                                    {shownTasks.map((task, i) => (
                                         <li key={i}>{task}</li>
                                     ))}
                                 </ul>
+                                {hiddenCount > 0 && (
+                                    <Link href={href} className="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wider opacity-60 hover:opacity-100 transition-opacity">
+                                        Ещё {hiddenCount} {pluralTasks(hiddenCount)} и стек проекта <i className="ri-arrow-right-line"></i>
+                                    </Link>
+                                )}
                                 <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 mt-6">
                                     <Link href={href} className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px] whitespace-nowrap shrink-0">
                                         Подробнее <i className="ri-arrow-right-line"></i>
@@ -84,7 +100,6 @@ const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
                                     )}
                                 </div>
                             </div>
-                            <StackList stack={stack} />
                         </div>
                     </>
                 ) : (
