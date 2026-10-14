@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,9 +39,9 @@ export default function Header() {
  }, []);
 
  const navLinks = [
- { href: '#services', label: 'Услуги' },
- { href: '#projects', label: 'Проекты' },
- { href: '#expertise', label: 'Навыки' },
+ { href: '/#services', label: 'Услуги' },
+ { href: '/#projects', label: 'Проекты' },
+ { href: '/#expertise', label: 'Навыки' },
  ];
 
  return (
@@ -52,9 +53,9 @@ export default function Header() {
  ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
  >
  <div className="flex justify-between items-center px-6 md:px-10">
- <div className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none cursor-default">
+ <Link href="/" className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none">
  abzalt1.dev
- </div>
+ </Link>
  <div className="flex gap-4 md:gap-10 text-sm md:text-lg font-semibold uppercase tracking-widest items-center">
  <nav className="hidden md:flex gap-8">
  {navLinks.map(link => (
