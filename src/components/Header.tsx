@@ -52,7 +52,7 @@ export default function Header() {
  ${isFloating ? 'floating-header py-4' : 'py-6 md:py-8 border-b border-black '} 
  ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
  >
- <div className="flex justify-between items-center px-6 md:px-10">
+ <div className="flex justify-between items-center gap-6 px-6 md:px-10">
  <Link href="/" className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none">
  abzalt1.dev
  </Link>
@@ -64,8 +64,8 @@ export default function Header() {
  </a>
  ))}
  </nav>
- <span className="hidden sm:inline">Almaty, KZ</span>
- <span id="date-tag" className="hidden sm:inline text-black font-bold">{currentDate}</span>
+ <span className="hidden sm:inline md:hidden lg:inline">Almaty, KZ</span>
+ <span id="date-tag" className="hidden sm:inline md:hidden lg:inline text-black font-bold">{currentDate}</span>
 
  <button
  onClick={() => setIsMenuOpen(true)}
