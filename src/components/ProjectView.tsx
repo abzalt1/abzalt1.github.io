@@ -62,8 +62,8 @@ export default function ProjectView({ slug }: { slug: string }) {
                         />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-12">
-                        <div className="md:col-span-8 p-8 md:p-16 border-b-grid md:border-b-0 md:border-r-grid">
+                    <div className="grid grid-cols-1 lg:grid-cols-12">
+                        <div className="lg:col-span-8 p-8 md:p-16 border-b-grid lg:border-b-0 lg:border-r-grid">
                             <div className="mb-10 p-6 md:p-8 bg-black/5 border-l-4 border-black">
                                 <h2 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h2>
                                 <p className="text-lg font-medium leading-relaxed text-black">{result}</p>
@@ -75,7 +75,7 @@ export default function ProjectView({ slug }: { slug: string }) {
                                 ))}
                             </ul>
                         </div>
-                        <div className="md:col-span-4 p-8 md:p-16">
+                        <div className="lg:col-span-4 p-8 md:p-16">
                             <StackList stack={stack} />
                         </div>
                     </div>

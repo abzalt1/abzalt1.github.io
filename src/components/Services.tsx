@@ -24,7 +24,7 @@ export default function Services() {
  {services.map((service, index) => (
  <div
  key={index}
- className={`p-10 md:p-16 border-b-grid md:border-b-0 ${index < services.length - 1 ? 'md:border-r-grid' : ''} hover:bg-black hover:text-white :bg-white :text-black transition-colors group cursor-default`}
+ className={`p-10 md:p-8 lg:p-16 border-b-grid md:border-b-0 ${index < services.length - 1 ? 'md:border-r-grid' : ''} hover:bg-black hover:text-white :bg-white :text-black transition-colors group cursor-default`}
  >
  <i className={`${service.icon} text-4xl mb-6 block`}></i>
  <h3 className="text-xl font-bold uppercase mb-2">{service.title}</h3>

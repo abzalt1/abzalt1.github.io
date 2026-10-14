@@ -23,10 +23,10 @@ const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="md:col-span-4 p-8 md:p-16 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
+            <div className="md:col-span-4 p-8 md:p-10 xl:p-16 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
                     <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} {status || 'Избранный проект'}</span>
-                    <h3 className="text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight">
+                    <h3 className="text-4xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
                         <Link href={href} className="hover:opacity-60 transition-opacity">
                             {titleLines.map((line, i) => (
                                 <span key={i}>{i > 0 && <br />}{line}</span>
