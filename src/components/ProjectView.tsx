@@ -15,7 +15,7 @@ import CopyLinkButton from './CopyLinkButton';
 
 export default function ProjectView({ slug }: { slug: string }) {
     const project = getProject(slug)!;
-    const { number, titleLines, category, images, tasks, result, link, linkLabel = 'Сайт', stack } = project;
+    const { number, titleLines, category, images, tasks, result, link, linkLabel = 'Сайт', stack, challenge, testimonial } = project;
     const [lightboxData, setLightboxData] = useState<{ images: string[]; index: number } | null>(null);
     const [isGalleryHovered, setIsGalleryHovered] = useState(false);
     const others = projects.filter((p) => p.slug !== slug);
@@ -62,6 +62,13 @@ export default function ProjectView({ slug }: { slug: string }) {
                         />
                     </div>
 
+                    {challenge && (
+                        <section className="p-8 md:p-16 border-b-grid">
+                            <h2 className="text-2xl font-bold uppercase mb-4">Задача клиента</h2>
+                            <p className="text-lg md:text-xl leading-relaxed font-medium max-w-3xl">{challenge}</p>
+                        </section>
+                    )}
+
                     <div className="grid grid-cols-1 lg:grid-cols-12">
                         <div className="lg:col-span-8 p-8 md:p-16 border-b-grid lg:border-b-0 lg:border-r-grid">
                             <div className="mb-10 p-6 md:p-8 bg-black/5 border-l-4 border-black">
@@ -79,6 +86,13 @@ export default function ProjectView({ slug }: { slug: string }) {
                             <StackList stack={stack} />
                         </div>
                     </div>
+
+                    {testimonial && (
+                        <figure className="p-8 md:p-16 border-t-grid bg-black text-white">
+                            <blockquote className="text-xl md:text-3xl font-medium leading-snug tracking-tight max-w-4xl">«{testimonial.quote}»</blockquote>
+                            <figcaption className="mt-6 text-sm font-bold uppercase tracking-widest opacity-60">{testimonial.author}</figcaption>
+                        </figure>
+                    )}
                 </article>
 
                 <Contact />
