@@ -4,7 +4,7 @@ export default function StackList({ stack }: { stack: StackItem[] }) {
     return (
         <div className="w-full md:w-auto">
             <h4 className="text-xs font-semibold uppercase mb-3 tracking-widest opacity-50">Стек проекта</h4>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-bold uppercase pb-2">
+            <ul className="space-y-3 text-sm font-bold uppercase pb-2">
                 {stack.map((item, i) => (
                     <li key={i} className="flex items-center gap-3 group relative cursor-help w-fit">
                         <i className={`${item.icon} text-lg`}></i> {item.name}
