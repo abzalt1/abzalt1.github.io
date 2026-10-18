@@ -102,7 +102,7 @@ export default function Contact() {
  href={contactLinks.whatsapp}
  onClick={handleWhatsAppClick}
  target="_blank"
- className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-[#25D366] text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
+ className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-[#25D366] text-black px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
  rel="noopener noreferrer"
  >
  WhatsApp
