@@ -27,7 +27,7 @@ export default function ProjectView({ slug }: { slug: string }) {
 
             <Header />
 
-            <main className="mb-20 relative z-10">
+            <main className="mb-20 relative z-10 px-4 md:px-6 pt-4 md:pt-6">
                 <div className="px-6 md:px-10 py-6">
                     <Link href="/#projects" className="inline-flex items-center gap-2 text-sm font-bold uppercase hover:opacity-60 transition-opacity">
                         <i className="ri-arrow-left-line"></i> Все проекты
@@ -46,7 +46,7 @@ export default function ProjectView({ slug }: { slug: string }) {
                             <p className="mt-6 text-base font-bold uppercase tracking-tighter underline opacity-80">{category}</p>
                         </div>
                         <div className="flex flex-wrap items-center gap-4">
-                            <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px] whitespace-nowrap" rel="noopener noreferrer">
+                            <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-full whitespace-nowrap" rel="noopener noreferrer">
                                 {linkLabel} <i className="ri-arrow-right-up-line"></i>
                             </a>
                             <CopyLinkButton path={`/projects/${slug}`} />
@@ -56,6 +56,7 @@ export default function ProjectView({ slug }: { slug: string }) {
                     <div onMouseEnter={() => setIsGalleryHovered(true)} onMouseLeave={() => setIsGalleryHovered(false)}>
                         <ProjectGallery
                             images={images}
+                            priority
                             label={category.split(' / ')[0]}
                             isHovered={isGalleryHovered}
                             onImageClick={(imgs, index) => setLightboxData({ images: imgs, index })}
@@ -71,7 +72,7 @@ export default function ProjectView({ slug }: { slug: string }) {
 
                     <div className="grid grid-cols-1 lg:grid-cols-12">
                         <div className="lg:col-span-8 p-8 md:p-16 border-b-grid lg:border-b-0 lg:border-r-grid">
-                            <div className="mb-10 p-6 md:p-8 bg-black/5 border-l-4 border-black">
+                            <div className="mb-10 p-6 md:p-8 bg-black/5 rounded-2xl">
                                 <h2 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h2>
                                 <p className="text-lg font-medium leading-relaxed text-black">{result}</p>
                             </div>

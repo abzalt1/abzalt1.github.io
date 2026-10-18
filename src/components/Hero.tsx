@@ -80,7 +80,7 @@ export default function Hero() {
  </p>
  </div>
  {/* On phones the big "discuss" tile sits below the fold, so repeat the CTA here */}
- <a href="#contact" className="md:hidden mt-8 inline-flex items-center justify-center gap-2 w-full bg-black text-white px-6 py-4 text-base font-bold uppercase tracking-widest rounded-[8px] active:opacity-80">
+ <a href="#contact" className="md:hidden mt-8 inline-flex items-center justify-center gap-2 w-full bg-black text-white px-6 py-4 text-base font-bold uppercase tracking-widest rounded-full active:opacity-80">
  Обсудить проект <i className="ri-arrow-down-line text-xl"></i>
  </a>
  </div>
@@ -98,7 +98,7 @@ export default function Hero() {
   </div>
   </a>
 
-  <div className="flex md:border-t-grid md:border-b-grid h-24">
+  <div className="flex md:border-t-grid h-24">
   <a href={contactLinks.telegram} onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-[#229ED9] hover:text-white transition-colors" rel="noopener noreferrer" title="Telegram">
   <i className="ri-send-plane-line text-4xl"></i>
   </a>

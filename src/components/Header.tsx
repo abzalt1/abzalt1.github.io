@@ -2,20 +2,14 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import useContactLinks from './useContactLinks';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
  const [isFloating, setIsFloating] = useState(false);
  const [isHidden, setIsHidden] = useState(false);
  const lastScrollY = useRef(0);
- const [currentDate, setCurrentDate] = useState('Загрузка...');
-
- useEffect(() => {
- // Date initialization
- const now = new Date();
- const formattedDate = now.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
- setCurrentDate(formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1));
- }, []);
+ const contactLinks = useContactLinks();
 
  useEffect(() => {
  // Scroll handling
@@ -41,7 +35,7 @@ export default function Header() {
  const navLinks = [
  { href: '/#services', label: 'Услуги' },
  { href: '/#projects', label: 'Проекты' },
- { href: '/#expertise', label: 'Навыки' },
+ { href: '/#process', label: 'Как работаю' },
  ];
 
  return (
@@ -49,7 +43,7 @@ export default function Header() {
  <header
  id="main-header"
  className={`sticky top-0 z-40 bg-white transition-all duration-300 w-full
- ${isFloating ? 'floating-header py-4' : 'py-6 md:py-8 border-b border-black '} 
+ ${isFloating ? 'floating-header py-4' : 'py-6 md:py-8 border-b-grid '} 
  ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
  >
  <div className="flex justify-between items-center gap-6 px-6 md:px-10">
@@ -64,8 +58,15 @@ export default function Header() {
  </a>
  ))}
  </nav>
- <span className="hidden sm:inline md:hidden lg:inline">Almaty, KZ</span>
- <span id="date-tag" className="hidden sm:inline md:hidden lg:inline text-black font-bold">{currentDate}</span>
+ <a
+ href={contactLinks.telegram}
+ onClick={() => window.fbq?.('track', 'Contact')}
+ target="_blank"
+ rel="noopener noreferrer"
+ className="hidden sm:inline-flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-widest whitespace-nowrap hover:opacity-80 transition-opacity"
+ >
+ Написать <i className="ri-send-plane-line"></i>
+ </a>
 
  <button
  onClick={() => setIsMenuOpen(true)}

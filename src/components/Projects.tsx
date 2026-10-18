@@ -18,10 +18,11 @@ const pluralTasks = (n: number) => {
 
 interface ProjectCardProps {
     project: Project;
+    isFirst: boolean;
     onImageClick: (images: string[], index: number) => void;
 }
 
-const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
+const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
     const { slug, number, titleLines, category, images, tasks, cardTasks, result, link, linkLabel = 'Сайт', demoCredentials, status } = project;
     const shownTasks = cardTasks ? cardTasks.map((i) => tasks[i]) : tasks.slice(0, CARD_TASKS);
     const hiddenCount = tasks.length - shownTasks.length;
@@ -58,13 +59,14 @@ const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
                             images={images}
                             label={category.split(' / ')[0]}
                             isHovered={isHovered}
+                            priority={isFirst}
                             onImageClick={onImageClick}
                         />
 
                         <div className="p-8 md:p-16">
                             <div className="max-w-2xl w-full">
                                 {result && (
-                                    <div className="mb-8 p-6 bg-black/5 border-l-4 border-black">
+                                    <div className="mb-8 p-6 bg-black/5 rounded-2xl">
                                         <h4 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h4>
                                         <p className="text-base font-medium leading-relaxed text-black">{result}</p>
                                     </div>
@@ -81,15 +83,15 @@ const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
                                     </Link>
                                 )}
                                 <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 mt-6">
-                                    <Link href={href} className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-[8px] whitespace-nowrap shrink-0">
+                                    <Link href={href} className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-full whitespace-nowrap shrink-0">
                                         Подробнее <i className="ri-arrow-right-line"></i>
                                     </Link>
-                                    <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase border border-black px-6 py-3 hover:bg-black/5 transition-colors rounded-[8px] whitespace-nowrap shrink-0" rel="noopener noreferrer">
+                                    <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase border border-black px-6 py-3 hover:bg-black/5 transition-colors rounded-full whitespace-nowrap shrink-0" rel="noopener noreferrer">
                                         {linkLabel} <i className="ri-arrow-right-up-line"></i>
                                     </a>
                                     <CopyLinkButton path={href} />
                                     {demoCredentials && (
-                                        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 px-4 py-3 bg-black/5 rounded-[8px] border border-black/10 w-full sm:w-auto">
+                                        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 px-4 py-3 bg-black/5 rounded-xl border border-black/10 w-full sm:w-auto">
                                             <i className="ri-key-2-line text-sm opacity-50 hidden sm:block"></i>
                                             <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Логин:</span>
                                             <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all mr-2">{demoCredentials.login}</span>
@@ -119,9 +121,9 @@ const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
 export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: string[], index: number) => void }) {
     return (
         <section id="projects" className="grid grid-cols-1 gap-8 mb-8 scroll-mt-8">
-            {projects.map((project) => (
+            {projects.map((project, i) => (
                 <div key={project.slug} className="fade-in-section">
-                    <ProjectCard project={project} onImageClick={onOpenLightbox} />
+                    <ProjectCard project={project} isFirst={i === 0} onImageClick={onOpenLightbox} />
                 </div>
             ))}
         </section>

@@ -80,13 +80,13 @@ export default function CookieConsent() {
           <div className="flex gap-3 shrink-0">
             <button
               onClick={() => choose('denied')}
-              className="px-5 py-2.5 border border-white/40 uppercase font-bold text-xs tracking-widest hover:bg-white/10 transition-colors rounded"
+              className="px-5 py-2.5 border border-white/40 uppercase font-bold text-xs tracking-widest hover:bg-white/10 transition-colors rounded-full"
             >
               Отклонить
             </button>
             <button
               onClick={() => choose('granted')}
-              className="px-5 py-2.5 bg-white text-black uppercase font-bold text-xs tracking-widest hover:opacity-80 transition-opacity rounded"
+              className="px-5 py-2.5 bg-white text-black uppercase font-bold text-xs tracking-widest hover:opacity-80 transition-opacity rounded-full"
             >
               Понятно
             </button>
