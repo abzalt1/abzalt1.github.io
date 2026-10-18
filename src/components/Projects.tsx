@@ -118,7 +118,7 @@ const ProjectCard = ({ project, onImageClick }: ProjectCardProps) => {
 
 export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: string[], index: number) => void }) {
     return (
-        <section id="projects" className="grid grid-cols-1 gap-12 md:gap-16 mb-8 scroll-mt-8">
+        <section id="projects" className="grid grid-cols-1 gap-8 mb-8 scroll-mt-8">
             {projects.map((project) => (
                 <div key={project.slug} className="fade-in-section">
                     <ProjectCard project={project} onImageClick={onOpenLightbox} />

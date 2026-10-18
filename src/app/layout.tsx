@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
 
-const interTight = Inter_Tight({
- variable: "--font-inter-tight",
+const inter = Inter({
+ variable: "--font-inter",
  subsets: ["latin", "cyrillic"],
- weight: ["400", "500", "600", "700", "800"],
 });
 
 const SITE_URL = "https://abzalt1.dev";
@@ -89,7 +88,7 @@ export default function RootLayout({
  children: React.ReactNode;
 }>) {
  return (
- <html lang="ru" suppressHydrationWarning>
+ <html lang="ru" className={inter.variable} suppressHydrationWarning>
  <head>
  <link
  href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
@@ -99,7 +98,7 @@ export default function RootLayout({
  />
  </head>
  <body
- className={`${interTight.variable} font-sans antialiased`}
+ className="font-sans antialiased"
  >
  <script
  type="application/ld+json"

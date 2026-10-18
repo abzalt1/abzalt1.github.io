@@ -17,7 +17,8 @@ export default function ScrollEffects() {
  }
 
  // Back to Top Visibility
- setShowBackToTop(scrollY > 300);
+ // Hidden near the bottom so it doesn't cover the footer links
+ setShowBackToTop(scrollY > 300 && scrollY < docHeight - 200);
 
  // Gradient Background Movement (Disabled for Swiss Design)
  /*
@@ -32,8 +33,8 @@ export default function ScrollEffects() {
  // Fade-in Animation Logic
  const observerOptions = {
  root: null,
- rootMargin: '0px 0px -100px 0px',
- threshold: 0.1
+ rootMargin: '0px 0px -40px 0px',
+ threshold: 0
  };
 
  const observer = new IntersectionObserver((entries) => {
@@ -84,7 +85,7 @@ export default function ScrollEffects() {
  <button
  id="back-to-top"
  onClick={scrollToTop}
- className={`fixed bottom-10 right-10 md:bottom-16 md:right-16 bg-black text-white p-4 shadow-2xl transition-all duration-300 z-50 hover:scale-110 active:scale-90 flex items-center justify-center ${showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+ className={`fixed bottom-8 right-8 bg-black text-white p-4 shadow-2xl transition-all duration-300 z-50 hover:scale-110 active:scale-90 hidden md:flex items-center justify-center ${showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
  aria-label="Наверх"
  >
  <i className="ri-arrow-up-line text-2xl"></i>
