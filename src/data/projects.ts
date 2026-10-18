@@ -15,8 +15,6 @@ export interface Project {
     images: string[];
     result: string;
     tasks: string[];
-    // Indexes into `tasks` shown on the homepage card; defaults to the first three.
-    cardTasks?: number[];
     // Case-study blocks rendered only on the project page, each only when filled in.
     challenge?: string;
     testimonial?: { quote: string; author: string };
@@ -47,7 +45,6 @@ export const projects: Project[] = [
             "Курьерский модуль: маршрут доставок на день и фотоотчёт при передаче заказа с автоматическим сжатием снимков.",
             "Продакшн-инфраструктура: собственный VPS в Казахстане, blue/green деплой без простоя, watchdog, автобэкапы и внешний мониторинг аптайма."
         ],
-        cardTasks: [1, 3, 5],
         challenge: "Цех снабжает выпечкой и готовой едой 50+ точек. Учёт вели в Paloma, заказы от них принимали в WhatsApp, а по доставке не было никакой отчётности. Paloma — коробочная система, сделанная сразу для всех, и подстраивать под неё работу цеха было неудобно. Владельцу нужен был инструмент, который точно подходит под процессы именно его бизнеса.",
         link: "https://fabrika01.kz",
         stack: [
@@ -130,7 +127,6 @@ export const projects: Project[] = [
             "Детальная адаптация под мобильные устройства и оптимизация изображений для Retina-дисплеев."
         ],
         challenge: "Модели нужен был сайт, который выглядит как её съёмки: минимум интерфейса, крупные фото и видео, быстрая загрузка. Обновлять портфолио она хотела сама, прямо со смартфона, и без ежемесячной подписки на конструктор сайтов.",
-        cardTasks: [0, 2, 3],
         link: "https://dilyara-portfoliov2.vercel.app/",
         stack: [
             { icon: "ri-reactjs-fill", name: "React", info: "Компонентный подход и быстрый рендеринг." },
