@@ -35,21 +35,19 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="md:col-span-4 p-6 md:p-10 xl:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
-                <div>
-                    <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} {status || 'Избранный проект'}</span>
-                    <h3 className="text-4xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
-                        <Link href={href} className="hover:opacity-60 transition-opacity">
-                            {titleLines.map((line, i) => (
-                                <span key={i}>{i > 0 && <br />}{line}</span>
-                            ))}
-                        </Link>
-                    </h3>
-                </div>
+            <div className="md:col-span-4 p-6 md:p-10 xl:p-12 border-b-grid md:border-b-0 md:border-r-grid">
+                <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} {status || 'Избранный проект'}</span>
+                <h3 className="text-4xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
+                    <Link href={href} className="hover:opacity-60 transition-opacity">
+                        {titleLines.map((line, i) => (
+                            <span key={i}>{i > 0 && <br />}{line}</span>
+                        ))}
+                    </Link>
+                </h3>
                 {status ? (
-                    <span className="mt-4 md:mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">{status}</span>
+                    <span className="mt-4 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">{status}</span>
                 ) : (
-                    <p className="mt-4 md:mt-8 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline">{category}</p>
+                    <p className="mt-4 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline">{category}</p>
                 )}
             </div>
             <div className="md:col-span-8 p-0 flex flex-col">
