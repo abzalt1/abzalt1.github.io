@@ -34,62 +34,66 @@ export default function ProjectView({ slug }: { slug: string }) {
                     </Link>
                 </div>
 
-                <article className="grid-border bg-white overflow-hidden mb-8">
-                    <header className="p-8 md:p-16 border-b-grid flex flex-col md:flex-row md:items-end justify-between gap-8">
-                        <div>
+                {/* Same layout as the homepage card: title, buttons and stack on the left; screenshots and the story on the right.
+                    On phones the column wrappers become `contents`, so `order` moves the stack to the end. */}
+                <article className="flex flex-col md:grid md:grid-cols-12 grid-border bg-white overflow-hidden mb-8">
+                    <div className="contents md:block md:col-span-4 md:p-10 xl:p-12 md:border-r-grid">
+                        <header className="order-1 md:order-none p-6 md:p-0 border-b-grid md:border-b-0">
                             <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} Кейс</span>
-                            <h1 className="text-5xl md:text-7xl font-bold uppercase leading-[0.95] tracking-tighter">
+                            <h1 className="text-4xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
                                 {titleLines.map((line, i) => (
                                     <span key={i}>{i > 0 && <br />}{line}</span>
                                 ))}
                             </h1>
-                            <p className="mt-6 text-base font-bold uppercase tracking-tighter underline opacity-80">{category}</p>
-                        </div>
-                        <div className="flex flex-wrap items-center gap-4">
-                            <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-full whitespace-nowrap" rel="noopener noreferrer">
-                                {linkLabel} <i className="ri-arrow-right-up-line"></i>
-                            </a>
-                            <CopyLinkButton path={`/projects/${slug}`} />
-                        </div>
-                    </header>
-
-                    <div onMouseEnter={() => setIsGalleryHovered(true)} onMouseLeave={() => setIsGalleryHovered(false)}>
-                        <ProjectGallery
-                            images={images}
-                            priority
-                            label={category.split(' / ')[0]}
-                            isHovered={isGalleryHovered}
-                            onImageClick={(imgs, index) => setLightboxData({ images: imgs, index })}
-                        />
-                    </div>
-
-                    {challenge && (
-                        <section className="p-8 md:p-16 border-b-grid">
-                            <h2 className="text-2xl font-bold uppercase mb-4">Задача клиента</h2>
-                            <p className="text-lg md:text-xl leading-relaxed font-medium max-w-3xl">{challenge}</p>
-                        </section>
-                    )}
-
-                    <div className="grid grid-cols-1 lg:grid-cols-12">
-                        <div className="lg:col-span-8 p-8 md:p-16 border-b-grid lg:border-b-0 lg:border-r-grid">
-                            <div className="mb-10 p-6 md:p-8 bg-black/5 rounded-2xl">
-                                <h2 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h2>
-                                <p className="text-lg font-medium leading-relaxed text-black">{result}</p>
+                            <p className="mt-4 text-base font-bold uppercase tracking-tighter underline opacity-80">{category}</p>
+                            <div className="flex flex-wrap items-center gap-2 md:gap-3 mt-6">
+                                <a href={link} target="_blank" className="inline-flex items-center gap-2 font-bold uppercase bg-black text-white px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:opacity-80 transition-opacity rounded-full whitespace-nowrap" rel="noopener noreferrer">
+                                    {linkLabel} <i className="ri-arrow-right-up-line"></i>
+                                </a>
+                                <CopyLinkButton path={`/projects/${slug}`} />
                             </div>
-                            <h2 className="text-2xl font-bold uppercase mb-4">Задачи</h2>
-                            <ul className="list-disc list-outside ml-5 text-base md:text-lg leading-relaxed font-medium text-gray-600 space-y-3">
-                                {tasks.map((task, i) => (
-                                    <li key={i}>{task}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="lg:col-span-4 p-8 md:p-16">
+                        </header>
+
+                        <div className="order-4 md:order-none p-6 md:p-0 md:mt-12">
                             <StackList stack={stack} />
                         </div>
                     </div>
 
+                    <div className="contents md:block md:col-span-8">
+                        <div className="order-2 md:order-none" onMouseEnter={() => setIsGalleryHovered(true)} onMouseLeave={() => setIsGalleryHovered(false)}>
+                            <ProjectGallery
+                                images={images}
+                                priority
+                                label={category.split(' / ')[0]}
+                                isHovered={isGalleryHovered}
+                                onImageClick={(imgs, index) => setLightboxData({ images: imgs, index })}
+                            />
+                        </div>
+
+                        <div className="order-3 md:order-none p-6 md:p-12 border-b-grid md:border-b-0">
+                            <div className="max-w-2xl w-full">
+                                {challenge && (
+                                    <section className="mb-8">
+                                        <h2 className="text-lg font-bold uppercase mb-3">Задача клиента</h2>
+                                        <p className="text-base md:text-lg leading-relaxed font-medium">{challenge}</p>
+                                    </section>
+                                )}
+                                <div className="mb-8 p-5 md:p-6 bg-black/5 rounded-2xl">
+                                    <h2 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h2>
+                                    <p className="text-base font-medium leading-relaxed text-black">{result}</p>
+                                </div>
+                                <h2 className="text-lg font-bold uppercase mb-3">Задачи</h2>
+                                <ul className="list-disc list-outside ml-4 text-base leading-relaxed font-medium text-gray-600 space-y-2">
+                                    {tasks.map((task, i) => (
+                                        <li key={i}>{task}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                     {testimonial && (
-                        <figure className="p-8 md:p-16 border-t-grid bg-black text-white">
+                        <figure className="order-5 md:order-none md:col-span-12 p-6 md:p-12 border-t-grid bg-black text-white">
                             <blockquote className="text-xl md:text-3xl font-medium leading-snug tracking-tight max-w-4xl">«{testimonial.quote}»</blockquote>
                             <figcaption className="mt-6 text-sm font-bold uppercase tracking-widest opacity-60">{testimonial.author}</figcaption>
                         </figure>
