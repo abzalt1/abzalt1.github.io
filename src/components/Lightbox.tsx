@@ -11,13 +11,19 @@ interface LightboxProps {
 export default function Lightbox({ data, onClose }: LightboxProps) {
  const [currentIndex, setCurrentIndex] = useState(0);
 
- useEffect(() => {
- if (data) {
- setCurrentIndex(data.index);
- document.body.style.overflow = 'hidden';
- } else {
- document.body.style.overflow = '';
+ // Jump to the clicked image whenever the lightbox is opened with new data
+ const [prevData, setPrevData] = useState(data);
+ if (prevData !== data) {
+ setPrevData(data);
+ if (data) setCurrentIndex(data.index);
  }
+
+ useEffect(() => {
+ if (!data) return;
+ document.body.style.overflow = 'hidden';
+ return () => {
+ document.body.style.overflow = '';
+ };
  }, [data]);
 
  if (!data) return null;
