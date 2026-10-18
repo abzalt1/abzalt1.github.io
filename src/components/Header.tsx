@@ -51,7 +51,7 @@ export default function Header() {
  abzalt1.dev
  </Link>
  <div className="flex gap-4 md:gap-10 text-sm md:text-lg font-semibold uppercase tracking-widest items-center">
- <nav className="hidden md:flex gap-8">
+ <nav className="hidden lg:flex gap-8">
  {navLinks.map(link => (
  <a key={link.href} href={link.href} className="hover:opacity-60 transition-opacity">
  {link.label}
@@ -70,7 +70,7 @@ export default function Header() {
 
  <button
  onClick={() => setIsMenuOpen(true)}
- className="md:hidden hover:opacity-60 transition-opacity p-2"
+ className="lg:hidden hover:opacity-60 transition-opacity p-2"
  aria-label="Open menu"
  >
  <i className="ri-menu-line text-lg"></i>
@@ -81,7 +81,7 @@ export default function Header() {
 
  {/* Mobile Menu Overlay */}
  <div
- className={`fixed inset-0 bg-white z-[60] flex flex-col justify-center items-center gap-8 text-2xl font-bold uppercase transition-transform duration-300 md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+ className={`fixed inset-0 bg-white z-[60] flex flex-col justify-center items-center gap-8 text-2xl font-bold uppercase transition-transform duration-300 lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
  >
  <button
  onClick={() => setIsMenuOpen(false)}

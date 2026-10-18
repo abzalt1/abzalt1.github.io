@@ -36,11 +36,11 @@ export default function ProjectView({ slug }: { slug: string }) {
 
                 {/* Same layout as the homepage card: title, buttons and stack on the left; screenshots and the story on the right.
                     On phones the column wrappers become `contents`, so `order` moves the stack to the end. */}
-                <article className="flex flex-col md:grid md:grid-cols-12 grid-border bg-white overflow-hidden mb-8">
-                    <div className="contents md:block md:col-span-4 md:p-10 xl:p-12 md:border-r-grid">
-                        <header className="order-1 md:order-none p-6 md:p-0 border-b-grid md:border-b-0">
+                <article className="flex flex-col lg:grid lg:grid-cols-12 grid-border bg-white overflow-hidden mb-8">
+                    <div className="contents lg:block lg:col-span-4 lg:p-10 xl:p-12 lg:border-r-grid">
+                        <header className="order-1 lg:order-none p-6 md:p-10 lg:p-0 border-b-grid lg:border-b-0">
                             <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} Кейс</span>
-                            <h1 className="text-4xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
+                            <h1 className="text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
                                 {titleLines.map((line, i) => (
                                     <span key={i}>{i > 0 && <br />}{line}</span>
                                 ))}
@@ -54,13 +54,13 @@ export default function ProjectView({ slug }: { slug: string }) {
                             </div>
                         </header>
 
-                        <div className="order-4 md:order-none p-6 md:p-0 md:mt-12">
+                        <div className="order-4 lg:order-none p-6 md:p-10 lg:p-0 lg:mt-12">
                             <StackList stack={stack} />
                         </div>
                     </div>
 
-                    <div className="contents md:block md:col-span-8">
-                        <div className="order-2 md:order-none" onMouseEnter={() => setIsGalleryHovered(true)} onMouseLeave={() => setIsGalleryHovered(false)}>
+                    <div className="contents lg:block lg:col-span-8">
+                        <div className="order-2 lg:order-none" onMouseEnter={() => setIsGalleryHovered(true)} onMouseLeave={() => setIsGalleryHovered(false)}>
                             <ProjectGallery
                                 images={images}
                                 priority
@@ -70,7 +70,7 @@ export default function ProjectView({ slug }: { slug: string }) {
                             />
                         </div>
 
-                        <div className="order-3 md:order-none p-6 md:p-12 border-b-grid md:border-b-0">
+                        <div className="order-3 lg:order-none p-6 md:p-12 border-b-grid lg:border-b-0">
                             <div className="max-w-2xl w-full">
                                 {challenge && (
                                     <section className="mb-8">
@@ -93,7 +93,7 @@ export default function ProjectView({ slug }: { slug: string }) {
                     </div>
 
                     {testimonial && (
-                        <figure className="order-5 md:order-none md:col-span-12 p-6 md:p-12 border-t-grid bg-black text-white">
+                        <figure className="order-5 lg:order-none lg:col-span-12 p-6 md:p-12 border-t-grid bg-black text-white">
                             <blockquote className="text-xl md:text-3xl font-medium leading-snug tracking-tight max-w-4xl">«{testimonial.quote}»</blockquote>
                             <figcaption className="mt-6 text-sm font-bold uppercase tracking-widest opacity-60">{testimonial.author}</figcaption>
                         </figure>

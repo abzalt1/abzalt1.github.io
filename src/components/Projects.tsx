@@ -31,13 +31,13 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
 
     return (
         <div
-            className={`grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white overflow-hidden ${status ? 'opacity-60 hover:opacity-100 duration-500' : ''}`}
+            className={`grid grid-cols-1 lg:grid-cols-12 gap-0 grid-border bg-white overflow-hidden ${status ? 'opacity-60 hover:opacity-100 duration-500' : ''}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="md:col-span-4 p-6 md:p-10 xl:p-12 border-b-grid md:border-b-0 md:border-r-grid">
+            <div className="lg:col-span-4 p-6 md:p-10 xl:p-12 border-b-grid lg:border-b-0 lg:border-r-grid">
                 <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} {status || 'Избранный проект'}</span>
-                <h3 className="text-4xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
+                <h3 className="text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
                     <Link href={href} className="hover:opacity-60 transition-opacity">
                         {titleLines.map((line, i) => (
                             <span key={i}>{i > 0 && <br />}{line}</span>
@@ -50,7 +50,7 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                     <p className="mt-4 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline">{category}</p>
                 )}
             </div>
-            <div className="md:col-span-8 p-0 flex flex-col">
+            <div className="lg:col-span-8 p-0 flex flex-col">
                 {images.length > 0 ? (
                     <>
                         <ProjectGallery
@@ -64,13 +64,13 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                         <div className="p-6 md:p-12">
                             <div className="max-w-2xl w-full">
                                 {result && (
-                                    <div className="md:mb-8 p-5 md:p-6 bg-black/5 rounded-2xl">
+                                    <div className="lg:mb-8 p-5 md:p-6 bg-black/5 rounded-2xl">
                                         <h4 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h4>
                                         <p className="text-base font-medium leading-relaxed text-black">{result}</p>
                                     </div>
                                 )}
                                 {/* Phones get the short card; the task list lives on the project page */}
-                                <div className="hidden md:block">
+                                <div className="hidden lg:block">
                                 <h4 className="text-lg font-bold uppercase mb-3">Задачи</h4>
                                 <ul className="list-disc list-outside ml-4 text-base leading-relaxed font-medium mb-4 text-gray-600 space-y-2">
                                     {shownTasks.map((task, i) => (
