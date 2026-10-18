@@ -1,43 +1,9 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
 import useContactLinks from './useContactLinks';
 
 export default function Contact() {
  const contactLinks = useContactLinks();
- const [displayText, setDisplayText] = useState('');
- const [hasStarted, setHasStarted] = useState(false);
- const phrase = "Есть проект?";
- const sectionRef = useRef<HTMLElement>(null);
-
- useEffect(() => {
- const observer = new IntersectionObserver((entries) => {
- entries.forEach(entry => {
- if (entry.isIntersecting && !hasStarted) {
- setHasStarted(true);
- }
- });
- }, { threshold: 0.5 });
-
- if (sectionRef.current) observer.observe(sectionRef.current);
- return () => observer.disconnect();
- }, [hasStarted]);
-
- useEffect(() => {
- if (!hasStarted) return;
-
- let charIndex = 0;
- const interval = setInterval(() => {
- if (charIndex < phrase.length) {
- setDisplayText(phrase.substring(0, charIndex + 1));
- charIndex++;
- } else {
- clearInterval(interval);
- }
- }, 100);
-
- return () => clearInterval(interval);
- }, [hasStarted]);
 
  const handleTelegramClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
  // We don't use e.preventDefault() here anymore to ensure the browser 
@@ -75,12 +41,11 @@ export default function Contact() {
  return (
  <section
  id="contact"
- ref={sectionRef}
  className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section overflow-hidden"
  >
  <div className="col-span-1 md:col-span-12 p-16 md:p-32 bg-white text-center flex flex-col items-center justify-center">
- <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6 tracking-tighter min-h-[1.2em] text-black ">
- <span>{displayText}</span><span className="cursor-blink"></span>
+ <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6 tracking-tighter text-black">
+ Есть проект?
  </h2>
  <p className="text-lg md:text-xl mb-10 max-w-2xl opacity-70 font-medium">
  Напишите мне в Telegram или WhatsApp, и я бесплатно оценю сроки и стоимость разработки вашего проекта (MVP).
@@ -90,7 +55,7 @@ export default function Contact() {
  href={contactLinks.telegram}
  onClick={handleTelegramClick}
  target="_blank"
- className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-black text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
+ className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-black text-white px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-full"
  rel="noopener noreferrer"
  >
  Telegram
@@ -102,7 +67,7 @@ export default function Contact() {
  href={contactLinks.whatsapp}
  onClick={handleWhatsAppClick}
  target="_blank"
- className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-[#25D366] text-black px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-[8px]"
+ className="inline-flex items-center justify-center w-full sm:w-auto gap-3 md:gap-3 bg-[#25D366] text-black px-8 py-4 md:px-10 md:py-5 text-base md:text-xl font-bold uppercase hover:opacity-80 transition-all duration-300 tracking-widest rounded-full"
  rel="noopener noreferrer"
  >
  WhatsApp

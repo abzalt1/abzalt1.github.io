@@ -4,6 +4,25 @@
   --font-sans: var(--font-inter), "Inter", Helvetica, Arial, sans-serif;
   --color-black: #111111;
   --color-white: #fafafa;
+  --color-line: #e2e2e2;
+}
+
+/* Grid lines and block shape. Declared as utilities so md:/lg: variants work. */
+@utility grid-border {
+  border: 1px solid var(--color-line);
+  border-radius: 28px;
+}
+
+@utility border-r-grid {
+  border-right: 1px solid var(--color-line);
+}
+
+@utility border-b-grid {
+  border-bottom: 1px solid var(--color-line);
+}
+
+@utility border-t-grid {
+  border-top: 1px solid var(--color-line);
 }
 
 @layer base {
@@ -17,22 +36,6 @@
 }
 
 @layer components {
-  .grid-border {
-    border: 1px solid var(--color-black);
-  }
-
-  .border-r-grid {
-    border-right: 1px solid var(--color-black);
-  }
-
-  .border-b-grid {
-    border-bottom: 1px solid var(--color-black);
-  }
-
-  .border-t-grid {
-    border-top: 1px solid var(--color-black);
-  }
-
   .cursor-blink {
     display: inline-block;
     width: 3px;

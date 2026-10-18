@@ -8,10 +8,12 @@ interface ProjectGalleryProps {
     label: string;
     // Autoplay runs only while the parent reports hover; leaving resets it.
     isHovered: boolean;
+    // Only the gallery visible on load should fetch eagerly; the rest load on scroll.
+    priority?: boolean;
     onImageClick: (images: string[], index: number) => void;
 }
 
-export default function ProjectGallery({ images, label, isHovered, onImageClick }: ProjectGalleryProps) {
+export default function ProjectGallery({ images, label, isHovered, priority = false, onImageClick }: ProjectGalleryProps) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
     const [hasInteracted, setHasInteracted] = useState(false);
@@ -97,7 +99,7 @@ export default function ProjectGallery({ images, label, isHovered, onImageClick 
                         <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-sm border border-black/5"></div>
                     </div>
                     <div className="absolute left-1/2 -translate-x-1/2 text-[10px] font-bold text-black/60 uppercase tracking-[0.2em] pointer-events-none hidden sm:block whitespace-nowrap">
-                        {label} — Browsing
+                        {label}
                     </div>
                 </div>
 
@@ -120,7 +122,7 @@ export default function ProjectGallery({ images, label, isHovered, onImageClick 
                                 fill
                                 className="object-contain p-2 cursor-zoom-in"
                                 onClick={(e) => { e.stopPropagation(); onImageClick(images, idx); }}
-                                priority={idx === 0}
+                                priority={priority && idx === 0}
                             />
                         </div>
                     ))}

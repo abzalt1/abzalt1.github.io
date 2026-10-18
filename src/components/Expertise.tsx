@@ -1,37 +1,47 @@
 'use client';
 
 export default function Expertise() {
- const skills = [
- { icon: 'ri-reactjs-fill', name: 'React' },
- { icon: 'ri-nextjs-fill', name: 'Next.js' },
- { icon: 'ri-javascript-fill', name: 'JS (ES6+)' },
- { icon: 'ri-braces-fill', name: 'TypeScript' },
- { icon: 'ri-tailwind-css-fill', name: 'Tailwind CSS' },
- { icon: 'ri-database-2-fill', name: 'Supabase' },
- { icon: 'ri-window-fill', name: 'Webflow' },
- { icon: 'ri-layout-masonry-fill', name: 'Tilda Pro' },
- { icon: 'ri-server-fill', name: 'API Integrations' },
- { icon: 'ri-exchange-fill', name: '1C Integration' },
- { icon: 'ri-triangle-fill', name: 'Vercel' },
- { icon: 'ri-git-merge-fill', name: 'Git' }
+ const steps = [
+ {
+ title: 'Разбор',
+ description: 'Созваниваемся, смотрю, как сейчас идут заказы, склад и деньги. Бесплатно.'
+ },
+ {
+ title: 'Предложение',
+ description: 'Описываю решение, сроки и цену. Если хватит бота или таблицы — так и скажу.'
+ },
+ {
+ title: 'Разработка',
+ description: 'Показываю результат каждую неделю, вы пробуете систему на своих данных.'
+ },
+ {
+ title: 'Запуск и поддержка',
+ description: 'Переношу данные, обучаю сотрудников и остаюсь на связи после запуска.'
+ }
+ ];
+
+ // Grid lines: a column on phones, 2×2 on tablets, one row of four on desktops
+ const cellBorders = [
+ 'border-b-grid lg:border-b-0 md:border-r-grid',
+ 'border-b-grid lg:border-b-0 lg:border-r-grid',
+ 'border-b-grid md:border-b-0 md:border-r-grid',
+ '',
  ];
 
  return (
- <section id="expertise" className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border bg-white scroll-mt-8 fade-in-section overflow-hidden">
- <div className="col-span-1 md:col-span-12 p-10 md:p-20">
- <h2 className="text-2xl font-bold uppercase mb-16 tracking-tighter">Core Expertise</h2>
-
- <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16 md:gap-16 text-center justify-items-center">
- {skills.map((skill, index) => (
- <div 
- key={index} 
- className="flex flex-col items-center gap-4 group"
+ <section id="process" className="grid-border bg-white mb-8 scroll-mt-8 fade-in-section overflow-hidden">
+ <h2 className="p-10 md:p-16 text-3xl md:text-5xl font-bold uppercase tracking-tighter border-b-grid">Как я работаю</h2>
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+ {steps.map((step, index) => (
+ <div
+ key={index}
+ className={`p-10 md:p-12 ${cellBorders[index]}`}
  >
- <i className={`${skill.icon} text-6xl group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-300`}></i>
- <span className="text-xs font-bold uppercase tracking-widest">{skill.name}</span>
+ <span className="block text-sm font-bold tracking-widest opacity-50 mb-6">{String(index + 1).padStart(2, '0')}</span>
+ <h3 className="text-xl font-bold uppercase mb-3">{step.title}</h3>
+ <p className="text-base opacity-80 leading-relaxed font-medium">{step.description}</p>
  </div>
  ))}
- </div>
  </div>
  </section>
  );
