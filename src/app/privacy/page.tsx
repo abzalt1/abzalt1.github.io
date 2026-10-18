@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 
@@ -11,14 +12,16 @@ export const metadata: Metadata = {
 export default function PrivacyPolicy() {
   return (
     <div className="bg-transparent text-black font-sans min-h-screen transition-colors duration-300 relative">
-      <main className="mb-20 relative z-10 max-w-4xl mx-auto px-6 py-20">
+      <Header />
+
+      <main className="relative z-10 max-w-4xl mx-auto px-6 pt-10 pb-16 md:pt-16">
         <div className="mb-12">
           <Link href="/" className="inline-flex items-center gap-2 text-sm font-bold uppercase hover:opacity-70 transition-opacity">
             <i className="ri-arrow-left-line"></i> На главную
           </Link>
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold uppercase mb-12 tracking-tighter">Политика конфиденциальности</h1>
+        <h1 className="text-xl min-[360px]:text-2xl min-[440px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase mb-12 tracking-tighter break-words">Политика конфиденциальности</h1>
         
         <div className="space-y-8 text-lg font-medium opacity-80 leading-relaxed">
           <section>
