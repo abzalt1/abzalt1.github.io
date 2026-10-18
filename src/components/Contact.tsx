@@ -43,11 +43,11 @@ export default function Contact() {
  id="contact"
  className="grid grid-cols-1 md:grid-cols-12 gap-0 grid-border mb-8 fade-in-section overflow-hidden"
  >
- <div className="col-span-1 md:col-span-12 p-16 md:p-32 bg-white text-center flex flex-col items-center justify-center">
+ <div className="col-span-1 md:col-span-12 p-8 md:p-16 bg-white text-center flex flex-col items-center justify-center">
  <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6 tracking-tighter text-black">
  Есть проект?
  </h2>
- <p className="text-lg md:text-xl mb-10 max-w-2xl opacity-70 font-medium">
+ <p className="text-lg md:text-xl mb-8 max-w-2xl opacity-70 font-medium">
  Напишите мне в Telegram или WhatsApp, и я бесплатно оценю сроки и стоимость разработки вашего проекта (MVP).
  </p>
  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">

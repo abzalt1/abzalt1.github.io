@@ -21,7 +21,7 @@ export default function Home() {
 
  <Header />
 
- <main className="mb-20 relative z-10 px-4 md:px-6 pt-4 md:pt-6">
+ <main className="relative z-10 px-4 md:px-6 pt-4 md:pt-6">
  <Hero />
  <Services />
  <Projects onOpenLightbox={(images, index) => setLightboxData({images, index})} />
