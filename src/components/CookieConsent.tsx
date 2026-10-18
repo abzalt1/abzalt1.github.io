@@ -1,30 +1,31 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
 
 const CONSENT_KEY = 'cookie_consent';
 
+// localStorage is read only in the browser; during the static build the stored choice is unknown (undefined).
+const subscribe = (onChange: () => void) => {
+  window.addEventListener('storage', onChange);
+  return () => window.removeEventListener('storage', onChange);
+};
+const getStoredConsent = () => window.localStorage.getItem(CONSENT_KEY);
+const getServerConsent = () => undefined;
+
 export default function CookieConsent() {
-  const [consent, setConsent] = useState<'granted' | 'denied' | null>(null);
-  const [showBanner, setShowBanner] = useState(false);
+  const stored = useSyncExternalStore(subscribe, getStoredConsent, getServerConsent);
+  const [dismissed, setDismissed] = useState(false);
 
   // Opt-out model: analytics load by default unless the visitor has declined.
   // The banner only informs and offers a way to decline.
-  useEffect(() => {
-    const stored = window.localStorage.getItem(CONSENT_KEY);
-    if (stored === 'denied') {
-      setConsent('denied');
-    } else {
-      setConsent('granted');
-      if (stored !== 'granted') setShowBanner(true);
-    }
-  }, []);
+  const consent = stored === undefined ? null : stored === 'denied' ? 'denied' : 'granted';
+  const showBanner = stored !== undefined && stored !== 'granted' && stored !== 'denied' && !dismissed;
 
   const choose = (value: 'granted' | 'denied') => {
     window.localStorage.setItem(CONSENT_KEY, value);
-    setShowBanner(false);
+    setDismissed(true);
     if (value === 'denied') {
       // Scripts are already running on this page; stop the pixel now
       // and reload so Metrica is not initialised either.
