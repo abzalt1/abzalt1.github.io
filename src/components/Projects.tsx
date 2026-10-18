@@ -35,7 +35,7 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="md:col-span-4 p-8 md:p-10 xl:p-16 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
+            <div className="md:col-span-4 p-6 md:p-10 xl:p-12 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
                 <div>
                     <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} {status || 'Избранный проект'}</span>
                     <h3 className="text-4xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
@@ -47,9 +47,9 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                     </h3>
                 </div>
                 {status ? (
-                    <span className="mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">{status}</span>
+                    <span className="mt-4 md:mt-8 inline-block px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-widest w-fit">{status}</span>
                 ) : (
-                    <p className="mt-8 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline">{category}</p>
+                    <p className="mt-4 md:mt-8 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline">{category}</p>
                 )}
             </div>
             <div className="md:col-span-8 p-0 flex flex-col">
@@ -63,14 +63,16 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                             onImageClick={onImageClick}
                         />
 
-                        <div className="p-8 md:p-16">
+                        <div className="p-6 md:p-12">
                             <div className="max-w-2xl w-full">
                                 {result && (
-                                    <div className="mb-8 p-6 bg-black/5 rounded-2xl">
+                                    <div className="md:mb-8 p-5 md:p-6 bg-black/5 rounded-2xl">
                                         <h4 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h4>
                                         <p className="text-base font-medium leading-relaxed text-black">{result}</p>
                                     </div>
                                 )}
+                                {/* Phones get the short card; the task list lives on the project page */}
+                                <div className="hidden md:block">
                                 <h4 className="text-lg font-bold uppercase mb-3">Задачи</h4>
                                 <ul className="list-disc list-outside ml-4 text-base leading-relaxed font-medium mb-4 text-gray-600 space-y-2">
                                     {shownTasks.map((task, i) => (
@@ -82,11 +84,12 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                                         Ещё {hiddenCount} {pluralTasks(hiddenCount)} и стек проекта <i className="ri-arrow-right-line"></i>
                                     </Link>
                                 )}
-                                <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 mt-6">
-                                    <Link href={href} className="inline-flex items-center gap-2 text-base font-bold uppercase bg-black text-white px-6 py-3 hover:opacity-80 transition-opacity rounded-full whitespace-nowrap shrink-0">
+                                </div>
+                                <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-4 md:mt-6">
+                                    <Link href={href} className="inline-flex items-center gap-2 font-bold uppercase bg-black text-white px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:opacity-80 transition-opacity rounded-full whitespace-nowrap shrink-0">
                                         Подробнее <i className="ri-arrow-right-line"></i>
                                     </Link>
-                                    <a href={link} target="_blank" className="inline-flex items-center gap-2 text-base font-bold uppercase border border-black px-6 py-3 hover:bg-black/5 transition-colors rounded-full whitespace-nowrap shrink-0" rel="noopener noreferrer">
+                                    <a href={link} target="_blank" className="inline-flex items-center gap-2 font-bold uppercase border border-black px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:bg-black/5 transition-colors rounded-full whitespace-nowrap shrink-0" rel="noopener noreferrer">
                                         {linkLabel} <i className="ri-arrow-right-up-line"></i>
                                     </a>
                                     <CopyLinkButton path={href} />

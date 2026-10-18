@@ -27,7 +27,7 @@ export default function ProjectView({ slug }: { slug: string }) {
 
             <Header />
 
-            <main className="mb-20 relative z-10 px-4 md:px-6 pt-4 md:pt-6">
+            <main className="relative z-10 px-4 md:px-6 pt-4 md:pt-6">
                 <div className="px-6 md:px-10 py-6">
                     <Link href="/#projects" className="inline-flex items-center gap-2 text-sm font-bold uppercase hover:opacity-60 transition-opacity">
                         <i className="ri-arrow-left-line"></i> Все проекты
