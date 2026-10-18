@@ -24,7 +24,7 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="p-6 md:p-10 xl:p-12 border-b-grid flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <div className="p-6 md:p-10 xl:p-12 border-b-grid">
                 <div>
                     <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} {status || 'Избранный проект'}</span>
                     <h3 className="text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
@@ -38,30 +38,6 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                         <p className="mt-3 text-base font-medium opacity-80 uppercase tracking-tighter font-bold underline">{category}</p>
                     )}
                 </div>
-
-                {images.length > 0 && (
-                    <div className="flex flex-col gap-3 lg:items-end">
-                        <div className="flex flex-wrap items-center gap-2 md:gap-3">
-                            <Link href={href} className="inline-flex items-center gap-2 font-bold uppercase bg-black text-white px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:opacity-80 transition-opacity rounded-full whitespace-nowrap shrink-0">
-                                Подробнее <i className="ri-arrow-right-line"></i>
-                            </Link>
-                            <a href={link} target="_blank" className="inline-flex items-center gap-2 font-bold uppercase border border-black px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:bg-black/5 transition-colors rounded-full whitespace-nowrap shrink-0" rel="noopener noreferrer">
-                                {linkLabel} <i className="ri-arrow-right-up-line"></i>
-                            </a>
-                            <CopyLinkButton path={href} />
-                        </div>
-                        {demoCredentials && (
-                            <div className="flex flex-wrap items-center gap-2 px-4 py-3 bg-black/5 rounded-xl border border-black/10 w-fit">
-                                <i className="ri-key-2-line text-sm opacity-50 hidden sm:block"></i>
-                                <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Логин:</span>
-                                <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all mr-2">{demoCredentials.login}</span>
-
-                                <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Пароль:</span>
-                                <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all">{demoCredentials.pass}</span>
-                            </div>
-                        )}
-                    </div>
-                )}
             </div>
 
             {images.length > 0 ? (
@@ -74,12 +50,36 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                         onImageClick={onImageClick}
                     />
 
-                    {result && (
-                        <div className="p-6 md:p-10 xl:p-12">
-                            <h4 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h4>
-                            <p className="text-base md:text-lg font-medium leading-relaxed text-black max-w-4xl">{result}</p>
+                    {/* Buttons come after the result: the visitor decides to open the case once they've read it */}
+                    <div className="p-6 md:p-10 xl:p-12">
+                        {result && (
+                            <>
+                                <h4 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h4>
+                                <p className="text-base md:text-lg font-medium leading-relaxed text-black max-w-4xl">{result}</p>
+                            </>
+                        )}
+                        <div className="flex flex-col gap-3 mt-6">
+                            <div className="flex flex-wrap items-center gap-2 md:gap-3">
+                                <Link href={href} className="inline-flex items-center gap-2 font-bold uppercase bg-black text-white px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:opacity-80 transition-opacity rounded-full whitespace-nowrap shrink-0">
+                                    Подробнее <i className="ri-arrow-right-line"></i>
+                                </Link>
+                                <a href={link} target="_blank" className="inline-flex items-center gap-2 font-bold uppercase border border-black px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:bg-black/5 transition-colors rounded-full whitespace-nowrap shrink-0" rel="noopener noreferrer">
+                                    {linkLabel} <i className="ri-arrow-right-up-line"></i>
+                                </a>
+                                <CopyLinkButton path={href} />
+                            </div>
+                            {demoCredentials && (
+                                <div className="flex flex-wrap items-center gap-2 px-4 py-3 bg-black/5 rounded-xl border border-black/10 w-fit">
+                                    <i className="ri-key-2-line text-sm opacity-50 hidden sm:block"></i>
+                                    <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Логин:</span>
+                                    <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all mr-2">{demoCredentials.login}</span>
+
+                                    <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Пароль:</span>
+                                    <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all">{demoCredentials.pass}</span>
+                                </div>
+                            )}
                         </div>
-                    )}
+                    </div>
                 </>
             ) : (
                 <div className="flex flex-col justify-center items-center p-12 bg-white min-h-[300px]">
