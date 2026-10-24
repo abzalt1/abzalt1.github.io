@@ -20,7 +20,8 @@ export interface Project {
     // Case-study blocks rendered only on the project page, each only when filled in.
     challenge?: string;
     testimonial?: { quote: string; author: string };
-    link: string;
+    // External site or demo; omit when there is nothing public to link to.
+    link?: string;
     linkLabel?: string;
     demoCredentials?: { login: string; pass: string };
     stack: StackItem[];
@@ -78,8 +79,6 @@ export const projects: Project[] = [
             "Безопасный демо-режим: Архитектурно заложенная изолированная среда для презентации продукта без риска изменения боевой базы данных."
         ],
         challenge: "Партнёрские кофейни присылали заказы в WhatsApp, и собирать их из переписки было неудобно. Дальше всё делали вручную: заявки переносили в 1С, а сводную для цеха составлял сотрудник. Нужен был портал, где точки сами оформляют заказ до дедлайна, заявка сразу уходит в 1С, а сводная для цеха формируется автоматически.",
-        link: "https://pastrystudio-demo.vercel.app/",
-        linkLabel: "Демо",
         stack: [
             { icon: "ri-reactjs-fill", name: "React / Next.js", info: "App Router, SSR и API-роуты для серверной логики." },
             { icon: "ri-database-2-fill", name: "Supabase", info: "PostgreSQL + Auth + Row Level Security для мультитенантной архитектуры." },
