@@ -105,7 +105,7 @@ export default function Hero() {
   <a href={contactLinks.whatsapp} onClick={() => window.fbq?.('track', 'Contact')} target="_blank" className="flex-1 flex justify-center items-center border-r-grid hover:bg-[#25D366] hover:text-white transition-colors" rel="noopener noreferrer" title="WhatsApp">
   <i className="ri-whatsapp-line text-4xl"></i>
   </a>
-  <a href="https://instagram.com/abzalt1" target="_blank" className="flex-1 flex justify-center items-center hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-purple-600 hover:text-white transition-colors" rel="noopener noreferrer" title="Instagram">
+  <a href="https://instagram.com/abzalt1.dev" target="_blank" className="flex-1 flex justify-center items-center hover:bg-gradient-to-tr hover:from-yellow-400 hover:to-purple-600 hover:text-white transition-colors" rel="noopener noreferrer" title="Instagram">
   <i className="ri-instagram-line text-4xl"></i>
   </a>
   </div>

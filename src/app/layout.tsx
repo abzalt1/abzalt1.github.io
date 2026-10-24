@@ -56,7 +56,7 @@ const jsonLd = {
  alternateName: "abzalt1",
  jobTitle: "Full-stack разработчик бизнес-систем",
  url: `${SITE_URL}/`,
- sameAs: ["https://instagram.com/abzalt1", "https://t.me/abzalt1"],
+ sameAs: ["https://instagram.com/abzalt1.dev", "https://t.me/abzalt1"],
  knowsAbout: ["CRM", "ERP", "B2B-порталы", "Автоматизация бизнес-процессов", "Интеграция с 1С", "WhatsApp Business API", "Next.js", "Supabase"],
  },
  {

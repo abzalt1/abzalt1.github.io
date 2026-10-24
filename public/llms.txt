@@ -27,4 +27,5 @@ Next.js, React, TypeScript, Tailwind CSS, Supabase (PostgreSQL), Vercel, соб�
 
 - Сайт: https://abzalt1.dev/
 - Telegram: https://t.me/abzalt1
-- Instagram: https://instagram.com/abzalt1
+- Instagram: https://instagram.com/abzalt1.dev
+- WhatsApp: https://wa.me/77081901222
