@@ -47,9 +47,11 @@ export default function ProjectView({ slug }: { slug: string }) {
                             </h1>
                             <p className="mt-4 text-base font-bold uppercase tracking-tighter underline opacity-80">{category}</p>
                             <div className="flex flex-wrap items-center gap-2 md:gap-3 mt-6">
-                                <a href={link} target="_blank" className="inline-flex items-center gap-2 font-bold uppercase bg-black text-white px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:opacity-80 transition-opacity rounded-full whitespace-nowrap" rel="noopener noreferrer">
-                                    {linkLabel} <i className="ri-arrow-right-up-line"></i>
-                                </a>
+                                {link && (
+                                    <a href={link} target="_blank" className="inline-flex items-center gap-2 font-bold uppercase bg-black text-white px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:opacity-80 transition-opacity rounded-full whitespace-nowrap" rel="noopener noreferrer">
+                                        {linkLabel} <i className="ri-arrow-right-up-line"></i>
+                                    </a>
+                                )}
                                 <CopyLinkButton path={`/projects/${slug}`} />
                             </div>
                         </header>

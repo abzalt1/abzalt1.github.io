@@ -87,9 +87,11 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                                     <Link href={href} className="inline-flex items-center gap-2 font-bold uppercase bg-black text-white px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:opacity-80 transition-opacity rounded-full whitespace-nowrap shrink-0">
                                         Подробнее <i className="ri-arrow-right-line"></i>
                                     </Link>
-                                    <a href={link} target="_blank" className="inline-flex items-center gap-2 font-bold uppercase border border-black px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:bg-black/5 transition-colors rounded-full whitespace-nowrap shrink-0" rel="noopener noreferrer">
-                                        {linkLabel} <i className="ri-arrow-right-up-line"></i>
-                                    </a>
+                                    {link && (
+                                        <a href={link} target="_blank" className="inline-flex items-center gap-2 font-bold uppercase border border-black px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:bg-black/5 transition-colors rounded-full whitespace-nowrap shrink-0" rel="noopener noreferrer">
+                                            {linkLabel} <i className="ri-arrow-right-up-line"></i>
+                                        </a>
+                                    )}
                                     <CopyLinkButton path={href} />
                                     {demoCredentials && (
                                         <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 px-4 py-3 bg-black/5 rounded-xl border border-black/10 w-full sm:w-auto">
