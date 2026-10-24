@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import Solutions from '@/components/Solutions';
 import Projects from '@/components/Projects';
 import Expertise from '@/components/Expertise';
 import Contact from '@/components/Contact';
@@ -24,6 +25,7 @@ export default function Home() {
  <main className="relative z-10 px-4 md:px-6 pt-4 md:pt-6">
  <Hero />
  <Services />
+ <Solutions />
  <Projects onOpenLightbox={(images, index) => setLightboxData({images, index})} />
  <Expertise />
  <Contact />
