@@ -114,8 +114,34 @@ export const projects: Project[] = [
         ]
     },
     {
-        slug: "model-portfolio",
+        slug: "urban-origin",
         number: "04.",
+        titleLines: ["URBAN", "ORIGIN"],
+        category: "Лендинг / Пошив мерча",
+        description: "Лендинг для производства мерча и корпоративной формы в Казахстане: оптовые заявки от 50 единиц, заявки сразу в Битрикс24, Meta Pixel и Google Ads для рекламы.",
+        images: ["/urban1.webp", "/urban2.webp", "/urban3.webp", "/urban4.webp", "/urban5.webp", "/urban6.webp"],
+        result: "Лендинг для швейного цеха, который шьёт мерч и форму оптом от 50 единиц. Заявка с сайта сразу попадает в Битрикс24, а Meta Pixel и Google Ads видят, какая реклама приводит клиентов.",
+        tasks: [
+            "Структура под B2B-клиента: сроки, образец до запуска партии, договор с НДС и закрывающие документы — всё, о чём спрашивают закупщики.",
+            "Сравнение «как бывает обычно» и «с Urban Origin»: страхи клиента и ответ на каждый из них.",
+            "Каталог изделий и отдельные блоки для IT-компаний, сетей, школ и вузов, мероприятий.",
+            "Формы заявки и всплывающее окно расчёта: лид сразу уходит в Битрикс24, есть защита от спама.",
+            "Meta Pixel и Google Ads для оптимизации рекламы по заявкам.",
+            "Кейсы, этапы производства, FAQ и кнопка WhatsApp с персональным менеджером."
+        ],
+        cardTasks: [0, 3, 4],
+        link: "https://urbanoriginb2b.kz/",
+        stack: [
+            { icon: "ri-html5-fill", name: "HTML / CSS / JS", info: "Лёгкая статическая вёрстка без фреймворка — страница открывается быстро даже с мобильного интернета." },
+            { icon: "ri-contacts-book-line", name: "Битрикс24", info: "Заявки из форм через серверный /api/lead сразу попадают в CRM." },
+            { icon: "ri-meta-fill", name: "Meta Pixel", info: "Отслеживание заявок для рекламы в Instagram и Facebook." },
+            { icon: "ri-google-fill", name: "Google Ads", info: "Конверсии для поисковой рекламы." },
+            { icon: "ri-server-line", name: "VPS / Caddy", info: "Собственный сервер с автоматическим HTTPS." }
+        ]
+    },
+    {
+        slug: "model-portfolio",
+        number: "05.",
         titleLines: ["MODEL", "PORTFOLIO"],
         category: "Сайт-портфолио / Реклама",
         description: "Сайт-портфолио для рекламной модели на Next.js с собственной CMS, плавными анимациями и быстрой загрузкой фото и видео через Cloudflare R2.",
