@@ -15,17 +15,19 @@ export default function Header() {
  // Scroll handling
  const handleScroll = () => {
  const scrollY = window.scrollY;
+ const delta = scrollY - lastScrollY.current;
 
- // Smart Header Hide/Show
- if (scrollY > lastScrollY.current && scrollY > 50) {
- setIsHidden(true);
- } else {
+ // Smart Header Hide/Show: ignore tiny jitters (trackpad inertia, iOS bounce)
+ if (scrollY <= 50) {
  setIsHidden(false);
+ lastScrollY.current = scrollY;
+ } else if (Math.abs(delta) > 8) {
+ setIsHidden(delta > 0);
+ lastScrollY.current = scrollY;
  }
 
  // Floating effect
  setIsFloating(scrollY > 50);
- lastScrollY.current = scrollY;
  };
 
  window.addEventListener('scroll', handleScroll, { passive: true });
@@ -40,9 +42,13 @@ export default function Header() {
 
  return (
  <>
+ {/* Reserves the unshrunk header height so shrinking the fixed header doesn't shift the page */}
+ <div aria-hidden="true" className="py-6 md:py-8 border-b border-transparent">
+ <div className="h-11 md:h-12"></div>
+ </div>
  <header
  id="main-header"
- className={`sticky top-0 z-40 bg-white transition-all duration-300 w-full
+ className={`fixed top-0 inset-x-0 z-40 bg-white transition-[padding,transform,background-color] duration-300
  ${isFloating ? 'floating-header py-4' : 'py-6 md:py-8 border-b-grid '} 
  ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
  >
