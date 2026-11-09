@@ -48,7 +48,7 @@ export default function CookieConsent() {
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '2281883288885583');
+              fbq('init', '2194105985318804');
               fbq('track', 'PageView');
             `}
           </Script>
