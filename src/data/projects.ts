@@ -1,3 +1,6 @@
+import type { Locale } from '@/i18n/dict';
+import { projectsEn } from './projects.en';
+
 export interface StackItem {
     icon: string;
     name: string;
@@ -26,6 +29,8 @@ export interface Project {
     demoCredentials?: { login: string; pass: string };
     stack: StackItem[];
     status?: string;
+    // Locales where the case is not listed at all.
+    hiddenIn?: Locale[];
 }
 
 export const projects: Project[] = [
@@ -50,7 +55,6 @@ export const projects: Project[] = [
         ],
         cardTasks: [1, 3, 5],
         challenge: "Цех снабжает выпечкой и готовой едой 50+ точек. Учёт вели в Paloma, заказы от них принимали в WhatsApp, а по доставке не было никакой отчётности. Paloma — коробочная система, сделанная сразу для всех, и подстраивать под неё работу цеха было неудобно. Владельцу нужен был инструмент, который точно подходит под процессы именно его бизнеса.",
-        link: "https://fabrika01.kz",
         stack: [
             { icon: "ri-nextjs-fill", name: "Next.js", info: "App Router, Server Actions и standalone-сборка для собственного сервера." },
             { icon: "ri-database-2-fill", name: "Supabase", info: "PostgreSQL + Auth + Row Level Security для разграничения доступа по ролям." },
@@ -141,6 +145,8 @@ export const projects: Project[] = [
     },
     {
         slug: "model-portfolio",
+        // A personal site for a model doesn't fit the B2B pitch for European clients.
+        hiddenIn: ["en"],
         number: "05.",
         titleLines: ["MODEL", "PORTFOLIO"],
         category: "Сайт-портфолио / Реклама",
@@ -167,6 +173,21 @@ export const projects: Project[] = [
     }
 ];
 
-export function getProject(slug: string) {
-    return projects.find((p) => p.slug === slug);
+function translate(project: Project, locale: Locale): Project {
+    const tr = locale === 'en' ? projectsEn[project.slug] : undefined;
+    if (!tr) return project;
+    const { stackInfo, ...fields } = tr;
+    return {
+        ...project,
+        ...fields,
+        stack: project.stack.map((item, i) => ({ ...item, info: stackInfo?.[i] ?? item.info })),
+    };
+}
+
+export function getProjects(locale: Locale = 'ru'): Project[] {
+    return projects.filter((p) => !p.hiddenIn?.includes(locale)).map((p) => translate(p, locale));
+}
+
+export function getProject(slug: string, locale: Locale = 'ru') {
+    return getProjects(locale).find((p) => p.slug === slug);
 }

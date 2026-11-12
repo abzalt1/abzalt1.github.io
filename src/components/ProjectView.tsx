@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { projects, getProject } from '@/data/projects';
+import { getProjects, getProject } from '@/data/projects';
+import { useLocale } from '@/i18n/LocaleProvider';
 import Header from './Header';
 import Footer from './Footer';
 import Contact from './Contact';
@@ -11,14 +12,14 @@ import Lightbox from './Lightbox';
 import ScrollEffects from './ScrollEffects';
 import ProjectGallery from './ProjectGallery';
 import StackList from './StackList';
-import CopyLinkButton from './CopyLinkButton';
 
 export default function ProjectView({ slug }: { slug: string }) {
-    const project = getProject(slug)!;
-    const { number, titleLines, category, images, tasks, result, link, linkLabel = 'Сайт', stack, challenge, testimonial } = project;
+    const { locale, t, base } = useLocale();
+    const project = getProject(slug, locale)!;
+    const { number, titleLines, category, images, tasks, result, link, linkLabel = t.projects.siteLabel, stack, challenge, testimonial } = project;
     const [lightboxData, setLightboxData] = useState<{ images: string[]; index: number } | null>(null);
     const [isGalleryHovered, setIsGalleryHovered] = useState(false);
-    const others = projects.filter((p) => p.slug !== slug);
+    const others = getProjects(locale).filter((p) => p.slug !== slug);
 
     return (
         <div className="bg-transparent text-black font-sans min-h-screen transition-colors duration-300 relative">
@@ -29,8 +30,8 @@ export default function ProjectView({ slug }: { slug: string }) {
 
             <main className="relative z-10 px-4 md:px-6 pt-4 md:pt-6">
                 <div className="px-6 md:px-10 py-6">
-                    <Link href="/#projects" className="inline-flex items-center gap-2 text-sm font-bold uppercase hover:opacity-60 transition-opacity">
-                        <i className="ri-arrow-left-line"></i> Все проекты
+                    <Link href={`${base || '/'}#projects`} className="inline-flex items-center gap-2 text-sm font-bold uppercase hover:opacity-60 transition-opacity">
+                        <i className="ri-arrow-left-line"></i> {t.project.allProjects}
                     </Link>
                 </div>
 
@@ -39,7 +40,7 @@ export default function ProjectView({ slug }: { slug: string }) {
                 <article className="flex flex-col lg:grid lg:grid-cols-12 grid-border bg-white overflow-hidden mb-8">
                     <div className="contents lg:block lg:col-span-4 lg:p-10 xl:p-12 lg:border-r-grid">
                         <header className="order-1 lg:order-none p-6 md:p-10 lg:p-0 border-b-grid lg:border-b-0">
-                            <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} Кейс</span>
+                            <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} {t.project.caseLabel}</span>
                             <h1 className="text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
                                 {titleLines.map((line, i) => (
                                     <span key={i}>{i > 0 && <br />}{line}</span>
@@ -52,7 +53,6 @@ export default function ProjectView({ slug }: { slug: string }) {
                                         {linkLabel} <i className="ri-arrow-right-up-line"></i>
                                     </a>
                                 )}
-                                <CopyLinkButton path={`/projects/${slug}`} />
                             </div>
                         </header>
 
@@ -67,6 +67,7 @@ export default function ProjectView({ slug }: { slug: string }) {
                                 images={images}
                                 priority
                                 label={category.split(' / ')[0]}
+                                title={titleLines.join(' ')}
                                 isHovered={isGalleryHovered}
                                 onImageClick={(imgs, index) => setLightboxData({ images: imgs, index })}
                             />
@@ -76,15 +77,15 @@ export default function ProjectView({ slug }: { slug: string }) {
                             <div className="max-w-2xl w-full">
                                 {challenge && (
                                     <section className="mb-8">
-                                        <h2 className="text-lg font-bold uppercase mb-3">Задача клиента</h2>
+                                        <h2 className="text-lg font-bold uppercase mb-3">{t.project.challenge}</h2>
                                         <p className="text-base md:text-lg leading-relaxed font-medium">{challenge}</p>
                                     </section>
                                 )}
                                 <div className="mb-8 p-5 md:p-6 bg-black/5 rounded-2xl">
-                                    <h2 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h2>
+                                    <h2 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">{t.projects.result}</h2>
                                     <p className="text-base font-medium leading-relaxed text-black">{result}</p>
                                 </div>
-                                <h2 className="text-lg font-bold uppercase mb-3">Задачи</h2>
+                                <h2 className="text-lg font-bold uppercase mb-3">{t.projects.tasks}</h2>
                                 <ul className="list-disc list-outside ml-4 text-base leading-relaxed font-medium text-gray-600 space-y-2">
                                     {tasks.map((task, i) => (
                                         <li key={i}>{task}</li>
@@ -105,12 +106,12 @@ export default function ProjectView({ slug }: { slug: string }) {
                 <Contact />
 
                 <section className="grid-border bg-white overflow-hidden">
-                    <h2 className="p-8 md:px-16 md:py-10 border-b-grid text-xl font-bold uppercase tracking-widest">Другие проекты</h2>
+                    <h2 className="p-8 md:px-16 md:py-10 border-b-grid text-xl font-bold uppercase tracking-widest">{t.project.otherProjects}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3">
                         {others.map((p, i) => (
                             <Link
                                 key={p.slug}
-                                href={`/projects/${p.slug}`}
+                                href={`${base}/projects/${p.slug}`}
                                 className={`group p-8 md:p-10 flex flex-col gap-6 hover:bg-black/5 transition-colors ${i < others.length - 1 ? 'border-b-grid md:border-b-0 md:border-r-grid' : ''}`}
                             >
                                 <div className="relative aspect-video rounded-lg overflow-hidden border border-black/10 bg-zinc-100">

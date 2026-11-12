@@ -3,6 +3,7 @@
 import { useState, useSyncExternalStore } from 'react';
 import Script from 'next/script';
 import Link from 'next/link';
+import { useLocale } from '@/i18n/LocaleProvider';
 
 const CONSENT_KEY = 'cookie_consent';
 
@@ -16,16 +17,19 @@ const getServerConsent = () => undefined;
 
 export default function CookieConsent() {
   const stored = useSyncExternalStore(subscribe, getStoredConsent, getServerConsent);
-  const [dismissed, setDismissed] = useState(false);
-
-  // Opt-out model: analytics load by default unless the visitor has declined.
-  // The banner only informs and offers a way to decline.
-  const consent = stored === undefined ? null : stored === 'denied' ? 'denied' : 'granted';
-  const showBanner = stored !== undefined && stored !== 'granted' && stored !== 'denied' && !dismissed;
+  const [choice, setChoice] = useState<'granted' | 'denied' | null>(null);
+  const { locale, t, base } = useLocale();
+  // Russian pages: opt-out, analytics load unless the visitor declined; the banner informs and offers a way out.
+  // English pages target EU visitors, so it's opt-in (GDPR): nothing loads until the visitor accepts,
+  // and Yandex Metrica isn't used there at all.
+  const optIn = locale === 'en';
+  const decided = choice ?? (stored === 'granted' || stored === 'denied' ? stored : null);
+  const consent = stored === undefined ? null : decided ?? (optIn ? null : 'granted');
+  const showBanner = stored !== undefined && decided === null;
 
   const choose = (value: 'granted' | 'denied') => {
     window.localStorage.setItem(CONSENT_KEY, value);
-    setDismissed(true);
+    setChoice(value);
     if (value === 'denied') {
       // Scripts are already running on this page; stop the pixel now
       // and reload so Metrica is not initialised either.
@@ -52,6 +56,7 @@ export default function CookieConsent() {
               fbq('track', 'PageView');
             `}
           </Script>
+          {!optIn && (<>
           <Script id="yandex-metrica" strategy="afterInteractive">
             {`
               (function(m,e,t,r,i,k,a){
@@ -69,27 +74,28 @@ export default function CookieConsent() {
               <img src="https://mc.yandex.ru/watch/110617911" style={{ position: 'absolute', left: '-9999px' }} alt="" />
             </div>
           </noscript>
+          </>)}
         </>
       )}
 
       {showBanner && (
         <div className="fixed bottom-0 left-0 right-0 z-[100] bg-black text-white p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm md:text-base">
           <p className="opacity-90 leading-relaxed max-w-3xl">
-            Мы используем файлы cookie и сервисы аналитики (Meta Pixel, Yandex Metrica) для улучшения работы сайта и рекламы. Подробнее в{' '}
-            <Link href="/privacy" className="underline hover:opacity-70">Политике конфиденциальности</Link>.
+            {t.cookie.text}{' '}
+            <Link href={`${base}/privacy`} className="underline hover:opacity-70">{t.cookie.privacyLink}</Link>.
           </p>
           <div className="flex gap-3 shrink-0">
             <button
               onClick={() => choose('denied')}
               className="px-5 py-2.5 border border-white/40 uppercase font-bold text-xs tracking-widest hover:bg-white/10 transition-colors rounded-full"
             >
-              Отклонить
+              {t.cookie.decline}
             </button>
             <button
               onClick={() => choose('granted')}
               className="px-5 py-2.5 bg-white text-black uppercase font-bold text-xs tracking-widest hover:opacity-80 transition-opacity rounded-full"
             >
-              Понятно
+              {t.cookie.accept}
             </button>
           </div>
         </div>

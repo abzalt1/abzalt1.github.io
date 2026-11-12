@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import CookieConsent from "@/components/CookieConsent";
-
-const inter = Inter({
- variable: "--font-inter",
- subsets: ["latin", "cyrillic"],
-});
+import RootDocument from "@/components/RootDocument";
 
 const SITE_URL = "https://abzalt1.dev";
 const TITLE = "Разработка CRM, ERP и B2B-систем под ваш бизнес | Abzal Tolembi";
@@ -19,6 +12,7 @@ export const metadata: Metadata = {
  description: DESCRIPTION,
  alternates: {
  canonical: "/",
+ languages: { ru: "/", en: "/en", "x-default": "/" },
  },
  verification: {
  google: "pZFwH_HQkEECxqTlnEPQhU3vXO8o6GP4Jg592iRGfQc",
@@ -87,26 +81,5 @@ export default function RootLayout({
 }: Readonly<{
  children: React.ReactNode;
 }>) {
- return (
- <html lang="ru" className={inter.variable} suppressHydrationWarning>
- <head>
- <link
- href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
- rel="stylesheet"
- integrity="sha384-6FSSi597BTd6QcnsBNoLclRKxTOyyYqkaucRjFgCNr8wHVCp0COLClSPY4Vy/bjh"
- crossOrigin="anonymous"
- />
- </head>
- <body
- className="font-sans antialiased"
- >
- <script
- type="application/ld+json"
- dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
- />
- <CookieConsent />
- {children}
- </body>
- </html>
- );
+ return <RootDocument locale="ru" jsonLd={jsonLd}>{children}</RootDocument>;
 }

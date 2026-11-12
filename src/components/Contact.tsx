@@ -1,9 +1,11 @@
 'use client';
 
 import useContactLinks from './useContactLinks';
+import { useLocale } from '@/i18n/LocaleProvider';
 
 export default function Contact() {
  const contactLinks = useContactLinks();
+ const { t } = useLocale();
 
  const handleTelegramClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
  // We don't use e.preventDefault() here anymore to ensure the browser 
@@ -21,7 +23,7 @@ export default function Contact() {
  navigator.clipboard.writeText('@abzalt1').then(() => {
  // If the page doesn't navigate away immediately (e.g. target="_blank" opens new tab),
  // we show the feedback.
- btn.innerHTML = 'Никнейм скопирован <i class="ri-check-line"></i>';
+ btn.innerHTML = `${t.contact.nickCopied} <i class="ri-check-line"></i>`;
  btn.classList.add('bg-green-600', 'scale-105');
 
  setTimeout(() => {
@@ -45,10 +47,10 @@ export default function Contact() {
  >
  <div className="col-span-1 md:col-span-12 p-8 md:p-16 bg-white text-center flex flex-col items-center justify-center">
  <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6 tracking-tighter text-black">
- Есть проект?
+ {t.contact.title}
  </h2>
  <p className="text-lg md:text-xl mb-8 max-w-2xl opacity-70 font-medium">
- Напишите мне в Telegram или WhatsApp, и я бесплатно оценю сроки и стоимость разработки вашего проекта (MVP).
+ {t.contact.text}
  </p>
  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
  <a

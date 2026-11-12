@@ -11,7 +11,7 @@ import Footer from '@/components/Footer';
 import ScrollEffects from '@/components/ScrollEffects';
 import Lightbox from '@/components/Lightbox';
 
-export default function Home() {
+export default function HomeView() {
  const [lightboxData, setLightboxData] = useState<{images: string[], index: number} | null>(null);
 
  return (

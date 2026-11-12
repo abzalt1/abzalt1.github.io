@@ -2,16 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import useContactLinks from './useContactLinks';
+import { useLocale } from '@/i18n/LocaleProvider';
 
 export default function Hero() {
  const contactLinks = useContactLinks();
  const [displayText, setDisplayText] = useState('');
- const phrases = [
- "для опта",
- "для производства",
- "для ритейла",
- "для сферы услуг"
- ];
+ const { t } = useLocale();
+ const phrases = t.hero.phrases;
 
  useEffect(() => {
  let phraseIndex = 0;
@@ -69,19 +66,17 @@ export default function Hero() {
  <section className="md:col-span-8 p-6 min-[400px]:p-8 md:p-12 xl:p-20 border-b-grid md:border-b-0 md:border-r-grid flex flex-col justify-between">
  <div>
  <h1 className="text-[26px] min-[360px]:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold uppercase leading-none tracking-tighter">
- Автоматизирую бизнес:<br />от сайта до ERP
+ {t.hero.titleLine1}<br />{t.hero.titleLine2}
  </h1>
  <p className="mt-4 md:mt-6 mb-6 md:mb-12 text-xl md:text-3xl font-bold uppercase tracking-tighter opacity-50 min-h-[1.2em]" aria-hidden="true">
  {displayText}<span className="cursor-blink"></span>
  </p>
  <div className="space-y-6 text-base min-[400px]:text-lg md:text-xl leading-relaxed font-medium max-w-2xl">
- <p>
- Через мой портал каждый день заказывают больше 70 точек, а производство выпечки в Астане ведёт в моей системе всё, от заявок кофеен до склада. Я сам развивал свои бренды в ритейле, поэтому сначала разбираюсь, как устроена ваша работа и где теряются деньги и время. Если хватит простого сайта или бота, не стану продавать сложную систему.
- </p>
+ <p>{t.hero.text}</p>
  </div>
  {/* On phones the big "discuss" tile sits below the fold, so repeat the CTA here */}
  <a href="#contact" className="md:hidden mt-8 inline-flex items-center justify-center gap-2 w-full bg-black text-white px-6 py-4 text-base font-bold uppercase tracking-widest rounded-full active:opacity-80">
- Обсудить проект <i className="ri-arrow-down-line text-xl"></i>
+ {t.hero.cta} <i className="ri-arrow-down-line text-xl"></i>
  </a>
  </div>
  </section>
@@ -91,7 +86,7 @@ export default function Hero() {
   <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: 'url(/discuss-bg.png)' }} />
   <div className="absolute inset-0 bg-white/30 group-hover:bg-white/10 transition-colors duration-700" />
   <div className="relative z-10 flex flex-col items-center translate-y-4 md:translate-y-8">
-    <span className="text-3xl lg:text-4xl xl:text-5xl font-bold uppercase text-center mb-6 tracking-tighter">Обсудить<br/>Проект</span>
+    <span className="text-3xl lg:text-4xl xl:text-5xl font-bold uppercase text-center mb-6 tracking-tighter">{t.hero.discussLine1}<br/>{t.hero.discussLine2}</span>
     <div className="w-16 h-16 rounded-full bg-black text-white flex justify-center items-center group-hover:scale-110 transition-transform shadow-md">
       <i className="ri-arrow-down-line text-3xl"></i>
     </div>

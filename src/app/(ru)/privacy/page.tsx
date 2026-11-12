@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Политика конфиденциальности | abzalt1.dev',
-  alternates: { canonical: '/privacy' },
+  alternates: { canonical: '/privacy', languages: { ru: '/privacy', en: '/en/privacy' } },
 };
 
 export default function PrivacyPolicy() {

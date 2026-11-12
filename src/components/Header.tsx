@@ -2,7 +2,10 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import useContactLinks from './useContactLinks';
+import { useLocale } from '@/i18n/LocaleProvider';
+import { getProject } from '@/data/projects';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +13,8 @@ export default function Header() {
  const [isHidden, setIsHidden] = useState(false);
  const lastScrollY = useRef(0);
  const contactLinks = useContactLinks();
+ const { locale, t, base } = useLocale();
+ const pathname = usePathname() || '/';
 
  useEffect(() => {
  // Scroll handling
@@ -34,11 +39,20 @@ export default function Header() {
  return () => window.removeEventListener('scroll', handleScroll);
  }, []);
 
+ // `${base}#…` rather than `${base}/#…`: on GitHub Pages /en is en.html, while /en/ would 404.
+ const home = base || '/';
  const navLinks = [
- { href: '/#services', label: 'Услуги' },
- { href: '/#projects', label: 'Проекты' },
- { href: '/#process', label: 'Как работаю' },
+ { href: `${home}#services`, label: t.nav.services },
+ { href: `${home}#projects`, label: t.nav.projects },
+ { href: `${home}#process`, label: t.nav.process },
  ];
+
+ // Same page in the other language; a case hidden there falls back to that language's homepage.
+ const otherLocale = locale === 'en' ? 'ru' : 'en';
+ const ruPath = locale === 'en' ? (pathname.replace(/^\/en(?=\/|$)/, '') || '/') : pathname;
+ const slug = ruPath.match(/^\/projects\/([^/]+)/)?.[1];
+ const targetRuPath = slug && !getProject(slug, otherLocale) ? '/' : ruPath;
+ const switchHref = otherLocale === 'en' ? (targetRuPath === '/' ? '/en' : `/en${targetRuPath}`) : targetRuPath;
 
  return (
  <>
@@ -53,7 +67,7 @@ export default function Header() {
  ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
  >
  <div className="flex justify-between items-center gap-6 px-6 md:px-10">
- <Link href="/" className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none">
+ <Link href={home} className="text-4xl md:text-5xl font-bold tracking-tighter lowercase leading-none">
  abzalt1.dev
  </Link>
  <div className="flex gap-4 md:gap-10 text-sm md:text-lg font-semibold uppercase tracking-widest items-center">
@@ -64,6 +78,9 @@ export default function Header() {
  </a>
  ))}
  </nav>
+ <a href={switchHref} hrefLang={otherLocale} aria-label={t.switcher.aria} className="hover:opacity-60 transition-opacity">
+ {t.switcher.label}
+ </a>
  <a
  href={contactLinks.telegram}
  onClick={() => window.fbq?.('track', 'Contact')}
@@ -71,13 +88,13 @@ export default function Header() {
  rel="noopener noreferrer"
  className="hidden sm:inline-flex items-center gap-2 bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-widest whitespace-nowrap hover:opacity-80 transition-opacity"
  >
- Написать <i className="ri-send-plane-line"></i>
+ {t.nav.write} <i className="ri-send-plane-line"></i>
  </a>
 
  <button
  onClick={() => setIsMenuOpen(true)}
  className="lg:hidden hover:opacity-60 transition-opacity p-2"
- aria-label="Open menu"
+ aria-label={t.nav.openMenu}
  >
  <i className="ri-menu-line text-lg"></i>
  </button>
@@ -92,7 +109,7 @@ export default function Header() {
  <button
  onClick={() => setIsMenuOpen(false)}
  className="absolute top-4 right-4 p-4 hover:opacity-60 transition-opacity"
- aria-label="Close menu"
+ aria-label={t.nav.closeMenu}
  >
  <i className="ri-close-line text-4xl"></i>
  </button>

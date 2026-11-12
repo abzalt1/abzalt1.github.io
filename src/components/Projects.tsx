@@ -2,19 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { projects, type Project } from '@/data/projects';
+import { getProjects, type Project } from '@/data/projects';
+import { useLocale } from '@/i18n/LocaleProvider';
 import ProjectGallery from './ProjectGallery';
-import CopyLinkButton from './CopyLinkButton';
 
 // The homepage card is a teaser; the full task list and stack live on the project page.
 const CARD_TASKS = 3;
-
-const pluralTasks = (n: number) => {
-    const mod10 = n % 10, mod100 = n % 100;
-    if (mod10 === 1 && mod100 !== 11) return 'задача';
-    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'задачи';
-    return 'задач';
-};
 
 interface ProjectCardProps {
     project: Project;
@@ -23,11 +16,12 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
-    const { slug, number, titleLines, category, images, tasks, cardTasks, result, link, linkLabel = 'Сайт', demoCredentials, status } = project;
+    const { t, base } = useLocale();
+    const { slug, number, titleLines, category, images, tasks, cardTasks, result, link, linkLabel = t.projects.siteLabel, demoCredentials, status } = project;
     const shownTasks = cardTasks ? cardTasks.map((i) => tasks[i]) : tasks.slice(0, CARD_TASKS);
     const hiddenCount = tasks.length - shownTasks.length;
     const [isHovered, setIsHovered] = useState(false);
-    const href = `/projects/${slug}`;
+    const href = `${base}/projects/${slug}`;
 
     return (
         <div
@@ -36,7 +30,7 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
             onMouseLeave={() => setIsHovered(false)}
         >
             <div className="lg:col-span-4 p-6 md:p-10 xl:p-12 border-b-grid lg:border-b-0 lg:border-r-grid">
-                <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} {status || 'Избранный проект'}</span>
+                <span className="block text-sm font-bold uppercase tracking-widest mb-4">{number} {status || t.projects.featured}</span>
                 <h3 className="text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-bold uppercase leading-tight tracking-tight">
                     <Link href={href} className="hover:opacity-60 transition-opacity">
                         {titleLines.map((line, i) => (
@@ -56,6 +50,7 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                         <ProjectGallery
                             images={images}
                             label={category.split(' / ')[0]}
+                            title={titleLines.join(' ')}
                             isHovered={isHovered}
                             priority={isFirst}
                             onImageClick={onImageClick}
@@ -65,13 +60,13 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                             <div className="max-w-2xl w-full">
                                 {result && (
                                     <div className="lg:mb-8 p-5 md:p-6 bg-black/5 rounded-2xl">
-                                        <h4 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">Результат</h4>
+                                        <h4 className="text-xs font-bold uppercase mb-2 text-black/60 tracking-widest">{t.projects.result}</h4>
                                         <p className="text-base font-medium leading-relaxed text-black">{result}</p>
                                     </div>
                                 )}
                                 {/* Phones get the short card; the task list lives on the project page */}
                                 <div className="hidden lg:block">
-                                <h4 className="text-lg font-bold uppercase mb-3">Задачи</h4>
+                                <h4 className="text-lg font-bold uppercase mb-3">{t.projects.tasks}</h4>
                                 <ul className="list-disc list-outside ml-4 text-base leading-relaxed font-medium mb-4 text-gray-600 space-y-2">
                                     {shownTasks.map((task, i) => (
                                         <li key={i}>{task}</li>
@@ -79,27 +74,26 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
                                 </ul>
                                 {hiddenCount > 0 && (
                                     <Link href={href} className="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-wider opacity-60 hover:opacity-100 transition-opacity">
-                                        Ещё {hiddenCount} {pluralTasks(hiddenCount)} и стек проекта <i className="ri-arrow-right-line"></i>
+                                        {t.projects.moreTasks(hiddenCount)} <i className="ri-arrow-right-line"></i>
                                     </Link>
                                 )}
                                 </div>
                                 <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-4 md:mt-6">
                                     <Link href={href} className="inline-flex items-center gap-2 font-bold uppercase bg-black text-white px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:opacity-80 transition-opacity rounded-full whitespace-nowrap shrink-0">
-                                        Подробнее <i className="ri-arrow-right-line"></i>
+                                        {t.projects.details} <i className="ri-arrow-right-line"></i>
                                     </Link>
                                     {link && (
                                         <a href={link} target="_blank" className="inline-flex items-center gap-2 font-bold uppercase border border-black px-4 py-2.5 md:px-6 md:py-3 text-sm md:text-base hover:bg-black/5 transition-colors rounded-full whitespace-nowrap shrink-0" rel="noopener noreferrer">
                                             {linkLabel} <i className="ri-arrow-right-up-line"></i>
                                         </a>
                                     )}
-                                    <CopyLinkButton path={href} />
                                     {demoCredentials && (
                                         <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 px-4 py-3 bg-black/5 rounded-xl border border-black/10 w-full sm:w-auto">
                                             <i className="ri-key-2-line text-sm opacity-50 hidden sm:block"></i>
-                                            <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Логин:</span>
+                                            <span className="text-xs font-bold uppercase opacity-50 tracking-wider">{t.projects.login}</span>
                                             <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all mr-2">{demoCredentials.login}</span>
 
-                                            <span className="text-xs font-bold uppercase opacity-50 tracking-wider">Пароль:</span>
+                                            <span className="text-xs font-bold uppercase opacity-50 tracking-wider">{t.projects.pass}</span>
                                             <span className="text-sm font-mono font-medium bg-white px-2 py-0.5 rounded shadow-sm border border-black/5 select-all">{demoCredentials.pass}</span>
                                         </div>
                                     )}
@@ -122,6 +116,8 @@ const ProjectCard = ({ project, isFirst, onImageClick }: ProjectCardProps) => {
 };
 
 export default function Projects({ onOpenLightbox }: { onOpenLightbox: (images: string[], index: number) => void }) {
+    const { locale } = useLocale();
+    const projects = getProjects(locale);
     return (
         <section id="projects" className="grid grid-cols-1 gap-8 mb-8 scroll-mt-8">
             {projects.map((project, i) => (

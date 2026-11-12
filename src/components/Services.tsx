@@ -1,23 +1,9 @@
 'use client';
 
+import { useLocale } from '@/i18n/LocaleProvider';
+
 export default function Services() {
- const services = [
- {
- icon: 'ri-dashboard-line',
- title: 'CRM и ERP под ваш процесс',
- description: 'Заказы, склад, производство и деньги в одной системе. Владелец видит выручку, себестоимость и маржу в реальном времени.'
- },
- {
- icon: 'ri-shopping-cart-2-line',
- title: 'Приём оптовых заказов',
- description: 'Клиенты заказывают через личный кабинет, а не в WhatsApp. Дедлайны, история заказов и накладные — автоматически.'
- },
- {
- icon: 'ri-exchange-line',
- title: 'Интеграции с 1С и мессенджерами',
- description: 'Связываю систему с 1С, WhatsApp и Telegram, чтобы данные не вводили дважды.'
- }
- ];
+ const services = useLocale().t.services;
 
  return (
  <section id="services" className="grid grid-cols-1 lg:grid-cols-3 gap-0 grid-border mb-8 scroll-mt-8 fade-in-section overflow-hidden">

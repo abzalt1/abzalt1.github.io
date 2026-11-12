@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useLocale } from '@/i18n/LocaleProvider';
 
 interface ProjectGalleryProps {
     images: string[];
     label: string;
+    // Project name, used in the screenshots' alt text.
+    title?: string;
     // Autoplay runs only while the parent reports hover; leaving resets it.
     isHovered: boolean;
     // Only the gallery visible on load should fetch eagerly; the rest load on scroll.
@@ -13,7 +16,8 @@ interface ProjectGalleryProps {
     onImageClick: (images: string[], index: number) => void;
 }
 
-export default function ProjectGallery({ images, label, isHovered, priority = false, onImageClick }: ProjectGalleryProps) {
+export default function ProjectGallery({ images, label, title, isHovered, priority = false, onImageClick }: ProjectGalleryProps) {
+    const { t } = useLocale();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
     const [hasInteracted, setHasInteracted] = useState(false);
@@ -118,7 +122,7 @@ export default function ProjectGallery({ images, label, isHovered, priority = fa
                         >
                             <Image
                                 src={img}
-                                alt="Website screenshot"
+                                alt={`${title ?? label} — ${t.gallery.screenshot} ${idx + 1}`}
                                 fill
                                 className="object-contain p-2 cursor-zoom-in"
                                 onClick={(e) => { e.stopPropagation(); onImageClick(images, idx); }}
@@ -161,7 +165,7 @@ export default function ProjectGallery({ images, label, isHovered, priority = fa
                             {/* Subtle Interaction Hint */}
                             <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none transition-all duration-500 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 ${hasInteracted ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
                                 <i className="ri-expand-left-right-line text-xs text-white"></i>
-                                <span className="text-[10px] font-extrabold text-white uppercase tracking-widest whitespace-nowrap">Листайте или нажимайте на края</span>
+                                <span className="text-[10px] font-extrabold text-white uppercase tracking-widest whitespace-nowrap">{t.gallery.hint}</span>
                             </div>
                         </>
                     )}

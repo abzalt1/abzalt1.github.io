@@ -1,9 +1,13 @@
+'use client';
+
 import type { StackItem } from '@/data/projects';
+import { useLocale } from '@/i18n/LocaleProvider';
 
 export default function StackList({ stack }: { stack: StackItem[] }) {
+    const { t } = useLocale();
     return (
         <div className="w-full md:w-auto">
-            <h4 className="text-xs font-semibold uppercase mb-3 tracking-widest opacity-50">Стек проекта</h4>
+            <h4 className="text-xs font-semibold uppercase mb-3 tracking-widest opacity-50">{t.stack}</h4>
             <ul className="space-y-3 text-sm font-bold uppercase pb-2">
                 {stack.map((item, i) => (
                     <li key={i} className="flex items-center gap-3 group relative cursor-help w-fit">

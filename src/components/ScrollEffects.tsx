@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useLocale } from '@/i18n/LocaleProvider';
 
 export default function ScrollEffects() {
+ const { t } = useLocale();
  const [scrollProgress, setScrollProgress] = useState(0);
  const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -86,7 +88,7 @@ export default function ScrollEffects() {
  id="back-to-top"
  onClick={scrollToTop}
  className={`fixed bottom-8 right-8 bg-black text-white p-4 rounded-2xl shadow-2xl transition-all duration-300 z-50 hover:scale-110 active:scale-90 hidden md:flex items-center justify-center ${showBackToTop ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
- aria-label="Наверх"
+ aria-label={t.scrollTop}
  >
  <i className="ri-arrow-up-line text-2xl"></i>
  </button>
