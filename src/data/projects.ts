@@ -95,7 +95,7 @@ export const projects: Project[] = [
     {
         slug: "mycook",
         number: "03.",
-        titleLines: ["my Cook", "DELIVERY"],
+        titleLines: ["my Cook"],
         category: "Интернет-магазин / Доставка еды",
         description: "PWA интернет-магазин доставки еды с конструктором блюд, проверкой адреса, скидками по номеру телефона, Web Push и собственной CRM вместо платных сервисов.",
         images: ["/mycook_new1.webp", "/mycook_new2.webp", "/mycook_new3.webp", "/mycook_new4.webp", "/mycook_new5.webp", "/mycook_new6.webp", "/mycook_new7.webp", "/mycook_new8.webp"],
