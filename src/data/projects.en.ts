@@ -59,16 +59,17 @@ export const projectsEn: Record<string, ProjectTranslation> = {
     mycook: {
         category: 'Online store / Food delivery',
         description: 'Food delivery store as a PWA: dish builder, address validation, phone-number discounts, Web Push and a custom CRM instead of paid services.',
-        result: 'An own online store with an admin panel instead of a monthly fee for third-party services. Customers install it on their phone like an app, build a dish in the configurator and order delivery without chatting on WhatsApp.',
+        result: 'An own online store with an admin panel instead of a monthly fee for third-party services. Customers install it on their phone like an app, build a dish in the configurator and check out delivery on the site. The order is saved to the CRM and at the same time opens in WhatsApp as a ready-made message: the customer just taps “Send”, and the manager has nothing left to clarify.',
         tasks: [
             'PWA: the store installs to the home screen, with pull-to-refresh and a floating cart, just like a native app.',
             'Dish builder: modifiers with instant price recalculation.',
             'Delivery address: suggestions and validation through an address lookup API.',
             'Phone-number discounts: a personal discount is applied as soon as the customer enters their number.',
-            'Web Push: the admin gets new-order notifications right on screen, no messengers needed.',
+            'WhatsApp orders without the Business API: the site builds a ready message with items, address and time, and the customer sends it with one tap. No monthly fee, no template approval. If the connection drops, the order is stored on the device and reaches the CRM once the internet is back.',
+            'Web Push: customers subscribe in the cart, and the admin sends promos and news straight to their phone screen, no messenger broadcasts needed.',
             'Custom CRM: a private admin panel for orders, catalog and statuses; changes through Supabase are visible to everyone instantly.',
         ],
-        challenge: 'Orders came in only through WhatsApp. The owner wanted another sales channel: an own online store where customers build their order and check out delivery themselves instead of chatting in a messenger.',
+        challenge: 'Orders came in only through WhatsApp chats: the customer listed dishes, and the manager clarified the contents, address and time. The owner wanted customers to build the order on the site themselves and the manager to receive it complete, without changing the channel everyone was used to.',
         stackInfo: [
             'App Router, SSR and API routes for a fast app.',
             'PostgreSQL database for the catalog and orders.',
